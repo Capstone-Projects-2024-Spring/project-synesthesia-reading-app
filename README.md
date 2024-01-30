@@ -40,7 +40,7 @@ Discuss what you need to develop this project. This includes background informat
 <tr>
     <td align="center">
         <a href="https://github.com/elijahbigham">
-            <img src="https://avatars.githubusercontent.com/u/9451941?v=4](https://avatars.githubusercontent.com/u/40969165?v=4" width="100;" alt="elijahbigham"/>
+            <img src="https://avatars.githubusercontent.com/u/40969165?v=4" width="100;" alt="elijahbigham"/>
             <br />
             <sub><b>Elijah Bigham</b></sub>
         </a>
