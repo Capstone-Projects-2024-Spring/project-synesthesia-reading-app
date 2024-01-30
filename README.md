@@ -42,21 +42,28 @@ Discuss what you need to develop this project. This includes background informat
         <a href="https://github.com/ApplebaumIan">
             <img src="https://avatars.githubusercontent.com/u/9451941?v=4" width="100;" alt="ApplebaumIan"/>
             <br />
-            <sub><b>Ian Tyler Applebaum</b></sub>
+            <sub><b>Elijah Bigham</b></sub>
         </a>
     </td>
     <td align="center">
         <a href="https://github.com/leekd99">
             <img src="https://avatars.githubusercontent.com/u/32583417?v=4" width="100;" alt="leekd99"/>
             <br />
-            <sub><b>Kyle Dragon Lee</b></sub>
+            <sub><b>Andrew Kahn</b></sub>
         </a>
     </td>
     <td align="center">
         <a href="https://github.com/thanhnguyen46">
             <img src="https://avatars.githubusercontent.com/u/60533187?v=4" width="100;" alt="thanhnguyen46"/>
             <br />
-            <sub><b>Thanh Nguyen</b></sub>
+            <sub><b>Mohammed Mohammed</b></sub>
+        </a>
+    </td>
+        <td align="center">
+        <a href="https://github.com/thanhnguyen46">
+            <img src="https://avatars.githubusercontent.com/u/60533187?v=4" width="100;" alt="thanhnguyen46"/>
+            <br />
+            <sub><b>Alyssa Townsend</b></sub>
         </a>
     </td>
    </tr>
