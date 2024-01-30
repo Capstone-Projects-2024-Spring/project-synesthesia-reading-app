@@ -61,7 +61,7 @@ Discuss what you need to develop this project. This includes background informat
     </td>
         <td align="center">
         <a href="https://github.com/alyssatownsend">
-            <img src="https://avatars.githubusercontent.com/u/70662763?v=4"/>
+            <img src="https://avatars.githubusercontent.com/u/70662763?v=4"width="100;" alt="alyssatownsend"/>
             <br />
             <sub><b>Alyssa Townsend</b></sub>
         </a>
