@@ -46,8 +46,8 @@ Discuss what you need to develop this project. This includes background informat
         </a>
     </td>
     <td align="center">
-        <a href="https://github.com/leekd99">
-            <img src="https://avatars.githubusercontent.com/u/32583417?v=4" width="100;" alt="leekd99"/>
+        <a href="https://github.com/AndrewDKahn">
+            <img src="https://avatars.githubusercontent.com/u/49370482?v=4" width="100;" alt="AndrewDKahn"/>
             <br />
             <sub><b>Andrew Kahn</b></sub>
         </a>
