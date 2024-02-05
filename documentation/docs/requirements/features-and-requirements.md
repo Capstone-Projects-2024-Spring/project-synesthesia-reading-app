@@ -17,10 +17,12 @@ sidebar_position: 4
 - The user will be able to read PDF files with text color and shading modified based on their color profile.
 - The user will be able to select words whose color association was not accurate and modify it.
    - The SR app will save these preferences and adjust the color-generating algorithm based on these changes.
+- The user will be able to highlight passages.
 - The user will be able to make notes on their readings and share those notes with a friend.
    - Shared notes will share only the notation, not the Synesthetic color profile
 - The user will be able to add new PDF files to their account by uploading them.
 - The user will be able to download PDF files for offline reading in their synesthetic colors.
+- The user will be able to provide feedback to the developers.
 
 ## Nonfunctional Requirements
   - The user interface will be optimized for mobile devices and can be scaled up for tablet and PC.
