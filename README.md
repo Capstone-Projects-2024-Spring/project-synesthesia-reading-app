@@ -15,7 +15,7 @@ Section #, as well as any words that quickly give your peers insights into the a
 
 ## Project Abstract
 
-This document proposes a novel application of a text message (SMS or Email) read-out and hands-free call interacted between an Android Smartphone and an infotainment platform (headunit) in a car environment. When a phone receives an SMS or Email, the text message is transferred from the phone to the headunit through a Bluetooth connection. On the headunit, user can control which and when the received SMS or E-mail to be read out through the in-vehicle audio system. The user may press one button on the headunit to activate the hands-free feature to call back the SMS sender.
+    Mara's Proposal: My goal is to design an app based on the phenomenon of synesthesia. Specifically, the app would focus on grapheme-color synesthesia in which graphemes elicit specific colors that remain consistent over time. Van der Veen, Aben, Smits &. Röder (2014) demonstrated that individuals ages 19-49 with grapheme-color synesthesia react slower when presented with graphemes incongruent to their synesthetic color associations. In turn, these individuals’ reaction time improved when presented graphemes in colors congruent to their associations. Similarly, Bryan Alvarez and Lynn Robertson (2013) demonstrated that when primed with graphemes colored congruently to their synesthetic associations, individuals 19-40 years of age with grapheme-color synesthesia had faster reaction times compared to when primed with achromatic graphemes that elicit a synesthetic color. I am hoping to develop an app that would allow people who have grapheme-color synesthesia to read text in their personal color associations. Although to non-synesthetes, text printed in a variety of colors may seem chaotic, but to me (a graphemecolor synesthete), graphemes printed in colors harmonious with my natural color association just feels right.  My proposed app would use artificial intelligence processes similar to those used with word prediction applications. Rather than word prediction, color prediction would convert files to text representing each synesthete’s respective colors. The app will continuously learn the individual’s personal color algorithms along with any anomalies.   Synesthesia co-occurs with neurological differences and learning differences. Specifically: Autism (including Asperger syndrome), ADHD, dyslexia, and dyspraxia. Simon Baron-Cohen, Donielle Johnson, Julian Asher, Sally Wheelwright, Simon Fisher, and Peter Gregerson (2013) demonstrated that in adults the rate of synesthesia was three times higher in people with autism (18.9%) compared to a control group of people without autism (7.22%). David Grant (2017) found that there is a co-occurrence of synesthetic experiences in individuals with ADHD, dyslexia, and dyspraxia. 17% of individuals with ADHD, 9% of dyslexics, and 14% of dyspraxics reported synesthetic experiences. Synesthetic experiences are also reported in 18% of individuals with both ADHD and dyslexia as well as 37% individuals with both ADHD and dyspraxia. This co-occurrence with disabilities suggests that this app could potentially have implications in educational interventions for different learners. 
 
 ## High Level Requirement
 
@@ -46,8 +46,8 @@ Discuss what you need to develop this project. This includes background informat
         </a>
     </td>
     <td align="center">
-        <a href="https://github.com/leekd99">
-            <img src="https://avatars.githubusercontent.com/u/32583417?v=4" width="100;" alt="leekd99"/>
+        <a href="https://github.com/AndrewDKahn">
+            <img src="https://avatars.githubusercontent.com/u/49370482?v=4" width="100;" alt="AndrewDKahn"/>
             <br />
             <sub><b>Andrew Kahn</b></sub>
         </a>
@@ -60,8 +60,8 @@ Discuss what you need to develop this project. This includes background informat
         </a>
     </td>
         <td align="center">
-        <a href="https://github.com/thanhnguyen46">
-            <img src="https://avatars.githubusercontent.com/u/60533187?v=4" width="100;" alt="thanhnguyen46"/>
+        <a href="https://github.com/alyssatownsend">
+            <img src="https://avatars.githubusercontent.com/u/70662763?v=4"width="100;" alt="alyssatownsend"/>
             <br />
             <sub><b>Alyssa Townsend</b></sub>
         </a>
