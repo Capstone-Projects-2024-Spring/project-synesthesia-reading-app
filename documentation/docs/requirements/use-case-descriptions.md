@@ -5,6 +5,8 @@ sidebar_position: 5
 # Use-case descriptions
 
 ## Use Case 1: User creates an account
+
+As a new user, I want to create an account and personalize my reading experience by setting my preferred color calibration for letters and numbers.
    1. User clicks "Create Account"
    2. User enters account info --> login with Google*
    3. User is directed to create their color profile
@@ -18,6 +20,8 @@ sidebar_position: 5
 
 
 ## Use Case 2: User uploads a document
+
+As a user, I want to upload a PDF so that I can be able to access it within the app.
    1. From the hope page, user selects 'Upload PDF'
    2. A file directory opens
    3. The user picks the file they wish to upload from said directory
@@ -52,11 +56,10 @@ sidebar_position: 5
 
 
 ## User Case 5: User deletes document from device while offline
-   1. From the document library page, selects a document and clicks the option to delete from device
+ document library page, selects a document and clicks the option to delete from device
    2. A pop-up message warns the user that if the document is deleted while disconnected from the internet, any annotations created since the last sync will be lost and gives the user the option to cancel.
    3. The user confirms that they want to delete.
    4. The document and associated annotations are deleted from the device.
-
 
 ## Use Case 6: User provides feedback to the developers
    1. User clicks on the 'give feedback' link in the app main menu.
