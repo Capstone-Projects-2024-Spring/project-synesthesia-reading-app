@@ -5,6 +5,7 @@ sidebar_position: 5
 # Use-case descriptions
 
 ## Use Case 1: User creates an account
+
 As a new user, I want to create an account and personalize my reading experience by setting my preferred color calibration for letters and numbers.
    1. User clicks "Create Account"
    2. User enters account info --> login with Google*
@@ -19,6 +20,7 @@ As a new user, I want to create an account and personalize my reading experience
 
 
 ## Use Case 2: User uploads a document
+
 As a user, I want to upload a PDF so that I can be able to access it within the app.
    1. From the hope page, user selects 'Upload PDF'
    2. A file directory opens
@@ -26,9 +28,19 @@ As a user, I want to upload a PDF so that I can be able to access it within the 
    4. The PDF file is now available to open from the app library.
 
 
+## Use Case 3: User reads offline
 
-## User Case 3: User alters a word color while connected to the internet
-As a user, I want to connect to the internet to save or adjust my color profile to match my preferences
+   1. On the device they want to use offline, the user selects the 'Download' option for a document while still online.
+   2. Later, the user opens the app offline and opens the downloaded document
+   3. The user clicks on the navigation icon and selects the latest bookmark, taking them to the correct page.
+   4. The user reads and creates a note.
+   5. The user corrects a word color.
+   6. Eventually, the user finishes for now, bookmarks their page, and closes the application.
+   7. When the device is connected to internet, the bookmark, color alteration, and note are synced in the background.
+
+
+
+## User Case 4: User alters a word color while connected to the internet
    1. While reading, the user comes across a word color they wish to change.
    2. User clicks on the word.
    3. Options to 'save' or 'change' come up.
@@ -43,29 +55,13 @@ As a user, I want to connect to the internet to save or adjust my color profile 
 
 
 
-## Use Case 4: User reads offline
-As a user, I want to download my documents so I can seamlessly read, create notes, and correct word colors offline.
-   1. On the device they want to use offline, the user selects the 'Download' option for a document while still online.
-   2. Later, the user opens the app offline and opens the downloaded document
-   3. The user clicks on the navigation icon and selects the latest bookmark, taking them to the correct page.
-   4. The user reads and creates a note.
-   5. The user corrects a word color.
-   6. Eventually, the user finishes for now, bookmarks their page, and closes the application.
-   7. When the device is connected to internet, the bookmark, color alteration, and note are synced in the background.
-
-
-
 ## User Case 5: User deletes document from device while offline
-As a user, I want to manage and delete any offline document that I no longer require.
-   1. From the document library page, selects a document and clicks the option to delete from device
+ document library page, selects a document and clicks the option to delete from device
    2. A pop-up message warns the user that if the document is deleted while disconnected from the internet, any annotations created since the last sync will be lost and gives the user the option to cancel.
    3. The user confirms that they want to delete.
    4. The document and associated annotations are deleted from the device.
 
-
-
 ## Use Case 6: User provides feedback to the developers
-As a user, I want provide feedback to the developers so that I can help contribute to the improvement of the app.
    1. User clicks on the 'give feedback' link in the app main menu.
    2. A text box is provided.
    3. The user types the feedback and hits 'submit'.
