@@ -42,6 +42,12 @@ A check list for architecture design is attached here [architecture\_design\_che
   <img src = "https://github.com/Capstone-Projects-2024-Spring/project-synesthesia-reading-app/assets/40969165/787e1d42-dee6-4b00-b950-56e48fb5bfb7" alt = "Login UI" width = 33%/>
   <img src = "https://github.com/Capstone-Projects-2024-Spring/project-synesthesia-reading-app/assets/40969165/a70b62d3-eb85-4af4-8a3b-7898a4d760d2" alt = "Sign Up UI" width = 33%/>
 </div>
+</br>
+</br>
+
+<p>Document Reading Screen</p>
+
+![document reading](https://github.com/Capstone-Projects-2024-Spring/project-synesthesia-reading-app/assets/40969165/a75439be-f688-44e0-9563-91d7c1a74f6b)
 
 
 
