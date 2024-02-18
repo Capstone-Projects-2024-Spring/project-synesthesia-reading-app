@@ -33,7 +33,17 @@ A check list for architecture design is attached here [architecture\_design\_che
 ### Technology
 
 ### Class Diagram
-
+```mermaid
+classDiagram
+  App <|-- Account
+  Account <|-- Login
+  Account <|-- SignUp
+  App <|-- Documents
+  Documents <|-- Download
+  Documents <|-- Upload
+  Documents <|-- Read
+  App <|-- Calibrate
+```
 ### Design Mock-Ups
 
 <p>Welcome, Login, & Sign Up Screens</p>
