@@ -31,6 +31,7 @@ A check list for architecture design is attached here [architecture\_design\_che
 ## User-Interface
 
 ### Technology
+User-Interface created using ReactJS, Tailwind, and mUI. Front-end scripting executed using ReactJS. 
 
 ### Class Diagram
 ```mermaid
