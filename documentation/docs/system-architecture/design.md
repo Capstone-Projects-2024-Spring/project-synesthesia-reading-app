@@ -35,14 +35,47 @@ A check list for architecture design is attached here [architecture\_design\_che
 ### Class Diagram
 ```mermaid
 classDiagram
-  App <|-- Account
-  Account <|-- Login
-  Account <|-- SignUp
-  App <|-- Documents
-  Documents <|-- Download
-  Documents <|-- Upload
-  Documents <|-- Read
-  App <|-- Calibrate
+  App o-- Account
+  App : - Account user
+   
+  Account : + colorWeights
+  Account : + documentList
+  Account : + getUserData()
+  Account o-- Login
+  Login : - Credentials userCredentials
+  Login : + checkCredentials()
+  Account o-- SignUp
+  SignUp : - Credentials ruserCredentials
+  SignUp : + registerUser()
+  Account o-- Credentials
+  Credentials : + username
+  Credentials : + password
+
+  App o-- Documents
+  Documents : + documentList
+  Documents o-- Download
+  Download: + saveToDevice(Document)
+  Documents o-- Upload
+  Upload: + pushToServer(Document)
+  Documents o-- Read
+  Read: + documentText
+  Read: - Array<Note> noteList
+  Read o-- "0...*" Note
+  Note: + String text
+  Note: - int position
+  Read: - lazyLoadDoc(DocID)
+  Read: + colorText(text)
+  Read: - hightlightText(start, stop)
+  Read: - makeNote(text)
+  App o-- Calibrate
+  Calibrate: Array<Integer> letterHues
+  Calibrate: ColorModel userColorModel
+  Calibrate: updateRemoteModel()
+  Calibrate <-- "1" ColorModel
+  ColorModel: weights
+  
+  
+  
 ```
 ### Design Mock-Ups
 
