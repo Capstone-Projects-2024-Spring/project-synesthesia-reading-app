@@ -82,12 +82,12 @@ classDiagram
 
 <p>Welcome, Login, & Sign Up Screens</p>
 <div>
-  <img src = "https://github.com/Capstone-Projects-2024-Spring/project-synesthesia-reading-app/assets/40969165/b3638ab1-6bb3-49b0-9d51-5e4d387d55cc" alt = "Welcome UI" width = 33%/>
-  <img src = "https://github.com/Capstone-Projects-2024-Spring/project-synesthesia-reading-app/assets/40969165/787e1d42-dee6-4b00-b950-56e48fb5bfb7" alt = "Login UI" width = 33%/>
-  <img src = "https://github.com/Capstone-Projects-2024-Spring/project-synesthesia-reading-app/assets/40969165/a70b62d3-eb85-4af4-8a3b-7898a4d760d2" alt = "Sign Up UI" width = 33%/>
+  <img src = "https://github.com/Capstone-Projects-2024-Spring/project-synesthesia-reading-app/assets/40969165/b3638ab1-6bb3-49b0-9d51-5e4d387d55cc" alt="Welcome UI" width="33%"/>
+  <img src = "https://github.com/Capstone-Projects-2024-Spring/project-synesthesia-reading-app/assets/40969165/787e1d42-dee6-4b00-b950-56e48fb5bfb7" alt="Login UI" width="33%"/>
+  <img src = "https://github.com/Capstone-Projects-2024-Spring/project-synesthesia-reading-app/assets/40969165/a70b62d3-eb85-4af4-8a3b-7898a4d760d2" alt="Sign Up UI" width="33%"/>
 </div>
-</br>
-</br>
+<br/>
+<br/>
 
 <p>Document Reading Screen</p>
 
