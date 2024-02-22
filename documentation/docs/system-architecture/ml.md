@@ -29,7 +29,7 @@ flowchart LR
 
 
 #### 1. Separating Monomorphic Components
-First, each word yet to be assigned a color is run through [Tim Kam's compound-word-splitter for Python](https://github.com/TimKam/compound-word-splitter), 
+First, each word is split using [Tim Kam's compound-word-splitter for Python](https://github.com/TimKam/compound-word-splitter), 
 which separates compound words into their component, monomorphemic words. If the word splitter 
 cannot find component words, i.e. the word is not compound, the entire words is fed into 
 the letter weighting model in one piece.
@@ -45,7 +45,7 @@ type (vowel or consonant) and outputs the weight of each letter within the compo
 #### 3. Coloring a Monomorphemic Word or Word Component
 Then, the coloring algorithm for a component is run with the determined weights. 
 A monomorphemic word/component will be colored using a weighted average of the
-RGB values of each letter, where $1 = \sum_{1}^{n}\mathrm{w}_{i}^{}$ and n is the 
+RGB values of each letter, where $1 = \sum_{1}^{n}\mathrm{w}_{i}^{}$ and $n$ is the 
 number of letters within the component.
 
 $$
@@ -68,6 +68,60 @@ of a word.
 
 ```mermaid
 sequenceDiagram
+    participant React UI
+    participant Text Handler
+    participant Color Handler
+    participant Word Splitter
+    participant Color Profile
+    participant Regression Model
+    participant Algorithm
+
+    activate React UI
+    React UI ->> Text Handler: Lazy Load Document
+    activate Text Handler
+    Text Handler->>Word Splitter: sends text
+    activate Word Splitter
+    loop for each word in text
+        Word Splitter->>Word Splitter: split(word)
+    end
+        Word Splitter -->> Text Handler: returns split text
+        deactivate Word Splitter
+
+    
+    Text Handler ->>Color Handler: sends unique components
+    activate Color Handler
+    Color Handler->>Color Profile: sends components
+    activate Color Profile
+    loop for each component
+        Color Profile->>Color Profile: find component color if it exists
+        end
+
+    Color Profile-->>Color Handler: returns colors of saved components
+    deactivate Color Profile
+    
+    Color Handler->>Regression Model: sends unsaved components
+    activate Regression Model
+    Regression Model->>Regression Model: run the model
+    Regression Model-->>Color Handler: returns weights
+    deactivate Regression Model
+    
+    Color Handler->>Algorithm: sends unsaved components and their letter weights
+    activate Algorithm
+    loop for each component
+    Algorithm->>Algorithm: calculate color
+    end
+    Algorithm-->>Color Handler: returns component colors
+    deactivate Algorithm
+    
+    Color Handler-->>Text Handler: returns component-color pairs
+    deactivate Color Handler
+    
+    Text Handler->>Text Handler: recombine split text formatted with color
+    Text Handler-->>React UI: returns the formatted text
+    
+    
+    deactivate Text Handler
+    deactivate React UI
 
 ```
 
