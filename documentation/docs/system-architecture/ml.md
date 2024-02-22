@@ -9,7 +9,15 @@ and position in other words. Finally, the coloring algorithm for a component
 is run with the determined weights.
 
 ### Coloring a Monomorphemic Word or Word Component
-adding test equation
+A monomorphemic word/component will be colored using a weighted average of the
+RGB values of each letter, where $1 = \sum_{1}^{n}\mathrm{w}_{i}^{}$
+
 $$
-I = \int_0^{2\pi} \sin(x)\,dx
+Average\ R: \mathrm{w}_{1}^{} * \mathrm{R}_{1}^{} \ +\ \mathrm{w}_{2}^{} * \mathrm{R}_{2}^{} \ +\ \mathrm{w}_{3}^{} * \mathrm{R}_{3}^{} \ +\ ... \ +\ \mathrm{w}_{n}^{} * \mathrm{R}_{n}^{}
+
+\\
+Average\ G:\ \mathrm{w}_{1}^{} * \mathrm{G}_{1}^{} \ +\ \mathrm{w}_{2}^{} * \mathrm{G}_{2}^{} \ +\ \mathrm{w}_{3}^{} * \mathrm{G}_{3}^{} \ +\ ... \ +\ \mathrm{w}_{n}^{} * \mathrm{G}_{n}^{}
+
+\\
+Average\ B:\ \mathrm{w}_{1}^{} * \mathrm{B}_{1}^{} \ +\ \mathrm{w}_{2}^{} * \mathrm{B}_{2}^{} \ +\ \mathrm{w}_{3}^{} * \mathrm{B}_{3}^{} \ +\ ... \ +\ \mathrm{w}_{n}^{} * \mathrm{B}_{n}^{}
 $$
