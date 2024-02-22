@@ -2,8 +2,8 @@
 // Note: type annotations allow type checking and IDEs autocompletion
 
 
-const { default: remarkMath } = require('remark-math');
-const {default: rehypeKatex} = require('rehype-katex')
+import remarkMath from 'remark-math';
+import rehypeKatex from 'rehype-katex';
 
 // const lightCodeTheme = require('prism-react-renderer/themes/github');
 // const darkCodeTheme = require('prism-react-renderer/themes/dracula');
