@@ -9,3 +9,7 @@ and position in other words. Finally, the coloring algorithm for a component
 is run with the determined weights.
 
 ### Coloring a Monomorphemic Word or Word Component
+adding test equation
+$$
+I = \int_0^{2\pi} \sin(x)\,dx
+$$
