@@ -1,3 +1,8 @@
+---
+sidebar position: 2
+---
+
+
 # Algorithms
 The Synesthesia Reading App uses a series of algorithms to render words in a synesthete's colors.
 
