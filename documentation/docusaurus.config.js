@@ -1,6 +1,10 @@
 // @ts-check
 // Note: type annotations allow type checking and IDEs autocompletion
 
+
+import remarkMath from 'remark-math';
+import rehypeKatex from 'rehype-katex';
+
 // const lightCodeTheme = require('prism-react-renderer/themes/github');
 // const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 
@@ -23,6 +27,7 @@ const main_template_jira_scripts = () => {
 const title = ''+process.env.PROJECT_NAME.replaceAll('-',' ').split(' ').map((word) => {
   return word[0].toUpperCase() + word.substring(1);
 }).join(' ');
+
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
@@ -63,6 +68,8 @@ const config = {
           sidebarPath: require.resolve('./sidebars.js'),
           routeBasePath: 'docs',
           path: 'docs',
+          remarkPlugins: [remarkMath],
+          rehypePlugins: [rehypeKatex],
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           editUrl:
