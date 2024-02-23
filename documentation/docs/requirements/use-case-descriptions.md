@@ -40,7 +40,7 @@ As a user, I want to upload a PDF so that I can be able to access it within the 
 
 
 
-## User Case 4: User alters a word color while connected to the internet
+## User Case 4: User alters a word color
    1. While reading, the user comes across a word color they wish to change.
    2. User clicks on the word.
    3. Options to 'save' or 'change' come up.
@@ -48,10 +48,8 @@ As a user, I want to upload a PDF so that I can be able to access it within the 
    5. The selected word is shown large on the screen.
    6. The user clicks on a letter, and then uses a slider to adjust the selected letter's weight.
    7. The user confirms the color change.
-   8. The word color is saved to the user's account.
-   9. The web server uses ML models to adjust the user's color generating algorithm in light of the color alteration.
-   10. The new color algorithm is sent to the user client.
-   11. The document colors are re-rendered using the new algorithm.
+   8. The word color is saved to the user's color profile.
+   9. The colors of the currently-loaded text are re-calculated and re-rendered as described on the algorithms page.
 
 
 
