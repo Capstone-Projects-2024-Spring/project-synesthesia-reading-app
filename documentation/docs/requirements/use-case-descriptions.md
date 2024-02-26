@@ -51,6 +51,36 @@ As a user, I want to upload a PDF so that I can be able to access it within the 
    8. The word color is saved to the user's color profile.
    9. The colors of the currently-loaded text are re-calculated and re-rendered as described on the algorithms page.
 
+```mermaid
+sequenceDiagram
+    participant User 
+    participant React UI
+    participant Text Handler
+    participant Color Profile
+
+
+    activate React UI
+    Note over User: User wants to change a word color
+    
+    User->>React UI: clicks word on screen
+        React UI->>React UI: alerts word option menu handler
+        React UI-->>User: displays option to save or change color
+
+    User->>React UI: clicks 'change'
+        React UI-->>User: shows selected word
+        User->>React UI: 
+        
+
+    
+    
+    
+    
+    deactivate React UI
+
+        
+
+```
+
 
 
 ## User Case 5: User deletes document from device while offline
