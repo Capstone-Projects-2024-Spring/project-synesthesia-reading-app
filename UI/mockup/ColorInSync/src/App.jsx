@@ -1,23 +1,40 @@
-import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
+import { useState, useEffect } from "react";
 import "./App.css";
-import {GoogleLogin} from "@react-oauth/google";
+import { GoogleLogin, googleLogout } from "@react-oauth/google";
+import Login from "./Frames/Login/Login.jsx";
+import axios from "axios";
 
 function App() {
-  const responseMessage = (response) => {
-    console.log(response);
+  const [user, setUser] = useState(null);
+  const [profile, setProfile] = useState(null);
+  const changeUser = (newUser) => {
+    setUser(newUser);
   };
-  const errorMessage = (error) => {
-    console.log(error);
-  };
-
+  useEffect(() => {
+    if (user) {
+      axios
+        .get(
+          `https://www.googleapis.com/oauth2/v1/userinfo?access_token=${user.access_token}`,
+          {
+            headers: {
+              Authorization: `Bearer ${user.access_token}`,
+              Accept: "application/json",
+            },
+          }
+        )
+        .then((res) => {
+          setProfile(res.data);
+        })
+        .catch((err) => console.log(err));
+    }
+  }, [user]);
   return (
     <>
-      <div className="bg-gray-200 flex items-center justify-center h-screen">
-        <h1 className="text-3xl font-bold text-purple-300">Color in Sync</h1>
-        <GoogleLogin onSuccess={responseMessage} onError={errorMessage}></GoogleLogin>
-      </div>
+      {profile ? (
+        <div>Welcome, {profile.name}</div>
+      ) : (
+        <Login loginSuccess={changeUser} />
+      )}
     </>
   );
 }
