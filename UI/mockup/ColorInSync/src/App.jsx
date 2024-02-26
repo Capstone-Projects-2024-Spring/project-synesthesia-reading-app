@@ -2,18 +2,21 @@ import { useState } from "react";
 import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
 import "./App.css";
+import {GoogleLogin} from "@react-oauth/google";
 
 function App() {
-  const [R, setR] = useState(0);
-  const [G, setG] = useState(0);
-  const [B, setB] = useState(0);
+  const responseMessage = (response) => {
+    console.log(response);
+  };
+  const errorMessage = (error) => {
+    console.log(error);
+  };
 
   return (
     <>
       <div className="bg-gray-200 flex items-center justify-center h-screen">
         <h1 className="text-3xl font-bold text-purple-300">Color in Sync</h1>
-        <button>Red</button>
-        <input></input>
+        <GoogleLogin onSuccess={responseMessage} onError={errorMessage}></GoogleLogin>
       </div>
     </>
   );
