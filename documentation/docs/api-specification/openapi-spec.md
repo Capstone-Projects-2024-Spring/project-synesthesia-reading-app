@@ -1,6 +1,6 @@
 ---
-title: API 1 - Swagger Petstore
-description: API Specification from openapi.yml
+title: API Documentation
+description: API Specification from Synesthesia-Reading-App-1.0.0-resolved.yaml
 hide_table_of_contents: true
 sidebar_position: 2
 ---

@@ -97,7 +97,7 @@ const config = {
         specs: [
           {
             id: 'using-single-yaml',
-            spec: 'static/openapi.yml.yaml',
+            spec: 'static/Synesthesia-Reading-App-1.0.0-resolved.yaml',
             route: '/api/',
           },
         ],
