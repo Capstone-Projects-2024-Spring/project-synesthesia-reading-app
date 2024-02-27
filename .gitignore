@@ -11,3 +11,7 @@
 
 # npm
 node_modules
+
+*.xml
+.idea/project-synesthesia-reading-app.iml
+
