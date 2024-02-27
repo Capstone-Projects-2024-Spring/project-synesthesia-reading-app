@@ -1,6 +1,6 @@
 ---
 title: API Documentation
-description: API Specification from Synesthesia-Reading-App-1.0.0-resolved.yaml
+description: Interactive documentation for our RESTful API
 hide_table_of_contents: true
 sidebar_position: 2
 ---
