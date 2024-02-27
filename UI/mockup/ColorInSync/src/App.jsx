@@ -28,7 +28,9 @@ function App() {
   return (
     <>
       {profile ? (
-        <div>Welcome, {profile.name}</div>
+        <div className="bg-gray-200 flex flex-col items-center space-y-10 justify-center h-screen">
+          Welcome, {profile.name}
+        </div>
       ) : (
         <Login loginSuccess={(user) => setUser(user)} />
       )}
