@@ -1,6 +1,6 @@
 ---
-title: API 1 - Swagger Petstore
-description: API Specification from openapi.yml
+title: API Documentation
+description: Interactive documentation for our RESTful API
 hide_table_of_contents: true
 sidebar_position: 2
 ---
