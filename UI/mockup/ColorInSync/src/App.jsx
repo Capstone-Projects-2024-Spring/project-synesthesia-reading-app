@@ -7,9 +7,6 @@ import axios from "axios";
 function App() {
   const [user, setUser] = useState(null);
   const [profile, setProfile] = useState(null);
-  const changeUser = (newUser) => {
-    setUser(newUser);
-  };
   useEffect(() => {
     if (user) {
       axios
@@ -33,7 +30,7 @@ function App() {
       {profile ? (
         <div>Welcome, {profile.name}</div>
       ) : (
-        <Login loginSuccess={changeUser} />
+        <Login loginSuccess={(user) => setUser(user)} />
       )}
     </>
   );
