@@ -55,17 +55,28 @@ classDiagram
 ### Design Mock-Ups
 
 <p>Welcome, Login, & Sign Up Screens</p>
+
+
 <div>
-  <img src = "https://github.com/Capstone-Projects-2024-Spring/project-synesthesia-reading-app/assets/40969165/b3638ab1-6bb3-49b0-9d51-5e4d387d55cc" alt="Welcome UI" width="33%"/>
-  <img src = "https://github.com/Capstone-Projects-2024-Spring/project-synesthesia-reading-app/assets/40969165/787e1d42-dee6-4b00-b950-56e48fb5bfb7" alt="Login UI" width="33%"/>
-  <img src = "https://github.com/Capstone-Projects-2024-Spring/project-synesthesia-reading-app/assets/40969165/a70b62d3-eb85-4af4-8a3b-7898a4d760d2" alt="Sign Up UI" width="33%"/>
+  <img src = "https://github.com/Capstone-Projects-2024-Spring/project-synesthesia-reading-app/assets/40969165/5c7288f8-bcf7-4907-896a-3dd78af01398" alt="Welcome UI" width="33%"/>
+  <img src = "https://github.com/Capstone-Projects-2024-Spring/project-synesthesia-reading-app/assets/40969165/a20f50f5-4f8a-4313-b840-65764bbdd0ed" alt="Login UI" width="33%"/>
+  <img src = "https://github.com/Capstone-Projects-2024-Spring/project-synesthesia-reading-app/assets/40969165/ce2d44fb-9416-4dc1-8308-1205b2fca2fa" alt="Sign Up UI" width="33%"/>  
 </div>
 <br/>
 <br/>
 
+<p>Document Library Screen</p>
+<div>
+  <img src = "https://github.com/Capstone-Projects-2024-Spring/project-synesthesia-reading-app/assets/40969165/3694de3f-6b57-4160-88c7-5de16aee3227"/> 
+</div>
+<br/>
+<br/>
 <p>Document Reading Screen</p>
+<div>
+  <img src = "https://github.com/Capstone-Projects-2024-Spring/project-synesthesia-reading-app/assets/40969165/104f2c14-80ad-47ea-937d-5d6c04256839" alt="Reading w/o Menu" width="49%"/>
+  <img src = "https://github.com/Capstone-Projects-2024-Spring/project-synesthesia-reading-app/assets/40969165/2f49d573-8e9a-434d-a1f2-a1b8820ced0f" alt="Reading w/ Menu" width="49%"/>
+</div>
 
-![document reading](https://github.com/Capstone-Projects-2024-Spring/project-synesthesia-reading-app/assets/40969165/a75439be-f688-44e0-9563-91d7c1a74f6b)
 
 
 
