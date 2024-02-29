@@ -66,3 +66,32 @@ As a user, I want to upload a PDF so that I can be able to access it within the 
    2. A text box is provided.
    3. The user types the feedback and hits 'submit'.
    4. The user is sent back to the app home page.
+
+```mermaid
+    sequenceDiagram
+        participant User
+        participant React UI
+        participant Laravel Backend
+        participant Web Server
+
+        activate React UI
+        
+        User->>React UI: clicks 'give feedback'
+        React UI-->>User: displays feedback text box
+        
+        User->>React UI: types message & presses send
+        React UI->>Laravel Backend: send given text as feedback
+        activate Laravel Backend
+            Laravel Backend->>Web Server: POST text to feedback
+            activate Web Server
+                Web Server->>Web Server: creates a feedback entry
+                Web Server-->>Laravel Backend: 201 Created
+            deactivate Web Server
+            Laravel Backend-->>React UI: successful
+        deactivate Laravel Backend
+        
+        React UI-->>User: feedback sent!
+        
+        deactivate React UI
+
+```
