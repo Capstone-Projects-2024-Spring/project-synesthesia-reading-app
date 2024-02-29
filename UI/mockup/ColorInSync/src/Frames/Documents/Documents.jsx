@@ -1,7 +1,7 @@
 import Add from '@mui/icons-material/Add'
 function Documents() {
     function upload_document() {
-
+        console.log("add clicked!")
     }
 
     return (
@@ -13,6 +13,7 @@ function Documents() {
                         <Add
                             sx={{ color: 'white', fontSize: 50 }}
                             style={{ position: 'absolute', top: 4, right: 4 }}
+                            onClick={upload_document}
                         />
                     </div>
                 </div>
