@@ -56,6 +56,7 @@ sequenceDiagram
     participant User 
     participant React UI
     participant Text Handler
+    participant Color Handler
     participant Color Profile
 
 
@@ -67,13 +68,30 @@ sequenceDiagram
         React UI-->>User: displays option to save or change color
 
     User->>React UI: clicks 'change'
+        React UI->>React UI: invokes color-changing screen
         React UI-->>User: shows selected word
-        User->>React UI: 
         
-
-    
-    
-    
+        User->>React UI: toggles letter weight with slider
+        React UI-->>User: displays word in changed color
+        
+        User->>React UI: confirms color choice
+        React UI->>Color Handler: word  & color value
+        activate Color Handler
+            Color Handler->>Color Profile: POST new word-color pair
+            activate Color Profile
+            Color Profile-->>Color Handler: 201 Created
+            deactivate Color Profile
+        Color Handler-->>React UI: Success
+        deactivate Color Handler
+        
+        React UI->>Text Handler: reload text
+        activate Text Handler
+        Note over Text Handler: color process sequence diagram in Algorithms page
+        Text Handler-->>React UI: return formatted text
+        deactivate Text Handler
+        
+        
+    React UI->>User: renders colored text
     
     deactivate React UI
 
