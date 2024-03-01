@@ -28,7 +28,7 @@ function Document_Library() {
                     <div className="relative">
                         <Add
                             sx={{ color: 'white', fontSize: 50 }}
-                            style={{ position: 'absolute', top: 4, right: 12 }}
+                            style={{ position: 'absolute', top: 4, right: 20 }}
                             onClick={upload_document}
                         />
                     </div>
