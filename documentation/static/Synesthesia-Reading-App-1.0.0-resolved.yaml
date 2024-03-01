@@ -151,4 +151,4 @@ components:
     Feedback_Message:
         type: string
         description: a feedback message from a user
-        example: 'X feature was really helpful for me, but I don't use Y. I think it would be helpful to add something to do Z'
+        example: 'X feature was really helpful for me, but not Y'
