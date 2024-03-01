@@ -9,7 +9,8 @@ class ProofOfTestingTest extends TestCase
     /**
      * A basic unit test example.
      */
-    public function hasColorProfile(): void
+    /** @test */
+    public function hasColorProfileTest(): void
     {
         $testUser = new User();
         $this->assertTrue($testUser->has(ColorProfile::class));
