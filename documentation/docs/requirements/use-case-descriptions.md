@@ -6,17 +6,55 @@ sidebar_position: 5
 
 ## Use Case 1: User creates an account
 
-As a new user, I want to create an account and personalize my reading experience by setting my preferred color calibration for letters and numbers.
-   1. User clicks "Create Account"
+As a user, I want to create an account in order to use the same color profile and documents across devices
+   1. User clicks "Google Login"
    2. User enters account info --> login with Google*
-   3. User is directed to create their color profile
-   4. User selects letter-color associations using a color picker
-   5. User selects number-color associations using a color picker
-   6. Requests that the user confirms their associations
-   7. User picks between a series of binary options to determine letter weight for the color algorithm.
-   8. Sample passage is provided for user to adjust calibration settings
-   9. Request user to confirm their calibration and hit "Done"
-   10. Directs user to the home page.
+   3. Color profile is automatically synced to the web server
+
+```mermaid
+sequenceDiagram
+    participant User
+    participant React UI
+    participant Google
+    participant Color Profile Handler
+    participant Laravel Backend
+    participant Web Server
+    activate React UI
+    
+    User->>React UI: Google login
+    React UI-->>User: render screen
+    loop entering information
+        User->>React UI: enter field/type login info
+        React UI-->>User: render screen
+        end
+    
+    React UI->>Google: app's client ID & login info
+    activate Google
+    Google-->>React UI: Google profile ID
+    deactivate Google
+    
+    React UI->>React UI: sync color profile to cloud
+    
+    React UI->>Color Profile Handler: get Color Profile
+    activate Color Profile Handler
+    Color Profile Handler-->>React UI: Color Profile
+    deactivate Color Profile Handler
+    
+    React UI->>Laravel Backend: user ID token & Color Profile
+    activate Laravel Backend
+    Laravel Backend->>Web Server: POST new color profile with ID token
+    activate Web Server
+    Web Server-->>Laravel Backend: 201 Created
+    deactivate Web Server
+    
+    Laravel Backend-->>React UI: success
+    deactivate Laravel Backend
+    
+    React UI-->>User: color profile synced!
+    
+    
+    deactivate React UI
+```
 
 
 ## Use Case 2: User uploads a document
@@ -56,7 +94,7 @@ sequenceDiagram
     participant User 
     participant React UI
     participant Text Handler
-    participant Color Handler
+    participant Color Profile Handler
     participant Color Profile
 
 
@@ -75,14 +113,14 @@ sequenceDiagram
         React UI-->>User: displays word in changed color
         
         User->>React UI: confirms color choice
-        React UI->>Color Handler: word  & color value
-        activate Color Handler
-            Color Handler->>Color Profile: POST new word-color pair
+        React UI->>Color Profile Handler: word  & color value
+        activate Color Profile Handler
+            Color Profile Handler->>Color Profile: create new word-color pair
             activate Color Profile
-            Color Profile-->>Color Handler: 201 Created
+            Color Profile-->>Color Profile Handler: Created
             deactivate Color Profile
-        Color Handler-->>React UI: Success
-        deactivate Color Handler
+        Color Profile Handler-->>React UI: Success
+        deactivate Color Profile Handler
         
         React UI->>Text Handler: reload text
         activate Text Handler
@@ -141,3 +179,15 @@ sequenceDiagram
         deactivate React UI
 
 ```
+## Use Case 7: User calibrates color profile
+
+As a new user, I want to personalize my reading experience by setting my preferred color calibration for letters and numbers.
+1. User is directed to create their color profile
+2. User selects letter-color associations using a color picker
+3. User selects number-color associations using a color picker
+4. User selects punctuation-color associations using a color picker
+5. Requests that the user confirms their associations
+6. User picks between a series of binary options to determine letter weight for the color algorithm.
+7. Sample passage is provided for user to adjust calibration settings
+8. Request user to confirm their calibration and hit "Done"
+9. Directs user to the home page.
