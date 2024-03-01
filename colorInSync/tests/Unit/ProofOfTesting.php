@@ -11,6 +11,7 @@ class ProofOfTesting extends TestCase
      */
     public function test_example(): void
     {
-        $this->assertTrue(true);
+        $testUser = new User();
+        $this->assertTrue($testUser->has(ColorProfile::class));
     }
 }
