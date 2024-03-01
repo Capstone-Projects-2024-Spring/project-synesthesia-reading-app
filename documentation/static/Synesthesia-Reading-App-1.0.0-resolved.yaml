@@ -127,17 +127,6 @@ components:
           type: string
           example: cat
         color:
-          $ref: '#/components/schemas/Color'
-    Color:
-      type: object
-      properties:
-        R:
-          type: integer
-          example: 255
-        G:
-          type: integer
-          example: 0
-        B:
-          type: integer
-          example: 50
-      description: RGB color
+          type: string
+          description: a hex color value
+          example: '#FFFFFF'
