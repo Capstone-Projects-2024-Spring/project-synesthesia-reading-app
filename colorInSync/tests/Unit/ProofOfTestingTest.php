@@ -2,7 +2,12 @@
 
 namespace Tests\Unit;
 
-use PHPUnit\Framework\TestCase;
+use Tests\TestCase;
+use App\Models\User;
+use App\Models\ColorProfile;
+use Illuminate\Foundation\Testing\RefreshDatabase; 
+use Illuminate\Foundation\Testing\DatabaseTransactions; 
+
 
 class ProofOfTestingTest extends TestCase
 {
@@ -13,6 +18,6 @@ class ProofOfTestingTest extends TestCase
     public function hasColorProfileTest(): void
     {
         $testUser = new User();
-        $this->assertTrue($testUser->has(ColorProfile::class));
+        $this->assertTrue($testUser->colorProfile() == true);
     }
 }

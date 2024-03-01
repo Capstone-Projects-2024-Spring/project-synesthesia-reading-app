@@ -12,6 +12,10 @@ class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
+    //public $clrProfile;
+    //function __construct($mockedColorProfile){
+    //    $this->clrProfile = $mockedColorProfile;
+    //}
     /**
      * The attributes that are mass assignable.
      *
