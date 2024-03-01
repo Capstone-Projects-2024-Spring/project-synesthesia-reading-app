@@ -36,7 +36,7 @@ const config = {
   tagline: 'Owls are cool',
   /*Unless you move this website to a seperate repo don't change url and baseurl.*/
   url: 'https://www.docusaurus.io/',
-  baseUrl: '/synesthesia-tester/'
+  baseUrl: '/synesthesia-tester/',
   trailingSlash: false,
   onBrokenLinks: 'warn',
   onBrokenMarkdownLinks: 'warn',
