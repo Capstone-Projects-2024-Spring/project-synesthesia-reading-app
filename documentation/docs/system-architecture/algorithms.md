@@ -73,7 +73,7 @@ of a word.
 sequenceDiagram
     participant React UI
     participant Text Handler
-    participant Color Handler
+    participant Color Profile Handler
     participant Word Splitter
     participant Color Profile
     participant Regression Model
@@ -91,33 +91,33 @@ sequenceDiagram
         deactivate Word Splitter
 
     
-    Text Handler ->>Color Handler: sends unique components
-    activate Color Handler
-    Color Handler->>Color Profile: sends components
+    Text Handler ->>Color Profile Handler: sends unique components
+    activate Color Profile Handler
+    Color Profile Handler->>Color Profile: sends components
     activate Color Profile
     loop for each component
         Color Profile->>Color Profile: find component color if it exists
         end
 
-    Color Profile-->>Color Handler: returns colors of saved components
+    Color Profile-->>Color Profile Handler: returns colors of saved components
     deactivate Color Profile
     
-    Color Handler->>Regression Model: sends unsaved components
+    Color Profile Handler->>Regression Model: sends unsaved components
     activate Regression Model
     Regression Model->>Regression Model: run the model
-    Regression Model-->>Color Handler: returns weights
+    Regression Model-->>Color Profile Handler: returns weights
     deactivate Regression Model
     
-    Color Handler->>Algorithm: sends unsaved components and their letter weights
+    Color Profile Handler->>Algorithm: sends unsaved components and their letter weights
     activate Algorithm
     loop for each component
     Algorithm->>Algorithm: calculate color
     end
-    Algorithm-->>Color Handler: returns component colors
+    Algorithm-->>Color Profile Handler: returns component colors
     deactivate Algorithm
     
-    Color Handler-->>Text Handler: returns component-color pairs
-    deactivate Color Handler
+    Color Profile Handler-->>Text Handler: returns component-color pairs
+    deactivate Color Profile Handler
     
     Text Handler->>Text Handler: recombine split text formatted with color
     Text Handler-->>React UI: returns the formatted text
