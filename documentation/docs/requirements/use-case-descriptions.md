@@ -40,7 +40,7 @@ As a user, I want to upload a PDF so that I can be able to access it within the 
 
 
 
-## User Case 4: User alters a word color while connected to the internet
+## User Case 4: User alters a word color
    1. While reading, the user comes across a word color they wish to change.
    2. User clicks on the word.
    3. Options to 'save' or 'change' come up.
@@ -48,10 +48,56 @@ As a user, I want to upload a PDF so that I can be able to access it within the 
    5. The selected word is shown large on the screen.
    6. The user clicks on a letter, and then uses a slider to adjust the selected letter's weight.
    7. The user confirms the color change.
-   8. The word color is saved to the user's account.
-   9. The web server uses ML models to adjust the user's color generating algorithm in light of the color alteration.
-   10. The new color algorithm is sent to the user client.
-   11. The document colors are re-rendered using the new algorithm.
+   8. The word color is saved to the user's color profile.
+   9. The colors of the currently-loaded text are re-calculated and re-rendered as described on the algorithms page.
+
+```mermaid
+sequenceDiagram
+    participant User 
+    participant React UI
+    participant Text Handler
+    participant Color Handler
+    participant Color Profile
+
+
+    activate React UI
+    Note over User: User wants to change a word color
+    
+    User->>React UI: clicks word on screen
+        React UI->>React UI: alerts word option menu handler
+        React UI-->>User: displays option to save or change color
+
+    User->>React UI: clicks 'change'
+        React UI->>React UI: invokes color-changing screen
+        React UI-->>User: shows selected word
+        
+        User->>React UI: toggles letter weight with slider
+        React UI-->>User: displays word in changed color
+        
+        User->>React UI: confirms color choice
+        React UI->>Color Handler: word  & color value
+        activate Color Handler
+            Color Handler->>Color Profile: POST new word-color pair
+            activate Color Profile
+            Color Profile-->>Color Handler: 201 Created
+            deactivate Color Profile
+        Color Handler-->>React UI: Success
+        deactivate Color Handler
+        
+        React UI->>Text Handler: reload text
+        activate Text Handler
+        Note over Text Handler: color process sequence diagram in Algorithms page
+        Text Handler-->>React UI: return formatted text
+        deactivate Text Handler
+        
+        
+    React UI->>User: renders colored text
+    
+    deactivate React UI
+
+        
+
+```
 
 
 
