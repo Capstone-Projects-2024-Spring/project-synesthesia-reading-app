@@ -17,6 +17,8 @@ tags:
     description: Information about a user color profile
   - name: user
     description: Operations about user
+  - name: feedback
+    description: Pertaining to user feedback
 paths:
   /documents/:
     get:
@@ -47,14 +49,14 @@ paths:
       responses:
         "201":
           description: Created
-  /documents/{id}/:
+  /documents/{docId}/:
     delete:
       tags:
         - documents
       summary: deletes the document with the given id from account storage
       operationId: document_destroy
       parameters:
-      - name: id
+      - name: docId
         in: path
         required: true
         style: simple
@@ -90,12 +92,28 @@ paths:
       responses:
         "201":
           description: Created
+
+  /feedback/:
+    post:
+      tags:
+        - feedback
+      summary: post a user feedback message
+      operationId: feedback_add
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Feedback_Message'
+      responses:
+        "201":
+          description: Created
+
 components:
   schemas:
     Document:
       type: object
       properties:
-        id:
+        docId:
           type: string
           example: id123
         title:
@@ -130,3 +148,7 @@ components:
           type: string
           description: a hex color value
           example: '#FFFFFF'
+    Feedback_Message:
+        type: string
+        description: a feedback message from a user
+        example: 'X feature was really helpful for me, but I don't use Y. I think it would be helpful to add something to do Z'
