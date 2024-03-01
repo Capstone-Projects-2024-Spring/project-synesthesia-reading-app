@@ -33,8 +33,8 @@ function Document_Library() {
                         />
                     </div>
                 </div>
-                <div className="grid grid-flow-col auto-cols-max m-20">
-                    {documentList.length > 0 && documentList.map((document, index) => <Document name = {document.name} key = {index}/> )}
+                <div className="flex flex-wrap gap-x-4 gap-y-4 my-20 mx-5">
+                    {documentList.length > 0 && documentList.map((document, index) => <Document name = {document.name} key = {index} className="size-2"/> )}
                 </div>
             </div>
         </>
