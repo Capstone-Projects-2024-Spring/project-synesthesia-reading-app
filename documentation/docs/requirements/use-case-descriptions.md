@@ -76,6 +76,39 @@ As a user, I want to upload a PDF so that I can be able to access it within the 
    6. Eventually, the user finishes for now, bookmarks their page, and closes the application.
    7. When the device is connected to internet, the bookmark, color alteration, and note are synced in the background.
 
+```mermaid
+sequenceDiagram
+    participant User 
+    participant React UI
+    participant Database
+    participant Laravel Backend
+
+
+    activate React UI
+    Note over User: User wants to download a PDF
+    
+    User->>React UI: clicks the download button
+        React UI->>Database: gets the file location from the database
+        React UI-->>User: displays option on where to download document
+
+    User->>React UI: clicks a button to navigate to their bookmark 
+        React UI->>Database: gets the page number that was bookmarked
+        React UI-->>User: opens the document page that was bookmarked
+        
+        User->>React UI: clicks on the add note button
+        React UI-->>Laravel Backend: Laravel gets ready to scan user input
+        Laravel Backend-->>User: User enters the note
+        
+        User->>React UI: clicks button to bookmark their page
+        React UI->>Database: adds the page to the database
+      
+    
+    deactivate React UI
+
+        
+
+```
+
 
 
 ## User Case 4: User alters a word color
