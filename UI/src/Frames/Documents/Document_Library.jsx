@@ -1,8 +1,8 @@
 import Add from '@mui/icons-material/Add';
 import TextSnippet from '@mui/icons-material/TextSnippet';
-import { useState, useEffect } from "react";
+import { useState, useEffect, Profiler } from "react";
 import React from 'react';
-function Document_Library() {
+function Document_Library({user_profile}) {
     const [documentList, setDocumentList] = useState([]);
     function Document({name = "Unnamed Document", key}) {
         return (
@@ -24,7 +24,10 @@ function Document_Library() {
     return (
         <>
             <div className="h-screen">
-                <div id="actionBar" className="fixed top-0 left-0 bg-purple-900 w-screen h-16">
+                <div id="actionBar" className="fixed top-0 left-0 bg-purple-900 w-screen h-16 flex justify-between">
+                    <div className='m-3 text-blue-100 text-xl font-bold tracking-wide'>
+                    {user_profile.name}
+                    </div>
                     <div className="relative">
                         <Add
                             sx={{ color: 'white', fontSize: 50 }}
