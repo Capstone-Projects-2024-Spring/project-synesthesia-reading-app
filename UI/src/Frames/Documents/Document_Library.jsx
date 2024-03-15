@@ -1,5 +1,5 @@
 import Add from "@mui/icons-material/Add";
-import { Input } from "@mui/material";
+import { Input, Button } from "@mui/material";
 import TextSnippet from "@mui/icons-material/TextSnippet";
 import { useState, useEffect, Profiler } from "react";
 import React from "react";
@@ -22,6 +22,7 @@ function Document_Library({ user_profile }) {
         <div className="fixed inset-0 z-50 flex items-center justify-center">
           <div className="bg-white shadow-lg rounded-lg p-6">
             <Input type="file" onChange={handle_upload} />
+            <Button onClick = {() => {setUploading(false)}}>Cancel</Button>
           </div>
         </div>
       </>
