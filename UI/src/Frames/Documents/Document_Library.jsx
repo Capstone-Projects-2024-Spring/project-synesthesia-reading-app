@@ -10,7 +10,7 @@ function Document_Library({ user_profile }) {
     return (
       <>
         <div className="" id={id}>
-          <TextSnippet fontSize="large"></TextSnippet>
+          <TextSnippet fontSize="large" onClick={() => {window.open(URL.createObjectURL(documentList[id]), '_blank')}}></TextSnippet>
           <p>{name}</p>
         </div>
       </>
