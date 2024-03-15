@@ -30,13 +30,8 @@ function App() {
   return (
     <>
       {profile ? (
-        /*
-        <div className="bg-gray-200 flex flex-col items-center space-y-10 justify-center h-screen">
-          Welcome, {profile.name}
-        </div>
-        */
-        <Document_Library>
-          
+        <Document_Library user_profile = {profile}>
+
         </Document_Library>
         
       ) : (
