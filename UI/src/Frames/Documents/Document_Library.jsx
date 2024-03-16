@@ -24,7 +24,7 @@ function DocumentLibrary({ user_profile }) {
   function UploadDocument() {
     return (
       <>
-        <div className="fixed z-50 inset-0 flex items-center justify-center ">
+        <div className="fixed inset-0 flex items-center justify-center bg-gray-700 bg-opacity-50 z-50">
           <div className="bg-white shadow-lg rounded-lg p-6">
             <Input type="file" onChange={handle_upload} />
             <Button
