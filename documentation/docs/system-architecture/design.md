@@ -66,23 +66,23 @@ classDiagram
 
 
 <div>
-  <img src = "/img/Figma Mock Ups/welcome.png" alt="Welcome UI" width="33%"/>
-  <img src = "/img/Figma Mock Ups/Login.png" alt="Login UI" width="33%"/>
-  <img src = "/img/Figma Mock Ups/Sign Up.png" alt="Sign Up UI" width="33%"/>  
+  <img src = "/img/Figma_Mock_Ups/welcome.png" alt="Welcome UI" width="33%"/>
+  <img src = "/img/Figma_Mock_Ups/Login.png" alt="Login UI" width="33%"/>
+  <img src = "/img/Figma_Mock_Ups/SignUp.png" alt="Sign Up UI" width="33%"/>  
 </div>
 <br/>
 <br/>
 
 <p>Document Library Screen</p>
 <div>
-  <img src = "/img/Figma Mock Ups/welcome.png"/> 
+  <img src = "/img/Figma_Mock_Ups/docs.png"/> 
 </div>
 <br/>
 <br/>
 <p>Document Documenting Screen</p>
 <div>
-  <img src = "/img/Figma Mock Ups/read doc.png" alt="Documenting w/o Menu" width="49%"/>
-  <img src = "/img/Figma Mock Ups/read doc 2.png" alt="Documenting w/ Menu" width="49%"/>
+  <img src = "/img/Figma_Mock_Ups/read-doc.png" alt="Documenting w/o Menu" width="49%"/>
+  <img src = "/img/Figma_Mock_Ups/read-doc2.png" alt="Documenting w/ Menu" width="49%"/>
 </div>
 
 
