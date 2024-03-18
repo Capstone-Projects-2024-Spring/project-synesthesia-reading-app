@@ -64,11 +64,9 @@ classDiagram
 
 Welcome, Login, & Sign Up Screens
 
-![Welcome UI](/img/Figma_Mock_Ups/welcome.png)
-
-![Login UI](/img/Figma_Mock_Ups/Login.png)
-
-![Sign Up UI](/img/Figma_Mock_Ups/SignUp.png)
+| Welcome     | Login       | Sign Up   |
+| ----------- | ----------- | --------- |
+| ![Welcome UI](/img/Figma_Mock_Ups/welcome.png) | ![Login UI](/img/Figma_Mock_Ups/Login.png) | ![Sign Up UI](/img/Figma_Mock_Ups/SignUp.png) |
 
 
 Document Library Screen
@@ -78,9 +76,15 @@ Document Library Screen
 
 Document Reading Screen
 
-![Documenting w/o Menu](/img/Figma_Mock_Ups/read-doc.png)
 
-![Documenting w/ Menu](/img/Figma_Mock_Ups/read-doc2.png)
+| Reading | Tap to bring up Menu |
+| ------- | -------------------- |
+| ![Reading w/o Menu](/img/Figma_Mock_Ups/read-doc.png) | ![Documenting w/ Menu](/img/Figma_Mock_Ups/read-doc2.png) |
+ 
+
+
+
+
 
 
 
