@@ -1,4 +1,7 @@
-class WordEncoding:
+class WordEncoder:
+    """Encodes words into arrays of floats in the range (0, 1], with each float representing a character
+        :param alphabet: a dictionary of characters from A to Z and their corresponding float values.
+    """
     def __init__(self):
         self.alphabet = {
         'A': 0.01,
@@ -28,7 +31,14 @@ class WordEncoding:
         'Y': 0.25,
         'Z': 0.26
     }
-    def encode(self, word):
+
+
+    def encode_word(self, word):
+        """
+        Encodes a word. The encoding is not case-sensitive.
+        :param word: a string of characters
+        :return: an ordered array of floats representing each letter in the word
+        """
         word = word.upper()
         encoded = []
         for c in word:
@@ -37,7 +47,15 @@ class WordEncoding:
         return encoded
 
 
-if __name__ == '__main__':
-    we = WordEncoding()
-    print(we.encode('hello'))
+    def encode_list(self, dictionary):
+        """
+        Encodes a list of words by passing them through the function encode_word
+        :param dictionary: a list of strings
+        :return: a list of arrays of encoded words
+        """
+        encoded_dictionary = []
+        for word in dictionary:
+            encoded_dictionary.append(self.encode_word(word))
+
+        return encoded_dictionary
 #%%
