@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import React from "react";
 import "./App.css";
 import Login from "./Frames/Login/Login.jsx";
-import Document_Library from "./Frames/Documents/Document_Library.jsx"
+import DocumentLibrary from "./Frames/Documents/Document_Library.jsx"
 import axios from "axios";
 
 
@@ -30,9 +30,9 @@ function App() {
   return (
     <>
       {profile ? (
-        <Document_Library user_profile = {profile}>
+        <DocumentLibrary user_profile = {profile}>
 
-        </Document_Library>
+        </DocumentLibrary>
         
       ) : (
         <Login loginSuccess={(user) => setUser(user)} />
