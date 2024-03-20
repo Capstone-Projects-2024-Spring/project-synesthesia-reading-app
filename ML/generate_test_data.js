@@ -43,7 +43,7 @@ const words = generate({ exactly: numWords, maxLength: maxWordLength });
 const wordColors = generateWordColors(words, letterColors);
 
 // Prepare data for CSV
-let csvData = '';
+let csvData = 'word,r,g,b\n';
 Object.keys(letterColors).forEach(letter => {
     const { r, g, b } = letterColors[letter];
     csvData += `${letter},${r},${g},${b}\n`;
