@@ -80,14 +80,17 @@ sequenceDiagram
       User->>ReactUI: clicks 'Upload PDF'
       ReactUI-->>User: opens directory on user system
       User->>ReactUI: selects a document to upload
-
-      activate Laravel Backend
-         ReactUI->>Laravel Backend: Uploads document
-         Laravel Backend-->>ReactUI: 201 Created
+      ReactUI->>Laravel Backend: Uploads document
+         activate Laravel Backend
+         Laravel Backend->>Database: Create database entry
+            activate Database
+            Database-->>Laravel Backend: 201 created, send updated doc list
+         deactivate Database
+         Laravel Backend-->>ReactUI: 201 Created, JSON of doc information
       deactivate Laravel Backend
-      end
-      
+      ReactUI-->>User: Update Doc library from JSON 
    deactivate ReactUI
+   end
 ```
 
 ## Use Case 3: User reads offline
