@@ -62,28 +62,29 @@ classDiagram
 ```
 ### Design Mock-Ups
 
-<p>Welcome, Login, & Sign Up Screens</p>
+Welcome, Login, & Sign Up Screens
+
+| Welcome     | Login       | Sign Up   |
+| ----------- | ----------- | --------- |
+| ![Welcome UI](/img/Figma_Mock_Ups/welcome.png) | ![Login UI](/img/Figma_Mock_Ups/Login.png) | ![Sign Up UI](/img/Figma_Mock_Ups/SignUp.png) |
 
 
-<div>
-  <img src = "/img/Figma Mock Ups/welcome.png" alt="Welcome UI" width="33%"/>
-  <img src = "/img/Figma Mock Ups/Login.png" alt="Login UI" width="33%"/>
-  <img src = "/img/Figma Mock Ups/Sign Up.png" alt="Sign Up UI" width="33%"/>  
-</div>
-<br/>
-<br/>
+Document Library Screen
 
-<p>Document Library Screen</p>
-<div>
-  <img src = "/img/Figma Mock Ups/welcome.png"/> 
-</div>
-<br/>
-<br/>
-<p>Document Documenting Screen</p>
-<div>
-  <img src = "/img/Figma Mock Ups/read doc.png" alt="Documenting w/o Menu" width="49%"/>
-  <img src = "/img/Figma Mock Ups/read doc 2.png" alt="Documenting w/ Menu" width="49%"/>
-</div>
+![Doc Screen](/img/Figma_Mock_Ups/docs.png)
+
+
+Document Reading Screen
+
+
+| Reading | Tap to bring up Menu |
+| ------- | -------------------- |
+| ![Reading w/o Menu](/img/Figma_Mock_Ups/read-doc.png) | ![Documenting w/ Menu](/img/Figma_Mock_Ups/read-doc2.png) |
+ 
+
+
+
+
 
 
 
