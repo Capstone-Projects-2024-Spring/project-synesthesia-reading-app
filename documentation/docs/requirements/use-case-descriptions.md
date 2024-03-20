@@ -60,11 +60,38 @@ sequenceDiagram
 ## Use Case 2: User uploads a document
 
 As a user, I want to upload a PDF so that I can be able to access it within the app.
-   1. From the hope page, user selects 'Upload PDF'
-   2. A file directory opens
-   3. The user picks the file they wish to upload from said directory
-   4. The PDF file is now available to open from the app library.
+   1. From the document library page, clicks the '+' button
+   2. UI displays a dialogue with the 'Upload PDF' button
+   3. A file directory opens
+   4. The user picks the file they wish to upload from said directory
+   5. The PDF file is now available to open from the app library.
 
+```mermaid
+sequenceDiagram
+   participant User
+   participant ReactUI
+   participant Laravel Backend
+   participant Database
+
+   activate ReactUI
+   loop Uploading Documents
+      User->>ReactUI: clicks '+'
+      ReactUI-->>User: diplays 'Upload PDF' button
+      User->>ReactUI: clicks 'Upload PDF'
+      ReactUI-->>User: opens directory on user system
+      User->>ReactUI: selects a document to upload
+      ReactUI->>Laravel Backend: Uploads document
+         activate Laravel Backend
+         Laravel Backend->>Database: Create database entry
+            activate Database
+            Database-->>Laravel Backend: successful database entry
+         deactivate Database
+         Laravel Backend-->>ReactUI: 201 Created, JSON of doc information
+      deactivate Laravel Backend
+      ReactUI-->>User: Update Doc library from JSON 
+   deactivate ReactUI
+   end
+```
 
 ## Use Case 3: User reads offline
 
@@ -173,7 +200,7 @@ sequenceDiagram
 
 
 ## User Case 5: User deletes document from device while offline
- document library page, selects a document and clicks the option to delete from device
+   1. document library page, selects a document and clicks the option to delete from device
    2. A pop-up message warns the user that if the document is deleted while disconnected from the internet, any annotations created since the last sync will be lost and gives the user the option to cancel.
    3. The user confirms that they want to delete.
    4. The document and associated annotations are deleted from the device.
