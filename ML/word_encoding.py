@@ -1,3 +1,5 @@
+import torch
+
 class WordEncoder:
     """Encodes words into arrays of floats in the range (0, 1], with each float representing a character
         :param alphabet: a dictionary of characters from A to Z and their corresponding float values.
@@ -40,9 +42,12 @@ class WordEncoder:
         :return: an ordered array of floats representing each letter in the word
         """
         word = word.upper()
-        encoded = []
+        encoded = torch.zeros((45,1), dtype=torch.float)
+
+        i = 0
         for c in word:
-            encoded.append(self.alphabet[c])
+            encoded[i] = self.alphabet[c]
+            i+=1
 
         return encoded
 
