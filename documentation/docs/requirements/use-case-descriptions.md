@@ -84,7 +84,7 @@ sequenceDiagram
          activate Laravel Backend
          Laravel Backend->>Database: Create database entry
             activate Database
-            Database-->>Laravel Backend: 201 created, send updated doc list
+            Database-->>Laravel Backend: successful database entry
          deactivate Database
          Laravel Backend-->>ReactUI: 201 Created, JSON of doc information
       deactivate Laravel Backend
