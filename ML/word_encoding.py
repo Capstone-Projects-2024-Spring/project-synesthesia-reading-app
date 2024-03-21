@@ -42,11 +42,11 @@ class WordEncoder:
         :return: an ordered array of floats representing each letter in the word
         """
         word = word.upper()
-        encoded = torch.zeros((45,1), dtype=torch.float)
+        encoded = torch.zeros((2,45), dtype=torch.float)
 
         i = 0
         for c in word:
-            encoded[i] = self.alphabet[c]
+            encoded[0,i] = self.alphabet[c]
             i+=1
 
         return encoded
