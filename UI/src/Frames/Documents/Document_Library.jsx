@@ -9,14 +9,14 @@ function DocumentLibrary({ user_profile }) {
   function Document({ name = "Unnamed Document", id }) {
     return (
       <>
-        <div className="" id={id}>
+        <div className="flex flex-col items-center" id={id}>
           <TextSnippet
-            fontSize="large"
+            sx = {{fontSize: 75}}
             onClick={() => {
               window.open(URL.createObjectURL(documentList[id]), "_blank");
             }}
           ></TextSnippet>
-          <p>{name}</p>
+          <p className="truncate w-40">{name}</p>
         </div>
       </>
     );
@@ -71,7 +71,7 @@ function DocumentLibrary({ user_profile }) {
   }
   function DocumentGrid() {
     return (
-      <div className="flex flex-wrap gap-x-4 gap-y-4 my-20 mx-5">
+      <div className="flex flex-wrap gap-x-10 gap-y-10 my-20 mx-5">
         {documentList.length > 0 &&
           documentList.map((document, index) => (
             <Document name={document.name} id={index} className="size-2" />
