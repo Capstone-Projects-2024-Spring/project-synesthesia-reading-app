@@ -204,6 +204,34 @@ sequenceDiagram
    2. A pop-up message warns the user that if the document is deleted while disconnected from the internet, any annotations created since the last sync will be lost and gives the user the option to cancel.
    3. The user confirms that they want to delete.
    4. The document and associated annotations are deleted from the device.
+```mermaid
+   sequenceDiagram
+      participant User
+      participant ReactUI
+      participant Laravel Backend
+      participant Database
+
+      activate ReactUI
+      Note over User: User is running app without internet connection
+      loop Deleting Documents
+         User->>ReactUI: selects delete option on document
+         React UI-->>User: Warning about risk of deleting while offline, request confirmation
+         User->>ReactUI: User confirms they want to delete
+         ReactUI->>ReactUI: Deletes document from internal storage
+         ReactUI-->>User: Render screen  
+      end
+      Note over ReactUI: Internet connection reestablished
+      ReactUI->>Laravel Backend: Notify backend of changes
+      activate Laravel Backend
+         Laravel Backend->>Database: Notify database of changes
+         activate Database
+            Database-->>Laravel Backend: 200 OK
+         deactivate Database
+         Laravel Backend-->> ReactUI: 200 OK
+      deactivate Laravel Backend
+      ReactUI-->>User: Render screen
+      deactivate ReactUI
+```
 
 ## Use Case 6: User provides feedback to the developers
    1. User clicks on the 'give feedback' link in the app main menu.
