@@ -100,7 +100,10 @@ classDiagram
   User : -Document[] documents
   User : +colorProfile()
   User : +documents()
-  ColorProfile : +string[] hexCodes
+  ColorProfile : +Map[string,string] hexCodes
+  ColorProfile : +add(JSON object)
+  ColorProfile : +update(JSON object)
+  ColorProfile : +remove(string key)
   Document : +int id
   Document : +int user_id
   Document : +int size
