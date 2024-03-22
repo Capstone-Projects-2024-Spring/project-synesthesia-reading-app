@@ -215,7 +215,7 @@ sequenceDiagram
       Note over User: User is running app without internet connection
       loop Deleting Documents
          User->>ReactUI: selects delete option on document
-         React UI-->>User: Warning about risk of deleting while offline, request confirmation
+         ReactUI-->>User: Warning about risk of deleting while offline, request confirmation
          User->>ReactUI: User confirms they want to delete
          ReactUI->>ReactUI: Deletes document from internal storage
          ReactUI-->>User: Render screen  
@@ -225,7 +225,7 @@ sequenceDiagram
       activate Laravel Backend
          Laravel Backend->>Database: Notify database of changes
          activate Database
-            Database-->>Laravel Backend: 200 OK
+            Database-->>Laravel Backend: acknowlege changes
          deactivate Database
          Laravel Backend-->> ReactUI: 200 OK
       deactivate Laravel Backend
