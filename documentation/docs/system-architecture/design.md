@@ -111,7 +111,9 @@ classDiagram
   Document : +file download()
   Document : +update()
   Document : +delete()
-  
+
+  User "1" *-- "1" ColorProfile
+  User "1" *-- "0..*" Document
 ```
 
 
