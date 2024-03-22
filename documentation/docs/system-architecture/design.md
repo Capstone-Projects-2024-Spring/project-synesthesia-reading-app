@@ -80,7 +80,39 @@ Document Reading Screen
 | Reading | Tap to bring up Menu |
 | ------- | -------------------- |
 | ![Reading w/o Menu](/img/Figma_Mock_Ups/read-doc.png) | ![Documenting w/ Menu](/img/Figma_Mock_Ups/read-doc2.png) |
+
+
+## Backend API
  
+### Technology
+Backend API written in PHP using the Laravel framework.
+ 
+### Class Diagram
+```mermaid
+classDiagram
+  Model <|-- User
+  Model <|-- ColorProfile
+  Model <|-- Document
+
+  User : +int id
+  User : +string name
+  User : -ColorProfile colorProfile
+  User : -Document[] documents
+  User : +colorProfile()
+  User : +documents()
+  ColorProfile : +string[] hexCodes
+  Document : +int id
+  Document : +int user_id
+  Document : +int size
+  Document : +string location
+  Document : +string[] annotations
+  Document : +timestamp time_created
+  Document : +timestamp last_modified
+  Document : +file download()
+  Document : +update()
+  Document : +delete()
+  
+```
 
 
 
