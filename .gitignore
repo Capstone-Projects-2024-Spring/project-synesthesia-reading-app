@@ -15,3 +15,4 @@ node_modules
 *.xml
 .idea/project-synesthesia-reading-app.iml
 
+ML/__pycache__/word_encoding.cpython-311.pyc

@@ -2,22 +2,22 @@ import torch
 from word_encoding import WordEncoder
 
 dictionary = ['hello', 'goodbye']
-e_hello = torch.zeros((45,1), dtype=torch.float)
-e_hello[0] = 0.08
-e_hello[1] = 0.05
-e_hello[2] =0.12
-e_hello[3] =0.12
-e_hello[4] =0.15
+e_hello = torch.zeros((1,45), dtype=torch.float)
+e_hello[0,0] = 0.08
+e_hello[0,1] = 0.05
+e_hello[0,2] =0.12
+e_hello[0,3] =0.12
+e_hello[0,4] =0.15
 
 
-e_goodbye = torch.zeros((45,1), dtype=torch.float)
-e_goodbye[0] = 0.07
-e_goodbye[1] = 0.15
-e_goodbye[2] = 0.15
-e_goodbye[3] = 0.04
-e_goodbye[4] = 0.02
-e_goodbye[5] = 0.25
-e_goodbye[6] = 0.05
+e_goodbye = torch.zeros((1,45), dtype=torch.float)
+e_goodbye[0,0] = 0.07
+e_goodbye[0,1] = 0.15
+e_goodbye[0,2] = 0.15
+e_goodbye[0,3] = 0.04
+e_goodbye[0,4] = 0.02
+e_goodbye[0,5] = 0.25
+e_goodbye[0,6] = 0.05
 
 we = WordEncoder()
 

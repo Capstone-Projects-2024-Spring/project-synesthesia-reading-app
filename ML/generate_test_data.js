@@ -2,8 +2,8 @@ import * as fs from 'fs';
 import {generate} from 'random-words';
 
 
-const numWords = 200;
-const maxWordLength = 4;
+const numWords = 3000;
+const maxWordLength = 45;
 // Function to generate a random RGB value
 function randomRGB() {
     return Math.floor(Math.random() * 256);
