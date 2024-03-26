@@ -1,5 +1,5 @@
 import React from "react";
-import X from '@mui/icons-material/X'
+import X from '@mui/icons-material/Close'
 
 function ReaderActionBar({name, close}) {
   return (

@@ -15,12 +15,7 @@ function DocumentLibrary({ user_profile }) {
           <TextSnippet
             sx={{ fontSize: 75 }}
             onClick={() => {
-              console.log(documentList);
-              console.log("You clicked: ");
-              console.log(documentList[id]);
-
-              setOpenDocument(id);
-              console.log(openDocument);
+              setOpenDocument(documentList[id]);
             }}
           ></TextSnippet>
           <p className="truncate w-40">{name}</p>
@@ -91,7 +86,7 @@ function DocumentLibrary({ user_profile }) {
       {openDocument ? (
         <div className="h-screen">
           <Reader
-            document={documentList[openDocument]}
+            document={openDocument}
             close={() => setOpenDocument(null)}
           />
         </div>
