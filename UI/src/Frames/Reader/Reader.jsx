@@ -15,19 +15,18 @@ function ReaderActionBar({name, close}) {
         <X
           sx={{ color: "white", fontSize: 50 }}
           style={{ position: "absolute", top: 4, right: 20 }}
-          onClick={() => {
-            close();
-          }}
+          onClick={close}
         />
       </div>
     </div>
   );
 }
 
-function Reader({document = {name: "Unnown title"}, close = console.log("Tried to close document")}) {
+function Reader({document = {name: "Unnown title"}, close}) {
   return (<>
     <div>
         <ReaderActionBar name = {document.name} close = {close}/>
+        <div>Here is the sample text of the document!</div>
     </div>
   </>);
 }

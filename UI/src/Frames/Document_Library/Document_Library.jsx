@@ -15,11 +15,12 @@ function DocumentLibrary({ user_profile }) {
           <TextSnippet
             sx={{ fontSize: 75 }}
             onClick={() => {
+              console.log(documentList);
               console.log("You clicked: ");
               console.log(documentList[id]);
 
-              setOpenDocument(documentList[id]);
-              console.log(openDocument)
+              setOpenDocument(id);
+              console.log(openDocument);
             }}
           ></TextSnippet>
           <p className="truncate w-40">{name}</p>
@@ -80,7 +81,7 @@ function DocumentLibrary({ user_profile }) {
       <div className="flex flex-wrap gap-x-10 gap-y-10 my-20 mx-5">
         {documentList.length > 0 &&
           documentList.map((document, index) => (
-            <Document name={document.name} id={index} className="size-2" />
+            <Document name={document.name} key={index} id={index} className="size-2" />
           ))}
       </div>
     );
@@ -89,7 +90,10 @@ function DocumentLibrary({ user_profile }) {
     <>
       {openDocument ? (
         <div className="h-screen">
-          <Reader document={openDocument} close={setOpenDocument(null)} />
+          <Reader
+            document={documentList[openDocument]}
+            close={() => setOpenDocument(null)}
+          />
         </div>
       ) : (
         <div className="h-screen">
