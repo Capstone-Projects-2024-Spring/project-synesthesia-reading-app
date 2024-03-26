@@ -3,17 +3,23 @@ import { Input, Button } from "@mui/material";
 import TextSnippet from "@mui/icons-material/TextSnippet";
 import { useState, useEffect, Profiler } from "react";
 import React from "react";
+import Reader from "./../Reader/Reader.jsx";
 function DocumentLibrary({ user_profile }) {
   const [documentList, setDocumentList] = useState([]);
   const [uploading, setUploading] = useState(false);
+  const [openDocument, setOpenDocument] = useState(null);
   function Document({ name = "Unnamed Document", id }) {
     return (
       <>
         <div className="flex flex-col items-center" id={id}>
           <TextSnippet
-            sx = {{fontSize: 75}}
+            sx={{ fontSize: 75 }}
             onClick={() => {
-              window.open(URL.createObjectURL(documentList[id]), "_blank");
+              console.log("You clicked: ");
+              console.log(documentList[id]);
+
+              setOpenDocument(documentList[id]);
+              console.log(openDocument)
             }}
           ></TextSnippet>
           <p className="truncate w-40">{name}</p>
@@ -81,11 +87,17 @@ function DocumentLibrary({ user_profile }) {
   }
   return (
     <>
-      <div className="h-screen">
-        <DocumentLibaryActionBar />
-        <DocumentGrid />
-        {uploading ? <UploadDocument /> : <></>}
-      </div>
+      {openDocument ? (
+        <div className="h-screen">
+          <Reader document={openDocument} close={setOpenDocument(null)} />
+        </div>
+      ) : (
+        <div className="h-screen">
+          <DocumentLibaryActionBar />
+          <DocumentGrid />
+          {uploading ? <UploadDocument /> : <></>}
+        </div>
+      )}
     </>
   );
 }
