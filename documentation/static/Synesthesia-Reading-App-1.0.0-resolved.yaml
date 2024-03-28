@@ -70,7 +70,7 @@ paths:
     post:
       tags: 
         - color profile
-      summary: creates a new Color Profile
+      summary: creates a new Color Profile associated with a user
       operationId: color_profile_add
       parameters:
         - name: userId
