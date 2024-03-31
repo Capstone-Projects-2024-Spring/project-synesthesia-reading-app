@@ -54,13 +54,12 @@ function Reader({ document = { name: "Unnown title" }, close }) {
   }
   // Fetch text data from the API
   useEffect(() => {
-    // Here you should call your API to fetch text data
-    // For demonstration, I'll use a fake API call
-    fetchTextFromAPI().then((textData) => {
+    //
+    fetchTextFromAPI().then((pageObj) => {
       // Determine the number of words per page based on viewport width
       const wordsPerPage = calculateWordsPerPage();
       // Distribute text among pages dynamically
-      const pages = distributeTextToPages(textData, wordsPerPage);
+      const pages = distributeTextToPages(pageObj, wordsPerPage);
       setTextPages(pages);
     });
   }, []);
@@ -69,9 +68,30 @@ function Reader({ document = { name: "Unnown title" }, close }) {
   async function fetchTextFromAPI() {
     // Replace this with your actual API call
     // For demonstration, returning fake text data
-    const words = generate({ exactly: 20000, maxLength: 45 });
+    function generateRandomWordsList(numWords) {
+      // Generate random list of words
+      const randomWords = [];
+      for (let i = 0; i < numWords; i++) {
+        randomWords.push(generate());
+      }
 
-    return words;
+      // Generate map of words to random RGB values
+      const wordRGBMap = {};
+      randomWords.forEach((word) => {
+        const red = Math.floor(Math.random() * 256); // Random number between 0 and 255
+        const green = Math.floor(Math.random() * 256); // Random number between 0 and 255
+        const blue = Math.floor(Math.random() * 256); // Random number between 0 and 255
+        const rgbValue = `rgb(${red}, ${green}, ${blue})`;
+        wordRGBMap[word] = rgbValue;
+      });
+
+      // Return object containing list of words and map of words to RGB values
+      return {
+        words: randomWords,
+        wordRGBMap: wordRGBMap,
+      };
+    }
+    return generateRandomWordsList(2000);
   }
 
   // Function to calculate the number of words per page based on viewport width
@@ -92,15 +112,17 @@ function Reader({ document = { name: "Unnown title" }, close }) {
     return Math.max(wordsPerPageWidth, wordsPerPageHeight);
   }
 
-  function Word({ word }) {
+  function Word({ word, RGB }) {
     return (
       <>
-        <span>{word}</span>
+        <span style={{color: RGB}}>{word}</span>
       </>
     );
   }
   // Function to distribute text among pages dynamically
-  function distributeTextToPages(textData, wordsPerPage) {
+  function distributeTextToPages(pageObj, wordsPerPage) {
+    var textData = pageObj.words;
+    var wordRGBMap = pageObj.wordRGBMap;
     const pages = [];
     let currentPage = [];
     let wordsCount = 0;
@@ -110,7 +132,7 @@ function Reader({ document = { name: "Unnown title" }, close }) {
       if (wordsCount + word.length > wordsPerPage) {
         pages.push(
           currentPage.map((word, index) => (
-            <Word key={index} word={word}></Word>
+            <Word key={index} word={word} RGB={wordRGBMap[word]}></Word>
           ))
         );
         currentPage = [];
@@ -125,7 +147,9 @@ function Reader({ document = { name: "Unnown title" }, close }) {
     // Push the remaining words to the last page
     if (currentPage.length > 0) {
       pages.push(
-        currentPage.map((word, index) => <Word key={index} word={word}></Word>)
+        currentPage.map((word, index) => (
+          <Word key={index} word={word} RGB={wordRGBMap[word]}></Word>
+        ))
       );
     }
 
@@ -137,7 +161,9 @@ function Reader({ document = { name: "Unnown title" }, close }) {
       <div>
         <ReaderActionBar name={document.name} close={close} />
         <div className="my-20 mx-4">
-          <div className="flex flex-wrap gap-x-2 gap-y-3">{textPages[currentPage]}</div>
+          <div className="flex flex-wrap gap-x-2 gap-y-3">
+            {textPages[currentPage]}
+          </div>
         </div>
       </div>
     </>
