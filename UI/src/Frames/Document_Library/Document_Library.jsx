@@ -3,17 +3,19 @@ import { Input, Button } from "@mui/material";
 import TextSnippet from "@mui/icons-material/TextSnippet";
 import { useState, useEffect, Profiler } from "react";
 import React from "react";
+import Reader from "./../Reader/Reader.jsx";
 function DocumentLibrary({ user_profile }) {
   const [documentList, setDocumentList] = useState([]);
   const [uploading, setUploading] = useState(false);
+  const [openDocument, setOpenDocument] = useState(null);
   function Document({ name = "Unnamed Document", id }) {
     return (
       <>
         <div className="flex flex-col items-center" id={id}>
           <TextSnippet
-            sx = {{fontSize: 75}}
+            sx={{ fontSize: 75 }}
             onClick={() => {
-              window.open(URL.createObjectURL(documentList[id]), "_blank");
+              setOpenDocument(documentList[id]);
             }}
           ></TextSnippet>
           <p className="truncate w-40">{name}</p>
@@ -74,18 +76,27 @@ function DocumentLibrary({ user_profile }) {
       <div className="flex flex-wrap gap-x-10 gap-y-10 my-20 mx-5">
         {documentList.length > 0 &&
           documentList.map((document, index) => (
-            <Document name={document.name} id={index} className="size-2" />
+            <Document name={document.name} key={index} id={index} className="size-2" />
           ))}
       </div>
     );
   }
   return (
     <>
-      <div className="h-screen">
-        <DocumentLibaryActionBar />
-        <DocumentGrid />
-        {uploading ? <UploadDocument /> : <></>}
-      </div>
+      {openDocument ? (
+        <div className="h-screen">
+          <Reader
+            document={openDocument}
+            close={() => setOpenDocument(null)}
+          />
+        </div>
+      ) : (
+        <div className="h-screen">
+          <DocumentLibaryActionBar />
+          <DocumentGrid />
+          {uploading ? <UploadDocument /> : <></>}
+        </div>
+      )}
     </>
   );
 }
