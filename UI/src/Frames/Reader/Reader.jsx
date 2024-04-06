@@ -7,18 +7,19 @@ import { generate } from "random-words";
 
 function Reader({ document = { name: "Unnown title" }, close }) {
   const [textPages, setTextPages] = useState([]);
-  const [currentPage, setCurrentPage] = useState(0);
+  const [currentMiniPage, setCurrentMiniPage] = useState(0);
+  const [currentPageData, setCurrentPageData] = useState({});
 
   // Function to handle page navigation
-  const goToNextPage = () => {
-    if (currentPage < textPages.length - 1) {
-      setCurrentPage(currentPage + 1);
+  const goToNextMiniPage = () => {
+    if (currentMiniPage < textPages.length - 1) {
+      setCurrentMiniPage(currentMiniPage + 1);
     }
   };
 
-  const goToPreviousPage = () => {
-    if (currentPage > 0) {
-      setCurrentPage(currentPage - 1);
+  const goToPreviousMiniPage = () => {
+    if (currentMiniPage > 0) {
+      setCurrentMiniPage(currentMiniPage - 1);
     }
   };
 
@@ -36,12 +37,12 @@ function Reader({ document = { name: "Unnown title" }, close }) {
           <Left
             sx={{ color: "white", fontSize: 50 }}
             style={{ position: "absolute", top: 4, right: 180 }}
-            onClick={goToPreviousPage}
+            onClick={goToPreviousMiniPage}
           />
           <Right
             sx={{ color: "white", fontSize: 50 }}
             style={{ position: "absolute", top: 4, right: 100 }}
-            onClick={goToNextPage}
+            onClick={goToNextMiniPage}
           />
           <Close
             sx={{ color: "white", fontSize: 50 }}
@@ -58,8 +59,9 @@ function Reader({ document = { name: "Unnown title" }, close }) {
     fetchTextFromAPI().then((pageObj) => {
       // Determine the number of words per page based on viewport width
       const wordsPerPage = calculateWordsPerPage();
+      setCurrentPageData(pageObj);
       // Distribute text among pages dynamically
-      const pages = distributeTextToPages(pageObj, wordsPerPage);
+      const pages = distributeTextToPages(wordsPerPage);
       setTextPages(pages);
     });
   }, []);
@@ -120,14 +122,14 @@ function Reader({ document = { name: "Unnown title" }, close }) {
     );
   }
   // Function to distribute text among pages dynamically
-  function distributeTextToPages(pageObj, wordsPerPage) {
-    var textData = pageObj.words;
-    var wordRGBMap = pageObj.wordRGBMap;
+  function distributeTextToPages(wordsPerPage) {
+    var words = currentPageData.words;
+    var wordRGBMap = currentPageData.wordRGBMap;
     const pages = [];
     let currentPage = [];
     let wordsCount = 0;
     // Iterate through each word in the textData
-    textData.forEach((word) => {
+    words.forEach((word) => {
       // If adding this word exceeds wordsPerPage, push the current page to pages and reset currentPage
       if (wordsCount + word.length > wordsPerPage) {
         pages.push(
@@ -162,7 +164,7 @@ function Reader({ document = { name: "Unnown title" }, close }) {
         <ReaderActionBar name={document.name} close={close} />
         <div className="my-20 mx-4">
           <div className="flex flex-wrap gap-x-2 gap-y-3">
-            {textPages[currentPage]}
+            {textPages[currentMiniPage]}
           </div>
         </div>
       </div>
