@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import React from "react";
 import "./App.css";
 import Login from "./Frames/Login/Login.jsx";
-import DocumentLibrary from "./Frames/Documents/Document_Library.jsx"
+import DocumentLibrary from "./Frames/Document_Library/Document_Library.jsx"
 import axios from "axios";
 
 
