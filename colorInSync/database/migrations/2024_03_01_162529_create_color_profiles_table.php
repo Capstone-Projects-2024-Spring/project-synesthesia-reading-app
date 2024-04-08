@@ -13,7 +13,9 @@ return new class extends Migration
     {
         Schema::create('color_profiles', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->integer('user_id');
+            $table->map('letter_colors');
+            $table->timestamps('last_modified');
         });
     }
 
