@@ -84,12 +84,11 @@ function DocumentLibrary({ user_profile }) {
   return (
     <>
       {openDocument ? (
-        <div className="h-screen">
           <Reader
             document={openDocument}
             close={() => setOpenDocument(null)}
           />
-        </div>
+
       ) : (
         <div className="h-screen">
           <DocumentLibaryActionBar />
