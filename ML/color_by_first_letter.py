@@ -1,3 +1,7 @@
+'''
+OUTPUT: page_object.json in output folder
+'''
+
 class ColorByFirstLetter():
     def __init__(self):
         self.unique_words = None
@@ -10,7 +14,7 @@ class ColorByFirstLetter():
         for word in words:
             words[word] = r.get_random_word()
 
-        print(words)
+if __name__ == '__main__':
     def get_grapheme_map(self):
         '''
         put in code to call API for grapheme-word map here and interpret it as a Pandas DataFrame
