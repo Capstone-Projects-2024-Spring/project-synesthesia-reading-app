@@ -55,7 +55,7 @@ function Reader({ document = { name: "Unnown title" }, close }) {
   // Fetch text data from the API
   useEffect(() => {
 
-    fetch("/page_obj.json")
+    fetch("/page_object.json")
       .then((response) => response.json())
       .then((pageObj) => {
         console.log(pageObj);
@@ -99,7 +99,7 @@ function Reader({ document = { name: "Unnown title" }, close }) {
   // Function to distribute text among pages dynamically
   function distributeTextToPages(pageObj, wordsPerPage) {
     var textData = pageObj.words;
-    var wordRGBMap = pageObj.wordRGBMap;
+    var wordRGBMap = pageObj.word_color_map;
     const pages = [];
     let currentPage = [];
     let wordsCount = 0;
