@@ -3,13 +3,12 @@ import Left from "@mui/icons-material/ChevronLeft";
 import Right from "@mui/icons-material/ChevronRight";
 import { useState, useEffect, Swipeable } from "react";
 import React from "react";
-import {fs} from 'fs';
 
 function Reader({ document = { name: "Unnown title" }, close }) {
   const [textPages, setTextPages] = useState([]);
   const [currentPage, setCurrentPage] = useState(0);
 
-  const filePath = "../ML/output/page_obj.json"
+
   // Function to handle page navigation
   const goToNextPage = () => {
     if (currentPage < textPages.length - 1) {
@@ -55,35 +54,22 @@ function Reader({ document = { name: "Unnown title" }, close }) {
   }
   // Fetch text data from the API
   useEffect(() => {
-    //
-    fetchTextFromAPI().then((pageObj) => {
-      // Determine the number of words per page based on viewport width
-      const wordsPerPage = calculateWordsPerPage();
-      // Distribute text among pages dynamically
-      const pages = distributeTextToPages(pageObj, wordsPerPage);
-      setTextPages(pages);
-    });
-  }, []);
 
-  // Function to fetch text data from the API (fake implementation)
-  async function fetchTextFromAPI() {
-    fs.readFile(filePath, "utf8", (err, data) => {
-      if (err) {
-        console.error("Error reading file:", err);
-        return;
-      }
-
-      try {
-        // Parse the JSON data
-        const jsonObject = JSON.parse(data);
-        return jsonObject;
-        
-      } catch (err) {
-        console.error("Error parsing JSON data:", err);
+    fetch("/page_obj.json")
+      .then((response) => response.json())
+      .then((pageObj) => {
+        console.log(pageObj);
+        // Determine the number of words per page based on viewport width
+        const wordsPerPage = calculateWordsPerPage();
+        // Distribute text among pages dynamically
+        const pages = distributeTextToPages(pageObj, wordsPerPage);
+        setTextPages(pages);
+      })
+      .catch((error) => {
+        console.error("Error fetching JSON:", error);
         return null;
-      }
-    });
-  }
+      });
+  }, []);
 
   // Function to calculate the number of words per page based on viewport width
   function calculateWordsPerPage() {
