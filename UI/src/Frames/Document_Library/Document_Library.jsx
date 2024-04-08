@@ -88,6 +88,7 @@ function DocumentLibrary({ user_profile }) {
             document={openDocument}
             close={() => setOpenDocument(null)}
           />
+
       ) : (
         <div className="h-screen">
           <DocumentLibaryActionBar />
