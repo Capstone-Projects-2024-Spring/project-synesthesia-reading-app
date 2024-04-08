@@ -3,12 +3,13 @@ import Left from "@mui/icons-material/ChevronLeft";
 import Right from "@mui/icons-material/ChevronRight";
 import { useState, useEffect, Swipeable } from "react";
 import React from "react";
-import { generate } from "random-words";
+import {fs} from 'fs';
 
 function Reader({ document = { name: "Unnown title" }, close }) {
   const [textPages, setTextPages] = useState([]);
   const [currentPage, setCurrentPage] = useState(0);
 
+  const filePath = "../ML/output/page_obj.json"
   // Function to handle page navigation
   const goToNextPage = () => {
     if (currentPage < textPages.length - 1) {
@@ -66,32 +67,22 @@ function Reader({ document = { name: "Unnown title" }, close }) {
 
   // Function to fetch text data from the API (fake implementation)
   async function fetchTextFromAPI() {
-    // Replace this with your actual API call
-    // For demonstration, returning fake text data
-    function generateRandomWordsList(numWords) {
-      // Generate random list of words
-      const randomWords = [];
-      for (let i = 0; i < numWords; i++) {
-        randomWords.push(generate());
+    fs.readFile(filePath, "utf8", (err, data) => {
+      if (err) {
+        console.error("Error reading file:", err);
+        return;
       }
 
-      // Generate map of words to random RGB values
-      const wordRGBMap = {};
-      randomWords.forEach((word) => {
-        const red = Math.floor(Math.random() * 256); // Random number between 0 and 255
-        const green = Math.floor(Math.random() * 256); // Random number between 0 and 255
-        const blue = Math.floor(Math.random() * 256); // Random number between 0 and 255
-        const rgbValue = `rgb(${red}, ${green}, ${blue})`;
-        wordRGBMap[word] = rgbValue;
-      });
-
-      // Return object containing list of words and map of words to RGB values
-      return {
-        words: randomWords,
-        wordRGBMap: wordRGBMap,
-      };
-    }
-    return generateRandomWordsList(2000);
+      try {
+        // Parse the JSON data
+        const jsonObject = JSON.parse(data);
+        return jsonObject;
+        
+      } catch (err) {
+        console.error("Error parsing JSON data:", err);
+        return null;
+      }
+    });
   }
 
   // Function to calculate the number of words per page based on viewport width
