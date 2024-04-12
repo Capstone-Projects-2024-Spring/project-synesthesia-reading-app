@@ -67,28 +67,23 @@ paths:
         "204":
           description: No content
   /color_profile/:
-    get:
-      tags: 
-        - color profile
-      summary: Returns the entire color profile of a user
-      responses:
-        "200":
-          description: a JSON dictionary of color-word pairs
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Color_Profile'
     post:
       tags: 
         - color profile
-      summary: add a key-value pair of grapheme/word and color to a Color Profile
+      summary: creates a new Color Profile associated with a user
       operationId: color_profile_add
+      parameters:
+        - name: userId
+          required: true
+          in: path
       requestBody:
+        required: true
+        description: the color profile to be created
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Color_Pair'
-        required: true
+              $ref: '#/components/schemas/Color_Profile'
+
       responses:
         "201":
           description: Created
@@ -135,19 +130,58 @@ components:
         text:
           type: string
     Color_Profile:
-      type: array
+      description: Contains a map of graphemes to their associated colors and a map of words that are exceptions to the coloring rules to their colors
+      type: object
+      properties:
+        grapheme-color map:
+          $ref: '#/components/schemas/Grapheme_Color_Map'
+        exceptions-color map:
+          $ref: '#/components/schemas/Word_Color_Map'
+
+    Colored_Page:
+      description: contains the information necessary to render a colored page-- the tokenized text of the page and a word-color map containing word-color pairs for each unique word component on the page
+      type: object
+      properties:
+        tokenized text:
+          type: array
+          example: ['The ', 'over', 'weight ', 'red ', 'fox ', 'jumped ', 'over ', 'the ', 'sleeping ', 'brown ', 'dog', '.']
+        word-color map:
+          $ref: '#/components/schemas/Word_Color_Map'
+
+    Grapheme_Color_Map:
+      type: object
+      description: map of graphemes to RGB colors
       items:
-        $ref: '#/components/schemas/Color_Pair'
-    Color_Pair:
+         $ref: '#/components/schemas/Grapheme_Color_Pair'
+
+    Grapheme_Color_Pair:
       type: object
       properties:
         grapheme:
           type: string
-          example: cat
+          example: 'c'
         color:
+          type: array
+          description: R, G, and B values
+          example: [250, 0, 0]
+
+    Word_Color_Map:
+      type: object
+      description: a map of words to RGB colors
+      items:
+        $ref: '#/components/schemas/Word_Color_Pair'
+
+    Word_Color_Pair:
+      type: object
+      properties:
+        word:
           type: string
-          description: a hex color value
-          example: '#FFFFFF'
+          example: 'sofa '
+        color:
+          type: array
+          description: R, G, and B values
+          example: [250, 0, 0]
+
     Feedback_Message:
         type: string
         description: a feedback message from a user
