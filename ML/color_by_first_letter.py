@@ -9,6 +9,7 @@ class ColorByFirstLetter():
 
         self.grapheme_map = None
         self.exception_map = None
+        self.text = None
         self.unique_words = None
         self.word_color_map = None
 
@@ -23,14 +24,20 @@ class ColorByFirstLetter():
         color_profile = json.loads(self.color_json)
         self.grapheme_map = color_profile["grapheme-color map"]
         self.exception_map= color_profile["exceptions-color map"]
+        self.text = json.loads(self.text_json)
 
 
     # get unique set of words from self.words, i.e. the tokenized list of words in a page
     def get_unique_words(self):
         self.unique_words = list(set(self.words))
 
+    # returns the grapheme_map attribute
     def get_grapheme_map(self):
         return self.grapheme_map
+    
+    # returns the text attribute
+    def get_text(self):
+        return self.text
 
     # creates a word-color map and assigns it to self.word_color_map
     def color(self):

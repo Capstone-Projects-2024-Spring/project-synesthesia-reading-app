@@ -10,3 +10,9 @@ def test_getting_grapheme_map():
     color_profile_dict = json.loads(color_profile)
     map = c.get_grapheme_map()
     assert color_profile_dict["grapheme-color map"] == map
+
+
+def test_getting_text_from_json():
+    correct_text = json.loads(tokenized_text)
+    text = c.get_text()
+    assert correct_text == text
