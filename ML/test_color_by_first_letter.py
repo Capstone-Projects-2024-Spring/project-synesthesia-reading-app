@@ -16,3 +16,7 @@ def test_getting_text_from_json():
     correct_text = json.loads(tokenized_text)
     text = c.get_text()
     assert correct_text == text
+
+def test_list_unique_words():
+    correct = list(set(json.loads(tokenized_text)))
+    assert correct == c.get_unique_words()

@@ -15,7 +15,7 @@ class ColorByFirstLetter():
 
         self.parse_json()
 
-        #self.get_unique_words()
+        self.list_unique_words()
         #self.color()
         #self.create_page_object()
 
@@ -27,10 +27,14 @@ class ColorByFirstLetter():
         self.text = json.loads(self.text_json)
 
 
-    # get unique set of words from self.words, i.e. the tokenized list of words in a page
-    def get_unique_words(self):
-        self.unique_words = list(set(self.words))
+    # creates a list of a unique set of words from self.text, the tokenized list of words in a page
+    def list_unique_words(self):
+        self.unique_words = list(set(self.text))
 
+    # returns the unique_words attribute
+    def get_unique_words(self):
+        return self.unique_words
+    
     # returns the grapheme_map attribute
     def get_grapheme_map(self):
         return self.grapheme_map
