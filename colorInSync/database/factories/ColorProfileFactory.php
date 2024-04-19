@@ -27,7 +27,8 @@ class ColorProfileFactory extends Factory
             'id'=> $id,
             'user_id'=>$user_id,
             'letter_colors'=>$letter_colors,
-            'last_modified'=>$this->faker->timestamps(),
+            'created_at'=>$this->faker->timestamps(),
+            'updated_at'=>$this->faker->timestamps(),
 
         ];
     }
