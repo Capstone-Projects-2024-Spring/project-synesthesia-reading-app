@@ -2,6 +2,11 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\DocumentController;
+
+Route::get('/document/{id}', [DocumentController::class, 'getPageData']);
+
+
 
 /*
 |--------------------------------------------------------------------------
