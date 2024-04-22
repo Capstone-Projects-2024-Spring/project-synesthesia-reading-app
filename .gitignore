@@ -16,3 +16,6 @@ node_modules
 .idea/project-synesthesia-reading-app.iml
 
 ML/__pycache__/word_encoding.cpython-311.pyc
+ML/__pycache__/color_by_first_letter.cpython-311.pyc
+ML/__pycache__/color_by_first_letter.cpython-312.pyc
+ML/__pycache__/test_color_by_first_letter.cpython-311-pytest-8.1.1.pyc
