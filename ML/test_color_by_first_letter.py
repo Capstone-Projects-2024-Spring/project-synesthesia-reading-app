@@ -20,3 +20,9 @@ def test_getting_text_from_json():
 def test_list_unique_words():
     correct = list(set(json.loads(tokenized_text)))
     assert correct == c.get_unique_words()
+
+def test_json():
+    c.color()
+    c.create_page_object()
+    assert True
+

@@ -18,6 +18,9 @@ class ColorByFirstLetter():
         #self.color()
         #self.create_page_object()
 
+    def get_word_color_map(self):
+        return self.word_color_map
+
     def parse_json(self):
         import json
         color_profile = json.loads(self.color_json)
@@ -52,8 +55,10 @@ class ColorByFirstLetter():
 
         # add word-rgb value pairs for each unique word
         for word in self.unique_words:
-            rgb = grapheme_map.get(word[0].upper())
-            word_color_map[word] = 'rgb({},{},{})'.format(rgb.get('R'), rgb.get('G'), rgb.get('B'))
+            if(grapheme_map.get(word[0].upper())):
+                word_color_map[word] = grapheme_map.get(word[0].upper())
+            else:
+                word_color_map[word] = 'rgb(0,0,0)'
 
         self.word_color_map = word_color_map
 
@@ -64,12 +69,13 @@ class ColorByFirstLetter():
 
         # combine list of unique words & word-color map into one object
         page_object = {
-            'words': self.words,
+            'words': self.text,
             'word_color_map': self.word_color_map
         }
 
         # convert to JSON
         page_object = json.dumps(page_object)
+        print(page_object)
 
         # write to file
         with open("../UI/public/page_object.json", "w") as outfile:
