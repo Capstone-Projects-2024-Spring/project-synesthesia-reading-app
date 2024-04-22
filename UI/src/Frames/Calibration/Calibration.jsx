@@ -4,7 +4,7 @@ import { RgbStringColorPicker } from "react-colorful";
 import Left from "@mui/icons-material/ForkLeft";
 import Right from "@mui/icons-material/ArrowForward";
 
-const letters = [
+const graphemes = [
   "A",
   "B",
   "C",
@@ -31,6 +31,16 @@ const letters = [
   "X",
   "Y",
   "Z",
+  "1",
+  "2",
+  "3",
+  "4",
+  "5",
+  "6",
+  "7",
+  "8",
+  "9",
+
 ];
 var colors = [];
 const Calibration = ({ setColors }) => {
@@ -39,11 +49,11 @@ const Calibration = ({ setColors }) => {
   
   const next = () => {
     console.log(colors);
-    if (index == 25) {
+    if (index == graphemes.length - 1) {
       setColors(colors);
     }
     setIndex(index + 1);
-    colors.push({ letter: letters[index], color: currentColor });
+    colors.push({ grapheme: graphemes[index], color: currentColor });
     
   };
 
@@ -51,7 +61,7 @@ const Calibration = ({ setColors }) => {
     <>
       <div className="bg-gray-200 flex flex-col items-center space-y-10 justify-center h-screen">
         <p className="text-8xl" style={{ color: currentColor }}>
-          {letters[index]} {index}
+          {graphemes[index]}
         </p>
         <RgbStringColorPicker color={currentColor} onChange={setCurrentColor} />
         <Right onClick={next} sx={{fontSize: 100 }} />
