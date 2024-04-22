@@ -3,36 +3,47 @@ OUTPUT: page_object.json in UI public folder
 '''
 
 class ColorByFirstLetter():
-    def __init__(self):
-        self.words = None
+    def __init__(self, color_profile, text):
+        self.color_json = color_profile
+        self.text_json = text
+
+        self.grapheme_map = None
+        self.exception_map = None
+        self.text = None
         self.unique_words = None
         self.word_color_map = None
-        self.generate_words()
-        self.get_unique_words()
-        self.color()
-        self.create_page_object()
 
-    # geenrating a list of words for mock-up purposes
-    def generate_words(self):
-        from random_word import RandomWords
-        r = RandomWords()
-        words = list(range(100))
-        for word in words:
-            words[word] = r.get_random_word()
+        self.parse_json()
+        self.list_unique_words()
+        #self.color()
+        #self.create_page_object()
 
-        self.words = words
+    def get_word_color_map(self):
+        return self.word_color_map
 
-    # get unique set of words from self.words, i.e. the tokenized list of words in a page
+    def parse_json(self):
+        import json
+        color_profile = json.loads(self.color_json)
+        self.grapheme_map = color_profile["grapheme-color map"]
+        self.exception_map= color_profile["exceptions-color map"]
+        self.text = json.loads(self.text_json)
+
+
+    # creates a list of a unique set of words from self.text, the tokenized list of words in a page
+    def list_unique_words(self):
+        self.unique_words = list(set(self.text))
+
+    # returns the unique_words attribute
     def get_unique_words(self):
-        self.unique_words = list(set(self.words))
-
+        return self.unique_words
+    
+    # returns the grapheme_map attribute
     def get_grapheme_map(self):
-        '''
-        put in code to call API for grapheme-word map here and interpret it as a Pandas DataFrame
-        in the meantime, gives an example grapheme-color
-        '''
-        import pandas as pd
-        return pd.read_csv('Maras_Alphabet.csv').set_index('Letter').to_dict('index')
+        return self.grapheme_map
+    
+    # returns the text attribute
+    def get_text(self):
+        return self.text
 
     # creates a word-color map and assigns it to self.word_color_map
     def color(self):
@@ -44,8 +55,10 @@ class ColorByFirstLetter():
 
         # add word-rgb value pairs for each unique word
         for word in self.unique_words:
-            rgb = grapheme_map.get(word[0].upper())
-            word_color_map[word] = 'rgb({},{},{})'.format(rgb.get('R'), rgb.get('G'), rgb.get('B'))
+            if(grapheme_map.get(word[0].upper())):
+                word_color_map[word] = grapheme_map.get(word[0].upper())
+            else:
+                word_color_map[word] = 'rgb(0,0,0)'
 
         self.word_color_map = word_color_map
 
@@ -56,12 +69,13 @@ class ColorByFirstLetter():
 
         # combine list of unique words & word-color map into one object
         page_object = {
-            'words': self.words,
+            'words': self.text,
             'word_color_map': self.word_color_map
         }
 
         # convert to JSON
         page_object = json.dumps(page_object)
+        print(page_object)
 
         # write to file
         with open("../UI/public/page_object.json", "w") as outfile:
@@ -72,9 +86,8 @@ class ColorByFirstLetter():
 
 
 
-if __name__ == '__main__':
 
-    c = ColorByFirstLetter()
+
 
 
 
