@@ -14,7 +14,6 @@ class ColorByFirstLetter():
         self.word_color_map = None
 
         self.parse_json()
-
         self.list_unique_words()
         #self.color()
         #self.create_page_object()
