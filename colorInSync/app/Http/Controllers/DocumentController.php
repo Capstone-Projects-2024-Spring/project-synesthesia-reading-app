@@ -9,11 +9,12 @@ use App\Models\Document;
 class DocumentController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Display a listing of the document.
      */
     public function index()
     {
-        //
+        $documents = Document::all();
+        return view('documents.index', compact('documents'));
     }
 
     /**
@@ -21,7 +22,6 @@ class DocumentController extends Controller
      */
     public function create()
     {
-        //
         return view('documents.create');
     }
 
@@ -52,7 +52,7 @@ class DocumentController extends Controller
      */
     public function show(Document $document)
     {
-        //
+        return view('documents.show', compact('document'));
     }
 
     /**
@@ -60,7 +60,7 @@ class DocumentController extends Controller
      */
     public function edit(Document $document)
     {
-        //
+        return view('documents.edit', compact('document'));
     }
 
     /**
@@ -68,7 +68,13 @@ class DocumentController extends Controller
      */
     public function update(UpdateDocumentRequest $request, Document $document)
     {
-        //
+        if ($request->has('content')) {
+            $document->content = $request->input('content');
+            $document->save();
+            return redirect()->route('documents.show', $document->id);
+        } else {
+            return back()->withErrors('No changes detected.');
+        }
     }
 
     /**
@@ -76,6 +82,7 @@ class DocumentController extends Controller
      */
     public function destroy(Document $document)
     {
-        //
+        $document->delete();
+        return redirect()->route('documents.index');
     }
 }
