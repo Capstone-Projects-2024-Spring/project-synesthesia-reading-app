@@ -17,23 +17,38 @@ class DocumentController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Show the form for creating a new document.
      */
     public function create()
     {
         //
+        return view('documents.create');
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Store a newly created document in storage.
      */
     public function store(StoreDocumentRequest $request)
     {
         //
+        if ($request->hasFile('pdf') && $request->file('pdf')->isValid()) {
+            $parser = new Parser();
+            $pdf = $parser->parseFile($request->file('pdf')->path());
+            $text = $pdf->getText();
+    
+            $document = new Document();
+            $document->content = $text; // Assuming there is a 'content' field in your documents table
+            $document->save();
+    
+            return redirect()->route('documents.show', $document->id);
+        } else {
+            Log::error('File upload failed or no file uploaded.');
+            return back()->withErrors('File upload failed or no file uploaded.');
+        }
     }
 
     /**
-     * Display the specified resource.
+     * Display the specified document.
      */
     public function show(Document $document)
     {
@@ -41,7 +56,7 @@ class DocumentController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * Show the form for editing the specified document.
      */
     public function edit(Document $document)
     {
@@ -49,7 +64,7 @@ class DocumentController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * Update the specified document in storage.
      */
     public function update(UpdateDocumentRequest $request, Document $document)
     {
@@ -57,7 +72,7 @@ class DocumentController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Remove the specified document from storage.
      */
     public function destroy(Document $document)
     {

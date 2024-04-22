@@ -3,6 +3,7 @@ import Left from "@mui/icons-material/ChevronLeft";
 import Right from "@mui/icons-material/ChevronRight";
 import { useState, useEffect, Swipeable } from "react";
 import React from "react";
+import "./Reader.css"
 
 function Reader({ document = { name: "Unnown title" }, close }) {
   const [textPages, setTextPages] = useState([]);
@@ -92,7 +93,7 @@ function Reader({ document = { name: "Unnown title" }, close }) {
   function Word({ word, RGB }) {
     return (
       <>
-        <span style={{color: RGB}}>{word}</span>
+          <span className ="black-outline text-2xl" style={{ color: RGB }}>{word}</span>
       </>
     );
   }
@@ -135,7 +136,7 @@ function Reader({ document = { name: "Unnown title" }, close }) {
 
   return (
     <>
-      <div className="h-screen bg-gray-500">
+      <div className="h-screen">
         <ReaderActionBar name={document.name} close={close} />
         <div className="py-20 px-4 ">
           <div className="flex flex-wrap gap-x-2 gap-y-3">
