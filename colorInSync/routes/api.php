@@ -6,6 +6,7 @@ use App\Http\Controllers\DocumentController;
 
 Route::get('/document/{id}', [DocumentController::class, 'getPageData']);
 
+Route::post('/documents',[DocumentController::class, 'store'])
 
 
 /*
