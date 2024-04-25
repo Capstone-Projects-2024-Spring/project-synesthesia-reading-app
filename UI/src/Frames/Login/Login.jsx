@@ -1,6 +1,5 @@
 import "./Login.css";
-import {googleLogout, useGoogleLogin } from "@react-oauth/google";
-
+import { googleLogout, useGoogleLogin } from "@react-oauth/google";
 
 function Login({ loginSuccess }) {
   const login = useGoogleLogin({
@@ -22,10 +21,6 @@ function Login({ loginSuccess }) {
           onClick={() => login()}
         >
           Log in with Google
-        </button>
-
-        <button className="bg-purple-500 text-gray-200 p-3 rounded-md">
-          Continue as guest
         </button>
       </div>
     </>

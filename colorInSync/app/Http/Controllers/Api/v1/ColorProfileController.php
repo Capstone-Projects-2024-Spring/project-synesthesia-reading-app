@@ -1,9 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api\v1;
 
 use App\Http\Requests\StoreColorProfileRequest;
 use App\Http\Requests\UpdateColorProfileRequest;
+use App\Http\Controllers\Controller;
 use App\Models\ColorProfile;
 
 class ColorProfileController extends Controller
@@ -13,7 +14,7 @@ class ColorProfileController extends Controller
      */
     public function index()
     {
-        //
+        return ColorProfile::all();
     }
 
     /**
