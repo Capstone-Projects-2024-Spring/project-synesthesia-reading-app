@@ -28,13 +28,24 @@ function App() {
         .catch((err) => console.log(err));
     }
   }, [user]);
+  function uploadColors(colors) {
+    fetch(url, {
+      method: "POST",
+      headers: {},
+    });
+  }
   return (
     <>
       {profile ? (
         colors ? (
           <DocumentLibrary user_profile={profile} />
         ) : (
-          <Calibration setColors={(colors) => setColors(colors)} />
+          <Calibration
+            setColors={(colors) => {
+              uploadColors(colors);
+              setColors(colors);
+            }}
+          />
         )
       ) : (
         <Login loginSuccess={(user) => setUser(user)} />
