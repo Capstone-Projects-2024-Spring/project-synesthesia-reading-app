@@ -11,8 +11,7 @@ class ColorProfile extends Model
 
     protected $attributes = [
         'user_id' => -1,
-        'letters' => '[]',
-        'colors' => '[]'
+        'letters-colors' => '[]'
     ];
 
     public function user(){
