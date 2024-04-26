@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Api\v1;
 
 use App\Http\Requests\StoreDocumentRequest;
 use App\Http\Requests\UpdateDocumentRequest;
-use App\Http\Controller;
+use App\Http\Controllers\Controller;
 use App\Models\Document;
 
 class DocumentController extends Controller
@@ -53,7 +53,8 @@ class DocumentController extends Controller
      */
     public function show(Document $document)
     {
-        return view('documents.show', compact('document'));
+        return [];
+        //return view('documents.show', compact('document'));
     }
 
     /**
