@@ -22,3 +22,13 @@ Route::get('/document/{id}', [DocumentController::class, 'getPageData']);
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+// Route for serving static JSON
+Route::get('/static-json', function () {
+    return response()->json([
+        'status' => 'success',
+        'data' => [
+            'message' => 'This is a static JSON response.'
+        ]
+    ]);
+});
