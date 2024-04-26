@@ -28,12 +28,3 @@ Route::group(['prefix' => 'v1', 'namespace' => 'app\Http\Controllers\Api\v1'], f
     Route::get('/document/{id}', [DocumentController::class, 'getPageData']);
 });
 
-// Route for serving the static JSON
-Route::get('/static-json', function () {
-    return response()->json([
-        'status' => 'success',
-        'data' => [
-            'message' => 'This is a static JSON response.'
-        ]
-    ]);
-});

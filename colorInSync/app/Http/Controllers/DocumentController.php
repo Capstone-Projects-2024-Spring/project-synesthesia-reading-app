@@ -52,7 +52,10 @@ class DocumentController extends Controller
      */
     public function show(Document $document)
     {
-        return view('documents.show', compact('document'));
+        //return view('documents.show', compact('document'));
+        //return the JSON file
+        //backend function dynamically generates data by talking to the flask
+        
     }
 
     /**
