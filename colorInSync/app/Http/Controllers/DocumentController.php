@@ -72,7 +72,6 @@ class DocumentController extends Controller
         ];
 
         return response()->json($staticJson);
-        //return view('documents.show', compact('document'));
     }
 
     /**
