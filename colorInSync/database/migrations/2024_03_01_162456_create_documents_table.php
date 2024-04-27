@@ -12,8 +12,11 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('documents', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
+            $table->id()->autoIncrement();
+            $table->integer('user_id');
+            $table->string('file_name');
+            $table->integer('file_size');
+            $table->integer('pages');
         });
     }
 

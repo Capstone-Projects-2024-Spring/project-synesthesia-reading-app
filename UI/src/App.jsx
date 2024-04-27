@@ -2,13 +2,14 @@ import { useState, useEffect } from "react";
 import React from "react";
 import "./App.css";
 import Login from "./Frames/Login/Login.jsx";
-import DocumentLibrary from "./Frames/Document_Library/Document_Library.jsx"
+import DocumentLibrary from "./Frames/Document_Library/Document_Library.jsx";
 import axios from "axios";
-
+import Calibration from "./Frames/Calibration/Calibration.jsx";
 
 function App() {
   const [user, setUser] = useState(null);
   const [profile, setProfile] = useState(null);
+  const [colors, setColors] = useState(null);
   useEffect(() => {
     if (user) {
       axios
@@ -30,10 +31,11 @@ function App() {
   return (
     <>
       {profile ? (
-        <DocumentLibrary user_profile = {profile}>
-
-        </DocumentLibrary>
-        
+        colors ? (
+          <DocumentLibrary user_profile={profile} />
+        ) : (
+          <Calibration setColors={(colors) => setColors(colors)} />
+        )
       ) : (
         <Login loginSuccess={(user) => setUser(user)} />
       )}

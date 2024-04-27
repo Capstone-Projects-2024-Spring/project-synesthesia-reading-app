@@ -3,11 +3,12 @@ import Left from "@mui/icons-material/ChevronLeft";
 import Right from "@mui/icons-material/ChevronRight";
 import { useState, useEffect, Swipeable } from "react";
 import React from "react";
-import { generate } from "random-words";
+import "./Reader.css"
 
 function Reader({ document = { name: "Unnown title" }, close }) {
   const [textPages, setTextPages] = useState([]);
   const [currentPage, setCurrentPage] = useState(0);
+
 
   // Function to handle page navigation
   const goToNextPage = () => {
@@ -54,45 +55,22 @@ function Reader({ document = { name: "Unnown title" }, close }) {
   }
   // Fetch text data from the API
   useEffect(() => {
-    //
-    fetchTextFromAPI().then((pageObj) => {
-      // Determine the number of words per page based on viewport width
-      const wordsPerPage = calculateWordsPerPage();
-      // Distribute text among pages dynamically
-      const pages = distributeTextToPages(pageObj, wordsPerPage);
-      setTextPages(pages);
-    });
-  }, []);
 
-  // Function to fetch text data from the API (fake implementation)
-  async function fetchTextFromAPI() {
-    // Replace this with your actual API call
-    // For demonstration, returning fake text data
-    function generateRandomWordsList(numWords) {
-      // Generate random list of words
-      const randomWords = [];
-      for (let i = 0; i < numWords; i++) {
-        randomWords.push(generate());
-      }
-
-      // Generate map of words to random RGB values
-      const wordRGBMap = {};
-      randomWords.forEach((word) => {
-        const red = Math.floor(Math.random() * 256); // Random number between 0 and 255
-        const green = Math.floor(Math.random() * 256); // Random number between 0 and 255
-        const blue = Math.floor(Math.random() * 256); // Random number between 0 and 255
-        const rgbValue = `rgb(${red}, ${green}, ${blue})`;
-        wordRGBMap[word] = rgbValue;
+    fetch("/page_object.json")
+      .then((response) => response.json())
+      .then((pageObj) => {
+        console.log(pageObj);
+        // Determine the number of words per page based on viewport width
+        const wordsPerPage = calculateWordsPerPage();
+        // Distribute text among pages dynamically
+        const pages = distributeTextToPages(pageObj, wordsPerPage);
+        setTextPages(pages);
+      })
+      .catch((error) => {
+        console.error("Error fetching JSON:", error);
+        return null;
       });
-
-      // Return object containing list of words and map of words to RGB values
-      return {
-        words: randomWords,
-        wordRGBMap: wordRGBMap,
-      };
-    }
-    return generateRandomWordsList(2000);
-  }
+  }, []);
 
   // Function to calculate the number of words per page based on viewport width
   function calculateWordsPerPage() {
@@ -115,14 +93,14 @@ function Reader({ document = { name: "Unnown title" }, close }) {
   function Word({ word, RGB }) {
     return (
       <>
-        <span style={{color: RGB}}>{word}</span>
+          <span className ="black-outline text-2xl" style={{ color: RGB }}>{word}</span>
       </>
     );
   }
   // Function to distribute text among pages dynamically
   function distributeTextToPages(pageObj, wordsPerPage) {
     var textData = pageObj.words;
-    var wordRGBMap = pageObj.wordRGBMap;
+    var wordRGBMap = pageObj.word_color_map;
     const pages = [];
     let currentPage = [];
     let wordsCount = 0;
@@ -158,9 +136,9 @@ function Reader({ document = { name: "Unnown title" }, close }) {
 
   return (
     <>
-      <div>
+      <div className="h-screen">
         <ReaderActionBar name={document.name} close={close} />
-        <div className="my-20 mx-4">
+        <div className="py-20 px-4 ">
           <div className="flex flex-wrap gap-x-2 gap-y-3">
             {textPages[currentPage]}
           </div>

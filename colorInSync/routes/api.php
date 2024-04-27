@@ -7,6 +7,7 @@ use App\Http\Controllers\DocumentController;
 
 
 
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -26,4 +27,3 @@ Route::group(['prefix' => 'v1', 'namespace' => 'app\Http\Controllers\Api\v1'], f
     Route::apiResource('colorProfile', ColorProfileController::class);
     Route::get('/document/{id}', [DocumentController::class, 'show']);
 });
-

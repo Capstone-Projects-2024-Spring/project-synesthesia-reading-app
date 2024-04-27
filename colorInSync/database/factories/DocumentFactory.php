@@ -17,7 +17,13 @@ class DocumentFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'id'=>$this->faker->random_int(),
+            'user_id'=>$this->faker->random_int(),
+            'file_name'=>$this->faker->file(),
+            'file_size'=>$this->faker->random_int(),
+            'pages'=> $this->faker->random_int(),
+            'time_created'=>$this->faker->timestamps(),
+            'last_modified'=>$this->faker->timestamps(),
         ];
     }
 }
