@@ -38,7 +38,7 @@ class ColorProfileController extends Controller
      */
     public function show(ColorProfile $colorProfile)
     {
-        //
+        return [];
     }
 
     /**
