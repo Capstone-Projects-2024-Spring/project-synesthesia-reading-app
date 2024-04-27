@@ -2,7 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Api\v1\DocumentController;
+#use App\Http\Controllers\Api\v1\DocumentController;
 #use App\Http\Controllers\Api\v1\ColorProfileController;
 
 
@@ -24,8 +24,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-#Route::get('colorProfile', [ColorProfileController::class, 'show']);
-#Route::get('/document/{id}', [DocumentController::class, 'show']);
+Route::get('colorProfile', [ColorProfileController::class, 'show']);
+Route::get('/document/{id}', [DocumentController::class, 'show']);
 
 Route::group(['prefix' => 'v1', 'namespace' => 'App\Http\Controllers\Api\v1'], function(){
     #Route::get('/colorProfile', [ColorProfileController::class, 'show']);
