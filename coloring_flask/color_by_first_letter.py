@@ -6,6 +6,7 @@ class ColorByFirstLetter():
     def __init__(self, color_profile, text):
         self.color_profile = color_profile
         self.text = text
+        self.words = None
 
         self.grapheme_map = None
         self.exception_map = None
@@ -19,8 +20,8 @@ class ColorByFirstLetter():
 
     def split_words(self):
         import re
-        import enchant
         
+
         return re.split(r'(\W)', self.text)
     
     def get_word_color_map(self):

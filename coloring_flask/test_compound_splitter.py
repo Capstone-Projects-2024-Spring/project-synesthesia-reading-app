@@ -1,6 +1,7 @@
 from compound_splitter import CompoundSplitter
 
-s = CompoundSplitter()
+s = CompoundSplitter([])
+example_words = ['Has', ' ', 'anyone', ' ', 'ever', ' ', 'beheld', ' ', 'such', ' ', 'an', ' ', 'AnGeLic', ' ', 'being', '?', '']
 
 def test_loads_dict():
     assert (s.get_dict() != None)
@@ -34,4 +35,11 @@ def test_split_with_capitalization():
     actual = s.get_split_words_list()
     correct = ['any', 'one', 'angelic', 'never', 'the', 'less', 'Any', 'more']
     print(actual)
+    assert actual == correct
+
+def test_create_split_words_list():
+    example_splitter = CompoundSplitter(example_words)
+    actual = example_splitter.get_split_words_list()
+    print(actual)
+    correct = ['Has', ' ', 'any', 'one', ' ', 'ever', ' ', 'be', 'held', ' ', 'such', ' ', 'an', ' ', 'AnGeLic', ' ', 'being', '?', '']
     assert actual == correct
