@@ -2,6 +2,9 @@ class CompoundSplitter():
     
     def __init__(self):
         self.dictionary = None
+        self.split_words_list = []
+        #self.given_words_list = given_words
+
         self.create_dict()
         
 
@@ -21,10 +24,23 @@ class CompoundSplitter():
             return False
 
     
+    def get_split_words_list(self):
+        return self.split_words_list
+    
     def split(self, word):
         max_index = len(word)
         for index, char in enumerate(word):
-            left_compound = word[0:max_index-index]
+            # split into 2 components at index
+            left_component = word[0:max_index-index]
+            right_component = word[max_index-index: max_index]
 
-        return None
+            if (index > 0) and (len(left_component) > 1):
+                if self.is_word(left_component) and self.is_word(right_component):
+                    self.split_words_list.append(left_component)
+                    self.split_words_list.append(right_component)
+                    return None
+            
+        self.split_words_list.append(word)
+
+
 
