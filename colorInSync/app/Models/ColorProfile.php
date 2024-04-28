@@ -9,11 +9,10 @@ class ColorProfile extends Model
 {
     use HasFactory;
 
-    protected $attributes = [
-        'user_id' => -1,
-        'letters-colors' => '[]'
+    protected $fillable = [
+        'user_id',
+        'letter_colors'
     ];
-
     public function user(){
         return $this->belongsTo(User::class);
     }

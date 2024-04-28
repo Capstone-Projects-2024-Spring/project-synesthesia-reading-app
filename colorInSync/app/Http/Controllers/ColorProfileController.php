@@ -30,12 +30,18 @@ class ColorProfileController extends Controller
      */
     public function store(StoreColorProfileRequest $request)
     {
-        $this->validate($request,[
-            'letter_colors' => 'required'
-        ]); #validate the request
+        /*$this->validate($request,[
+            'letter_colors' => ['required']
+        ]); #validate the request*/
         $colorProfile = ColorProfile::create([
             'user_id' => 1,
-            'letter_colors' => $request->letter_colors
+            'letter_colors' => json_encode($request->grapheme_colors),
+            /*
+             * graphemes : [
+             * {letter: 'A' , color: 'green'},
+             * { ... }
+             * ]
+             */
         ]);#create new colorProfile
         return response()->json('CREATED',201);#201 response code
     }
