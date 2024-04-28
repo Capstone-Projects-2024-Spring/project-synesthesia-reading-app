@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Controllers\Api\v1;
+namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreDocumentRequest;
 use App\Http\Requests\UpdateDocumentRequest;
-use App\Http\Controller;
+use App\Http\Controllers\Controller;
 use App\Models\Document;
 
 class DocumentController extends Controller
@@ -53,7 +53,25 @@ class DocumentController extends Controller
      */
     public function show(Document $document)
     {
-        return view('documents.show', compact('document'));
+        $staticJson = [
+            "words" => ["The ", "over", "weight ", "red ", "fox ", "jumped ", "over ", "the ", "sleeping ", "brown ", "dog", "."],
+            "word_color_map" => [
+                "jumped " => "rgb(255,227,46)",
+                "over " => "rgb(97,186,250)",
+                "The " => "rgb(255,246,69)",
+                "fox " => "rgb(227,16,16)",
+                "dog" => "rgb(5,29,153)",
+                "brown " => "rgb(29,26,214)",
+                "red " => "rgb(145,67,230)",
+                "weight " => "rgb(8,39,196)",
+                "the " => "rgb(255,246,69)",
+                "over" => "rgb(97,186,250)",
+                "." => "rgb(0,0,0)",
+                "sleeping " => "rgb(255,252,69)"
+            ]
+        ];
+
+        return response()->json($staticJson);
     }
 
     /**

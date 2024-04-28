@@ -12,10 +12,9 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('color_profiles', function (Blueprint $table) {
-            $table->id();
+            $table->id()->autoIncrement();
             $table->integer('user_id');
-            $table->map('letter_colors');
-            $table->timestamps('last_modified');
+            $table->string('letter_colors');
         });
     }
 

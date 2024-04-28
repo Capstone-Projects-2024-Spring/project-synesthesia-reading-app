@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Api\v1;
+namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreColorProfileRequest;
 use App\Http\Requests\UpdateColorProfileRequest;
@@ -38,7 +38,7 @@ class ColorProfileController extends Controller
      */
     public function show(ColorProfile $colorProfile)
     {
-        //
+        return [];
     }
 
     /**
