@@ -35,7 +35,7 @@ class ColorProfileController extends Controller
         ]); #validate the request*/
         $colorProfile = ColorProfile::create([
             'user_id' => 1,
-            'letter_colors' => $request->letter_colors
+            'letter_colors' => $request->getContent()
         ]);#create new colorProfile
         return response()->json('CREATED',201);#201 response code
     }
