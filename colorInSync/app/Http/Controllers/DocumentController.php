@@ -38,7 +38,7 @@ class DocumentController extends Controller
             $text = $pdf->getText();
     
             $document = new Document();
-            $document->content = $text; // Assuming there is a 'content' field in your documents table
+            $document->content = $text; 
             $document->save();
     
             return redirect()->route('documents.show', $document->id);
