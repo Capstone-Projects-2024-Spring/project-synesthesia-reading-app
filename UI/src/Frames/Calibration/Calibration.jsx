@@ -53,7 +53,7 @@ const Calibration = ({ setColors }) => {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({letter_colors: colors})
+      body: JSON.stringify(colors),
     };
     fetch(`${import.meta.env.VITE_DOMAIN}/api/colorProfileUp`, requestOptions)
       .then((response) => {
@@ -65,11 +65,11 @@ const Calibration = ({ setColors }) => {
       })
       .catch((error) => {
         console.error("There was a problem with your fetch operation:", error);
+        setColors(colors);
       });
   }
 
   const next = () => {
-    console.log(colors);
     if (index == graphemes.length - 1) {
       uploadColors(colors);
     }
