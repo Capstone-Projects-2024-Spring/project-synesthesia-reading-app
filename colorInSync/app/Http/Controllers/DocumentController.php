@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreDocumentRequest;
 use App\Http\Requests\UpdateDocumentRequest;
 use App\Http\Controllers\Controller;
+use vendor\smalot\pdfParser;
 use App\Models\Document;
 
 class DocumentController extends Controller
@@ -38,7 +39,7 @@ class DocumentController extends Controller
             $text = $pdf->getText();
     
             $document = new Document();
-            $document->content = $text; // Assuming there is a 'content' field in your documents table
+            $document->content = $text; 
             $document->save();
     
             return redirect()->route('documents.show', $document->id);
