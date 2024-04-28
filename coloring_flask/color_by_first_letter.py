@@ -12,11 +12,15 @@ class ColorByFirstLetter():
         self.unique_words = None
         self.word_color_map = None
 
-        self.parse_json()
-        self.list_unique_words()
-        self.color()
+        #self.parse_json()
+        #self.list_unique_words()
+        #self.color()
         #self.create_page_object()
 
+    def split_words(self):
+        import re
+        return re.split(r'(\W)', self.text)
+    
     def get_word_color_map(self):
         return self.word_color_map
 
