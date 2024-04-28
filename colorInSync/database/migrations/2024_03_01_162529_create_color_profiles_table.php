@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id()->autoIncrement();
             $table->integer('user_id');
             $table->string('letter_colors');
+            $table->timestamps();
         });
     }
 
