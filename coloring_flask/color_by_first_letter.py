@@ -19,6 +19,8 @@ class ColorByFirstLetter():
 
     def split_words(self):
         import re
+        import enchant
+        
         return re.split(r'(\W)', self.text)
     
     def get_word_color_map(self):
