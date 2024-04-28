@@ -53,9 +53,9 @@ const Calibration = ({ setColors }) => {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({user_id: 2, grapheme_colors: colors}),
+      body: JSON.stringify({user_id: 1, grapheme_colors: colors}),
     };
-    fetch(`${import.meta.env.VITE_DOMAIN}/api/colorProfileUp`, requestOptions)
+    fetch(`${import.meta.env.VITE_DOMAIN}/api/colorProfile`, requestOptions)
       .then((response) => {
         if (!response.ok) {
           throw new Error("Network response was not ok");
