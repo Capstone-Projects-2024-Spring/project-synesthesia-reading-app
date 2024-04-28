@@ -28,3 +28,10 @@ def test_split_layered_compound():
     correct = ['any', 'one', 'angelic', 'never', 'the', 'less']
     print(actual)
     assert actual == correct
+
+def test_split_with_capitalization():
+    s.split('Anymore', True, [])
+    actual = s.get_split_words_list()
+    correct = ['any', 'one', 'angelic', 'never', 'the', 'less', 'Any', 'more']
+    print(actual)
+    assert actual == correct
