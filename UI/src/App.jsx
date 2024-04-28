@@ -37,7 +37,6 @@ function App() {
         ) : (
           <Calibration
             setColors={(colors) => {
-              uploadColors(colors);
               setColors(colors);
             }}
           />
