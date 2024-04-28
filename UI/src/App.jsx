@@ -28,12 +28,7 @@ function App() {
         .catch((err) => console.log(err));
     }
   }, [user]);
-  function uploadColors(colors) {
-    fetch(url, {
-      method: "POST",
-      headers: {},
-    });
-  }
+  
   return (
     <>
       {profile ? (
