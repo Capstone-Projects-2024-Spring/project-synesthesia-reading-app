@@ -47,16 +47,31 @@ const Calibration = ({ setColors }) => {
   const [currentColor, setCurrentColor] = useState("rgb(255, 255, 255)");
 
   function uploadColors(colors) {
-    fetch(url, {
+    // Sending the request
+    const requestOptions = {
       method: "POST",
-      headers: {},
-    });
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(colors),
+    };
+    fetch(`${import.meta.env.VITE_DOMAIN}/api/document`, requestOptions)
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+        console.log("POST request was accepted");
+        setColors(colors);
+      })
+      .catch((error) => {
+        console.error("There was a problem with your fetch operation:", error);
+      });
   }
 
   const next = () => {
     console.log(colors);
     if (index == graphemes.length - 1) {
-      setColors(colors);
+      uploadColors(colors);
     }
     setIndex(index + 1);
     colors.push({ grapheme: graphemes[index], color: currentColor });
