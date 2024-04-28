@@ -53,7 +53,7 @@ const Calibration = ({ setColors }) => {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(colors),
+      body: JSON.stringify({user_id: 2, grapheme_colors: colors}),
     };
     fetch(`${import.meta.env.VITE_DOMAIN}/api/colorProfileUp`, requestOptions)
       .then((response) => {
