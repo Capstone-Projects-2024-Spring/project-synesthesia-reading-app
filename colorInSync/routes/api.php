@@ -26,11 +26,11 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('colorProfile', [ColorProfileController::class, 'show']);
-Route::post('colorProfile', [ColorProfileController::class, 'store']);
+Route::get('colorProfileDown', [ColorProfileController::class, 'show']);
+Route::post('colorProfileUp', [ColorProfileController::class, 'store']);
 
-Route::get('document', [DocumentController::class, 'show']);
-Route::post('document', [DocumentController::class, 'store']);
+Route::get('documentDown', [DocumentController::class, 'show']);
+Route::post('documentUp', [DocumentController::class, 'store']);
 
 /*Route::group(['prefix' => 'v1', 'namespace' => 'App\Http\Controllers\Api\v1'], function(){
     #Route::get('/colorProfile', [ColorProfileController::class, 'show']);

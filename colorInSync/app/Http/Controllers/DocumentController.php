@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreDocumentRequest;
 use App\Http\Requests\UpdateDocumentRequest;
 use App\Http\Controllers\Controller;
+use vendor\smalot\pdfParser;
 use App\Models\Document;
 
 class DocumentController extends Controller
