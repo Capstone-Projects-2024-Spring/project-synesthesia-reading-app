@@ -26,7 +26,9 @@ class ColorByFirstLetter():
         import re
         from compound_splitter import CompoundSplitter
 
-        splitter = CompoundSplitter(re.split(r'(\W)', self.text))
+        text = re.split(r'(\W)', self.text)
+        text = [word for word in text if word]
+        splitter = CompoundSplitter(text)
         self.text = splitter.get_split_words_list()
     
     def get_word_color_map(self):
