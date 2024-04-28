@@ -30,7 +30,14 @@ class ColorProfileController extends Controller
      */
     public function store(StoreColorProfileRequest $request)
     {
-        //
+        $this->validate($request,[
+            'letter_colors' => 'required'
+        ]); #validate the request
+        $colorProfile = ColorProfile::create([
+            'user_id' => 1,
+            'letter_colors' => $request->letter_colors
+        ]);#create new colorProfile
+        return response()->json('CREATED',201);#201 response code
     }
 
     /**
