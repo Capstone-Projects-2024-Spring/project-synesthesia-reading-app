@@ -27,7 +27,10 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::get('colorProfile', [ColorProfileController::class, 'show']);
+Route::post('colorProfile', [ColorProfileController::class, 'store']);
+
 Route::get('document', [DocumentController::class, 'show']);
+Route::post('document', [DocumentController::class, 'store']);
 
 /*Route::group(['prefix' => 'v1', 'namespace' => 'App\Http\Controllers\Api\v1'], function(){
     #Route::get('/colorProfile', [ColorProfileController::class, 'show']);
