@@ -43,3 +43,11 @@ def test_create_split_words_list():
     print(actual)
     correct = ['Has', ' ', 'any', 'one', ' ', 'ever', ' ', 'be', 'held', ' ', 'such', ' ', 'an', ' ', 'AnGeLic', ' ', 'being', '?', '']
     assert actual == correct
+
+def test_doesnt_repeat():
+    ex = CompoundSplitter([])
+    ex.split('persevered', True, [])
+    correct = ['persevered']
+    actual = ex.get_split_words_list()
+    print(actual)
+    assert correct == actual

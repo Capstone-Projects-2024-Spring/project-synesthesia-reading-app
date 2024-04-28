@@ -18,11 +18,16 @@ class ColorByFirstLetter():
         #self.color()
         #self.create_page_object()
 
+    # gets self.text
+    def get_text(self):
+        return self.text
+
     def split_words(self):
         import re
-        
+        from compound_splitter import CompoundSplitter
 
-        return re.split(r'(\W)', self.text)
+        splitter = CompoundSplitter(re.split(r'(\W)', self.text))
+        self.text = splitter.get_split_words_list()
     
     def get_word_color_map(self):
         return self.word_color_map
