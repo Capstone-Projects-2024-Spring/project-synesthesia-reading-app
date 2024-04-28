@@ -13,10 +13,11 @@ class ColorByFirstLetter():
         self.unique_words = None
         self.word_color_map = None
 
-        #self.parse_json()
-        #self.list_unique_words()
-        #self.color()
-        #self.create_page_object()
+        self.split_words()
+        self.parse_color_profile()
+        self.list_unique_words()
+        self.color()
+        self.create_page_object()
 
     # gets self.text
     def get_text(self):
@@ -34,7 +35,8 @@ class ColorByFirstLetter():
     def get_word_color_map(self):
         return self.word_color_map
 
-    def parse_json(self):
+    def parse_color_profile(self):
+
         self.grapheme_map = self.color_profile["grapheme-color map"]
         self.exception_map= self.color_profile["exceptions-color map"]
 

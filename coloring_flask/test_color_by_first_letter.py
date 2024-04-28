@@ -5,9 +5,10 @@ text = '''Nevertheless, the angelic being persevered.'''
 c = ColorByFirstLetter(color_profile, text)
 
 def test_split_words():
-    c.split_words()
     tokenized = c.get_text()
     correct = ['Never', 'the', 'less', ',', ' ', 'the', ' ', 'angelic', ' ', 'being', ' ', 'persevered', '.']
     print(f'actual: {tokenized}')
     print(f'correct: {correct}')
     assert (tokenized == correct)
+
+    
