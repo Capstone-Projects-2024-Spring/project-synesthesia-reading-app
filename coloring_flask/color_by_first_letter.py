@@ -67,7 +67,10 @@ class ColorByFirstLetter():
 
         # add word-rgb value pairs for each unique word
         for word in self.unique_words:
-            if(grapheme_map.get(word[0].upper())):
+            if word in self.exception_map.keys():
+                word_color_map[word] = self.exception_map.get(word)
+
+            elif(grapheme_map.get(word[0].upper())):
                 word_color_map[word] = grapheme_map.get(word[0].upper())
             else:
                 word_color_map[word] = 'rgb(0,0,0)'
