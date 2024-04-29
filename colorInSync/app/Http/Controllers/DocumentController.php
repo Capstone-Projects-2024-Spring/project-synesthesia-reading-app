@@ -32,7 +32,14 @@ class DocumentController extends Controller
      */
     public function store(StoreDocumentRequest $request)
     {
-        //
+        #Step 1: Validate request has pdf
+        #Step 2: Extract text from pdf
+        #Step 3: Retrieve color associations
+        #Step 4: Send text + colors to flask
+        #Step 5: Wait on response from flask
+        #Step 6: Store colored page as string in database
+        #Step 7: Send 201 created to frontend
+        /*
         if ($request->hasFile('pdf') && $request->file('pdf')->isValid()) {
             $parser = new Parser();
             $pdf = $parser->parseFile($request->file('pdf')->path());
@@ -46,7 +53,7 @@ class DocumentController extends Controller
         } else {
             Log::error('File upload failed or no file uploaded.');
             return back()->withErrors('File upload failed or no file uploaded.');
-        }
+        }*/
     }
 
     /**
