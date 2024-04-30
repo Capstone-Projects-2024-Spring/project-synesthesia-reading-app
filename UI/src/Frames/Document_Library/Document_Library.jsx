@@ -44,10 +44,31 @@ function DocumentLibrary({ user_profile }) {
   const handle_upload = (event) => {
     const selectedFile = event.target.files[0];
     console.log(selectedFile);
-    var newList = Array.from(documentList);
-    newList.push(selectedFile);
-    setDocumentList(newList);
-    setUploading(false);
+    const formData = new FormData();
+    formData.append("document", selectedFile);
+
+    const requestOptions = {
+      method: "POST",
+      headers: {
+        "Content-Type": "multipart/form-data", // Specify the Content-Type header
+      },
+      body: formData,
+    };
+    fetch(`${import.meta.env.VITE_DOMAIN}/api/document`, requestOptions)
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+        console.log("document POST request was accepted");
+        var newList = Array.from(documentList);
+        newList.push(selectedFile);
+        setDocumentList(newList);
+        setUploading(false);
+      })
+      .catch((error) => {
+        console.error("There was a problem with your fetch operation:", error);
+        alert("Error uploading your document");
+      });
   };
   function DocumentLibaryActionBar() {
     return (
@@ -76,7 +97,12 @@ function DocumentLibrary({ user_profile }) {
       <div className="flex flex-wrap gap-x-10 gap-y-10 my-20 mx-5">
         {documentList.length > 0 &&
           documentList.map((document, index) => (
-            <Document name={document.name} key={index} id={index} className="size-2" />
+            <Document
+              name={document.name}
+              key={index}
+              id={index}
+              className="size-2"
+            />
           ))}
       </div>
     );
@@ -84,11 +110,7 @@ function DocumentLibrary({ user_profile }) {
   return (
     <>
       {openDocument ? (
-          <Reader
-            document={openDocument}
-            close={() => setOpenDocument(null)}
-          />
-
+        <Reader document={openDocument} close={() => setOpenDocument(null)} />
       ) : (
         <div className="h-screen">
           <DocumentLibaryActionBar />
