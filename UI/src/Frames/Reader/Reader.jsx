@@ -5,7 +5,7 @@ import { useState, useEffect, Swipeable } from "react";
 import React from "react";
 import "./Reader.css"
 
-function Reader({ document = { name: "Unnown title" }, close }) {
+function Reader({ document = { name: "Unnown title", id: -1 }, close }) {
   const [textPages, setTextPages] = useState([]);
   const [currentPage, setCurrentPage] = useState(0);
 
@@ -56,7 +56,7 @@ function Reader({ document = { name: "Unnown title" }, close }) {
   // Fetch text data from the API
   useEffect(() => {
 
-    fetch(`${import.meta.env.VITE_DOMAIN}/api/document`)
+    fetch(`${import.meta.env.VITE_DOMAIN}/api/document/${document.id}`)
       .then((response) => response.json())
       .then((pageObj) => {
         console.log(pageObj);

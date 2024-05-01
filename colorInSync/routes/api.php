@@ -32,7 +32,7 @@ Route::get('color-profile', [ColorProfileController::class, 'show']);
 //Route::middleware('auth:sanctum')->post('color-profile', [ColorProfileController::class, 'store']);
 Route::post('color-profile', [ColorProfileController::class, 'store']);
 
-Route::get('document', [DocumentController::class, 'show']);
+Route::get('document/{id}', [DocumentController::class, 'show']);
 Route::post('document', [DocumentController::class, 'store']);
 
 Route::get('http://127.0.0.1:5000/', [DocumentController::class,'show'])->name('documents.show');
