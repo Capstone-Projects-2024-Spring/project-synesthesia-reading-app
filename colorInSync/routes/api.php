@@ -35,7 +35,7 @@ Route::post('color-profile', [ColorProfileController::class, 'store']);
 Route::get('document', [DocumentController::class, 'show']);
 Route::post('document', [DocumentController::class, 'store']);
 
-Route::get('/', [DocumentController::class,'show'])->name('documents.show');
+Route::get('http://127.0.0.1:5000/', [DocumentController::class,'show'])->name('documents.show');
 
 /*Route::group(['prefix' => 'v1', 'namespace' => 'App\Http\Controllers\Api\v1'], function(){
     #Route::get('/colorProfile', [ColorProfileController::class, 'show']);
