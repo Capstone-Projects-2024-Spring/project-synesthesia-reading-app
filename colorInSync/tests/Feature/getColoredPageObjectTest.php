@@ -23,7 +23,7 @@ class getColoredPageObjectTest extends TestCase
         #$requestBody = '{' . $colorProfile . ', "text": "' . $text . '"}';
         
         $controller = new DocumentController;
-        $response = $controller->show(1,1);
+        $response = $controller->show(1);
         $this->assertIsString($response, $message= $response);
         
     }
