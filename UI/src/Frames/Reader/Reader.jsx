@@ -56,7 +56,7 @@ function Reader({ document = { name: "Unnown title" }, close }) {
   // Fetch text data from the API
   useEffect(() => {
 
-    fetch("/page_object.json")
+    fetch(`${import.meta.env.VITE_DOMAIN}/api/document`)
       .then((response) => response.json())
       .then((pageObj) => {
         console.log(pageObj);

@@ -12,13 +12,12 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('documents', function (Blueprint $table) {
-            $table->id();
+            $table->id()->autoIncrement();
             $table->integer('user_id');
-            $table->string('file_name');
-            $table->integer('file_size');
-            $table->integer('pages');
-            $table->timestamps('time_created');
-            $table->timestamps('last_modified');
+            #$table->string('file_name');
+            #$table->integer('file_size');
+            $table->string('content');
+            #$table->integer('pages');
         });
     }
 

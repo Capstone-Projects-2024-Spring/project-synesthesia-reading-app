@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreColorProfileRequest;
 use App\Http\Requests\UpdateColorProfileRequest;
+use App\Http\Controllers\Controller;
 use App\Models\ColorProfile;
 
 class ColorProfileController extends Controller
@@ -13,7 +14,7 @@ class ColorProfileController extends Controller
      */
     public function index()
     {
-        //
+        return ColorProfile::all();
     }
 
     /**
@@ -29,7 +30,20 @@ class ColorProfileController extends Controller
      */
     public function store(StoreColorProfileRequest $request)
     {
-        //
+        /*$this->validate($request,[
+            'letter_colors' => ['required']
+        ]); #validate the request*/
+        $colorProfile = ColorProfile::create([
+            'user_id' => 1,
+            'letter_colors' => json_encode($request->grapheme_colors),
+            /*
+             * graphemes : [
+             * {letter: 'A' , color: 'green'},
+             * { ... }
+             * ]
+             */
+        ]);#create new colorProfile
+        return response()->json('CREATED',201);#201 response code
     }
 
     /**
@@ -37,7 +51,7 @@ class ColorProfileController extends Controller
      */
     public function show(ColorProfile $colorProfile)
     {
-        //
+        return [];
     }
 
     /**

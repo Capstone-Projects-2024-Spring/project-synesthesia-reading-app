@@ -9,6 +9,10 @@ class ColorProfile extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'user_id',
+        'letter_colors'
+    ];
     public function user(){
         return $this->belongsTo(User::class);
     }

@@ -28,13 +28,18 @@ function App() {
         .catch((err) => console.log(err));
     }
   }, [user]);
+  
   return (
     <>
       {profile ? (
         colors ? (
           <DocumentLibrary user_profile={profile} />
         ) : (
-          <Calibration setColors={(colors) => setColors(colors)} />
+          <Calibration
+            setColors={(colors) => {
+              setColors(colors);
+            }}
+          />
         )
       ) : (
         <Login loginSuccess={(user) => setUser(user)} />

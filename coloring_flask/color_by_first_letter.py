@@ -6,21 +6,37 @@ class ColorByFirstLetter():
     def __init__(self, color_profile, text):
         self.color_profile = color_profile
         self.text = text
+        self.words = None
 
         self.grapheme_map = None
         self.exception_map = None
         self.unique_words = None
         self.word_color_map = None
 
-        self.parse_json()
+        self.split_words()
+        self.parse_color_profile()
         self.list_unique_words()
         self.color()
-        #self.create_page_object()
+        self.create_page_object()
 
+    # gets self.text
+    def get_text(self):
+        return self.text
+
+    def split_words(self):
+        import re
+        from compound_splitter import CompoundSplitter
+
+        text = re.split(r'(\W)', self.text)
+        text = [word for word in text if word]
+        splitter = CompoundSplitter(text)
+        self.text = splitter.get_split_words_list()
+    
     def get_word_color_map(self):
         return self.word_color_map
 
-    def parse_json(self):
+    def parse_color_profile(self):
+
         self.grapheme_map = self.color_profile["grapheme-color map"]
         self.exception_map= self.color_profile["exceptions-color map"]
 
@@ -51,7 +67,10 @@ class ColorByFirstLetter():
 
         # add word-rgb value pairs for each unique word
         for word in self.unique_words:
-            if(grapheme_map.get(word[0].upper())):
+            if word in self.exception_map.keys():
+                word_color_map[word] = self.exception_map.get(word)
+
+            elif(grapheme_map.get(word[0].upper())):
                 word_color_map[word] = grapheme_map.get(word[0].upper())
             else:
                 word_color_map[word] = 'rgb(0,0,0)'

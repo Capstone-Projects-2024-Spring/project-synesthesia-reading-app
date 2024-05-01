@@ -40,21 +40,41 @@ const graphemes = [
   "7",
   "8",
   "9",
-
 ];
 var colors = [];
 const Calibration = ({ setColors }) => {
   const [index, setIndex] = useState(0);
   const [currentColor, setCurrentColor] = useState("rgb(255, 255, 255)");
-  
+
+  function uploadColors(colors) {
+    // Sending the request
+    const requestOptions = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({user_id: 1, grapheme_colors: colors}),
+    };
+    fetch(`${import.meta.env.VITE_DOMAIN}/api/color-profile`, requestOptions)
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+        console.log("POST request was accepted");
+        setColors(colors);
+      })
+      .catch((error) => {
+        console.error("There was a problem with your fetch operation:", error);
+        setColors(colors);
+      });
+  }
+
   const next = () => {
-    console.log(colors);
     if (index == graphemes.length - 1) {
-      setColors(colors);
+      uploadColors(colors);
     }
     setIndex(index + 1);
     colors.push({ grapheme: graphemes[index], color: currentColor });
-    
   };
 
   return (
@@ -64,7 +84,7 @@ const Calibration = ({ setColors }) => {
           {graphemes[index]}
         </p>
         <RgbStringColorPicker color={currentColor} onChange={setCurrentColor} />
-        <Right onClick={next} sx={{fontSize: 100 }} />
+        <Right onClick={next} sx={{ fontSize: 100 }} />
       </div>
     </>
   );
