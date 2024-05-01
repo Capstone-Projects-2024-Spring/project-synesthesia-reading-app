@@ -7,6 +7,8 @@ use App\Http\Requests\UpdateDocumentRequest;
 use App\Http\Controllers\Controller;
 use vendor\smalot\pdfParser;
 use App\Models\Document;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
 
 class DocumentController extends Controller
 {
@@ -108,7 +110,10 @@ class DocumentController extends Controller
             
         ];
 
-        return response()->json($staticJson);
+        $response = Http::get('http://127.0.0.1:5000' . $pageInfoJson);
+        $coloredPageObject = $response->json();
+
+        return $coloredPageObject;
     }
 
     /**
