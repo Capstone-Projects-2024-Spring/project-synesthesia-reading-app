@@ -32,7 +32,7 @@ Route::get('color-profile', [ColorProfileController::class, 'show']);
 //Route::middleware('auth:sanctum')->post('color-profile', [ColorProfileController::class, 'store']);
 Route::post('color-profile', [ColorProfileController::class, 'store']);
 
-Route::get('document', [DocumentController::class, 'show']);
+Route::get('document/{id}', [DocumentController::class, 'show']);
 Route::post('document', [DocumentController::class, 'store']);
 
 /*Route::group(['prefix' => 'v1', 'namespace' => 'App\Http\Controllers\Api\v1'], function(){
