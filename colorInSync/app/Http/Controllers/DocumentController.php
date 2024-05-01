@@ -8,10 +8,21 @@ use App\Http\Controllers\Controller;
 use Smalot\PdfParser\Parser;
 use App\Models\Document;
 use Illuminate\Validation\ValidationException;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
+use App\Http\Models\ColorProfile;
+use App\Http\Controllers\ColorProfileController;
+
 
 
 class DocumentController extends Controller
 {
+
+    private $uploadedDocument;
+    
+    
+
+
     /**
      * Display a listing of the document.
      */
@@ -83,32 +94,59 @@ class DocumentController extends Controller
     /**
      * Display the specified document.
      */
-    public function show($id)
+        
+
+    public function show($user_id, $id)
     {
-        $document = Document::find($id);
+        
+       $document = Document::find($id);
 
         if (!$document) {
             return response()->json(['error' => 'Document not found'], 404);
         }
-        $staticJson = [
-            "words" => ["The ", "over", "weight ", "red ", "fox ", "jumped ", "over ", "the ", "sleeping ", "brown ", "dog", "."],
-            "word_color_map" => [
-                "jumped " => "rgb(255,227,46)",
-                "over " => "rgb(97,186,250)",
-                "The " => "rgb(255,246,69)",
-                "fox " => "rgb(227,16,16)",
-                "dog" => "rgb(5,29,153)",
-                "brown " => "rgb(29,26,214)",
-                "red " => "rgb(145,67,230)",
-                "weight " => "rgb(8,39,196)",
-                "the " => "rgb(255,246,69)",
-                "over" => "rgb(97,186,250)",
-                "." => "rgb(0,0,0)",
-                "sleeping " => "rgb(255,252,69)"
-            ]
-        ];
 
-        return response()->json($staticJson);
+        $text = $document->text;
+        $colorProfile = '"color-profile": {
+            "grapheme-color map": {
+                "A": "rgb(230,16,16)",
+                "B": "rgb(29,26,214)",
+                "C": "rgb(250,247,65)",
+                "D": "rgb(5,29,153)",
+                "E": "rgb(11,176,16)",
+                "F": "rgb(227,16,16)",
+                "G": "rgb(16,163,21)",
+                "H": "rgb(255,239,15)",
+                "I": "rgb(216,242,242)",
+                "J": "rgb(255,227,46)",
+                "K": "rgb(255,248,33)",
+                "L": "rgb(245,29,29)",
+                "M": "rgb(252,10,10)",
+                "N": "rgb(71,4,148)",
+                "O": "rgb(97,186,250)",
+                "P": "rgb(250,240,50)",
+                "Q": "rgb(170,197,242)",
+                "R": "rgb(145,67,230)",
+                "S": "rgb(255,252,69)",
+                "T": "rgb(255,246,69)",
+                "U": "rgb(46,162,230)",
+                "V": "rgb(198,200,247)",
+                "W": "rgb(8,39,196)",
+                "X": "rgb(80,80,82)",
+                "Y": "rgb(255,242,0)",
+                "Z": "rgb(197,228,232)"
+            },
+            "exceptions-color map": {"angelic": "rgb(250,250,250)", "Monday": "rgb(0,0,0)"}
+        }';
+
+
+        $requestBody = '{' . $colorProfile . ', "text": "' . $text . '"}';
+
+        
+
+        $response = Http::withBody($requestBody)->get('http://127.0.0.1:5000/');
+        $coloredPageObject = $response->body();
+
+        return $coloredPageObject;
     }
 
     /**
