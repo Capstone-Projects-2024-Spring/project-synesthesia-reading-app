@@ -60,7 +60,7 @@ class DocumentController extends Controller
                 'text' => $textContent,
             ]);
 
-            return response()->json(['message' => 'Document created successfully', 'document' => $this->uploadedDocument], 201);
+            return response()->json(['message' => 'Document created successfully', 'document_id' => $this->uploadedDocument->id], 201);
         }
 
         throw ValidationException::withMessages(['file' => 'File not provided or invalid']);
