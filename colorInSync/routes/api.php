@@ -10,6 +10,7 @@ use App\Http\Controllers\ColorProfileController;
 
 
 
+Route::post('/documents',[DocumentController::class, 'store']);
 
 
 /*
