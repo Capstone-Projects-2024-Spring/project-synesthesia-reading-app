@@ -12,7 +12,6 @@ use Illuminate\Validation\ValidationException;
 
 class DocumentController extends Controller
 {
-    private $uploadedDocument;
     /**
      * Display a listing of the document.
      */
@@ -35,15 +34,9 @@ class DocumentController extends Controller
      */
     public function store(StoreDocumentRequest $request)
     {
-        #Step 1: Validate request has pdf
-        #Step 2: Extract text from pdf
-        #Step 3: Retrieve color associations
-        #Step 4: Send text + colors to flask
-        #Step 5: Wait on response from flask
-        #Step 6: Store colored page as string in database
-        #Step 7: Send 201 created to frontend
         $validatedData = $request->validate([
             'document' => 'required|file|mimes:pdf|max:2048', // Adjust file size and types as needed
+            'user_id' => 'required'
         ]);
 
         if ($request->hasFile('document')) {
@@ -55,12 +48,15 @@ class DocumentController extends Controller
             // Extract text content from the PDF
             $textContent = $this->extractTextFromPDF(storage_path('app/' . $filePath));
 
+            $user_id = $request->user_id;
+
             // Create the document
-            $this->uploadedDocument = Document::create([
+            $document = Document::create([
                 'text' => $textContent,
+                'id' => $user_id
             ]);
 
-            return response()->json(['message' => 'Document created successfully', 'document' => $this->uploadedDocument], 201);
+            return response()->json(['message' => 'Document created successfully', 'document_id' => $document->id], 201);
         }
 
         throw ValidationException::withMessages(['file' => 'File not provided or invalid']);
@@ -87,8 +83,13 @@ class DocumentController extends Controller
     /**
      * Display the specified document.
      */
-    public function show(Document $document)
+    public function show($id)
     {
+        $document = Document::find($id);
+
+        if (!$document) {
+            return response()->json(['error' => 'Document not found'], 404);
+        }
         $staticJson = [
             "words" => ["The ", "over", "weight ", "red ", "fox ", "jumped ", "over ", "the ", "sleeping ", "brown ", "dog", "."],
             "word_color_map" => [

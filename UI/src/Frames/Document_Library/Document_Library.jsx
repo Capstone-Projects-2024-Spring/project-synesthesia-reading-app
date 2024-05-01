@@ -5,17 +5,19 @@ import { useState, useEffect, Profiler } from "react";
 import React from "react";
 import Reader from "./../Reader/Reader.jsx";
 function DocumentLibrary({ user_profile }) {
+
+  const userId = 1;
   const [documentList, setDocumentList] = useState([]);
   const [uploading, setUploading] = useState(false);
   const [openDocument, setOpenDocument] = useState(null);
-  function Document({ name = "Unnamed Document", id }) {
+  function Document({ name = "Unnamed Document", id, index }) {
     return (
       <>
         <div className="flex flex-col items-center" id={id}>
           <TextSnippet
             sx={{ fontSize: 75 }}
             onClick={() => {
-              setOpenDocument(documentList[id]);
+              setOpenDocument(documentList[index]);
             }}
           ></TextSnippet>
           <p className="truncate w-40">{name}</p>
@@ -46,6 +48,7 @@ function DocumentLibrary({ user_profile }) {
     console.log(selectedFile);
     const formData = new FormData();
     formData.append("document", selectedFile);
+    formData.append('user_id', userId )
 
     const requestOptions = {
       method: "POST",
@@ -59,9 +62,13 @@ function DocumentLibrary({ user_profile }) {
         if (!response.ok) {
           throw new Error("Network response was not ok");
         }
+        return response.json();
+      })
+      .then((data) => {
         console.log("document POST request was accepted");
+        console.log("Document ID:", data.document_id); // Access the document ID from the response data
         var newList = Array.from(documentList);
-        newList.push(selectedFile);
+        newList.push({file_info: selectedFile, id: data.document_id});
         setDocumentList(newList);
         setUploading(false);
       })
@@ -98,9 +105,10 @@ function DocumentLibrary({ user_profile }) {
         {documentList.length > 0 &&
           documentList.map((document, index) => (
             <Document
-              name={document.name}
+              name={document.file_info.name}
               key={index}
-              id={index}
+              id={document.id}
+              index={index}
               className="size-2"
             />
           ))}
