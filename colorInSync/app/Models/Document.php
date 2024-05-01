@@ -9,6 +9,9 @@ class Document extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'text'
+    ];
     public function user(){
         return $this->belongsTo(User::class);
     }
