@@ -5,11 +5,14 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreDocumentRequest;
 use App\Http\Requests\UpdateDocumentRequest;
 use App\Http\Controllers\Controller;
-use vendor\smalot\pdfParser;
+use Smalot\PdfParser\Parser;
 use App\Models\Document;
+use Illuminate\Validation\ValidationException;
+
 
 class DocumentController extends Controller
 {
+    private $uploadedDocument;
     /**
      * Display a listing of the document.
      */
@@ -39,21 +42,46 @@ class DocumentController extends Controller
         #Step 5: Wait on response from flask
         #Step 6: Store colored page as string in database
         #Step 7: Send 201 created to frontend
-        /*
-        if ($request->hasFile('pdf') && $request->file('pdf')->isValid()) {
-            $parser = new Parser();
-            $pdf = $parser->parseFile($request->file('pdf')->path());
-            $text = $pdf->getText();
-    
-            $document = new Document();
-            $document->content = $text; 
-            $document->save();
-    
-            return redirect()->route('documents.show', $document->id);
-        } else {
-            Log::error('File upload failed or no file uploaded.');
-            return back()->withErrors('File upload failed or no file uploaded.');
-        }*/
+        $validatedData = $request->validate([
+            'document' => 'required|file|mimes:pdf|max:2048', // Adjust file size and types as needed
+        ]);
+
+        if ($request->hasFile('document')) {
+            $file = $request->file('document');
+
+            // Store the uploaded file
+            $filePath = $file->store('pdfs');
+
+            // Extract text content from the PDF
+            $textContent = $this->extractTextFromPDF(storage_path('app/' . $filePath));
+
+            // Create the document
+            $document = Document::create([
+                'text' => $textContent,
+            ]);
+
+            return response()->json(['message' => 'Document created successfully', 'document' => $document], 201);
+        }
+
+        throw ValidationException::withMessages(['file' => 'File not provided or invalid']);
+
+    }
+    private function extractTextFromPDF($filePath)
+    {
+        $parser = new Parser();
+        $pdf = $parser->parseFile($filePath);
+
+        // Get all pages from the PDF
+        $pages = $pdf->getPages();
+
+        $textContent = '';
+
+        // Extract text content from each page
+        foreach ($pages as $page) {
+            $textContent .= $page->getText();
+        }
+
+        return $textContent;
     }
 
     /**
