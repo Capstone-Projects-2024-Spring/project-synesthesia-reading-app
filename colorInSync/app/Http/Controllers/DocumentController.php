@@ -8,6 +8,9 @@ use App\Http\Controllers\Controller;
 use Smalot\PdfParser\Parser;
 use App\Models\Document;
 use Illuminate\Validation\ValidationException;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
+
 
 
 class DocumentController extends Controller
@@ -89,6 +92,7 @@ class DocumentController extends Controller
      */
     public function show(Document $document)
     {
+        $text = $document->getText();
         $staticJson = [
             "words" => ["The ", "over", "weight ", "red ", "fox ", "jumped ", "over ", "the ", "sleeping ", "brown ", "dog", "."],
             "word_color_map" => [
