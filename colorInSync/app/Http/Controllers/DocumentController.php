@@ -99,13 +99,13 @@ class DocumentController extends Controller
     public function show($user_id, $id)
     {
         
-       #$document = Document::find($id);
+       $document = Document::find($id);
 
-       # if (!$document) {
-        #    return response()->json(['error' => 'Document not found'], 404);
-       # }
+        if (!$document) {
+            return response()->json(['error' => 'Document not found'], 404);
+        }
 
-       # $text = $document->text;
+        $text = $document->text;
         $colorProfile = '"color-profile": {
             "grapheme-color map": {
                 "A": "rgb(230,16,16)",
@@ -138,7 +138,6 @@ class DocumentController extends Controller
             "exceptions-color map": {"angelic": "rgb(250,250,250)", "Monday": "rgb(0,0,0)"}
         }';
 
-        $text = 'Nevertheless, the angelic being persevered.';
 
         $requestBody = '{' . $colorProfile . ', "text": "' . $text . '"}';
 
