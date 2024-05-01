@@ -43,6 +43,7 @@ class DocumentController extends Controller
         #Step 7: Send 201 created to frontend
         $validatedData = $request->validate([
             'document' => 'required|file|mimes:pdf|max:2048', // Adjust file size and types as needed
+            'user_id' => 'required'
         ]);
 
         if ($request->hasFile('document')) {
