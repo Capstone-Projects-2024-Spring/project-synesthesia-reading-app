@@ -87,8 +87,13 @@ class DocumentController extends Controller
     /**
      * Display the specified document.
      */
-    public function show(Document $document)
+    public function show($id)
     {
+        $document = Document::find($id);
+
+        if (!$document) {
+            return response()->json(['error' => 'Document not found'], 404);
+        }
         $staticJson = [
             "words" => ["The ", "over", "weight ", "red ", "fox ", "jumped ", "over ", "the ", "sleeping ", "brown ", "dog", "."],
             "word_color_map" => [
