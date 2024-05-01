@@ -56,11 +56,11 @@ class DocumentController extends Controller
             $textContent = $this->extractTextFromPDF(storage_path('app/' . $filePath));
 
             // Create the document
-            $document = Document::create([
+            $this->uploadedDocument = Document::create([
                 'text' => $textContent,
             ]);
 
-            return response()->json(['message' => 'Document created successfully', 'document' => $document], 201);
+            return response()->json(['message' => 'Document created successfully', 'document' => $this->uploadedDocument], 201);
         }
 
         throw ValidationException::withMessages(['file' => 'File not provided or invalid']);
