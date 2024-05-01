@@ -5,17 +5,19 @@ import { useState, useEffect, Profiler } from "react";
 import React from "react";
 import Reader from "./../Reader/Reader.jsx";
 function DocumentLibrary({ user_profile }) {
+
+  const userId = 1;
   const [documentList, setDocumentList] = useState([]);
   const [uploading, setUploading] = useState(false);
   const [openDocument, setOpenDocument] = useState(null);
-  function Document({ name = "Unnamed Document", id }) {
+  function Document({ name = "Unnamed Document", id, index }) {
     return (
       <>
         <div className="flex flex-col items-center" id={id}>
           <TextSnippet
             sx={{ fontSize: 75 }}
             onClick={() => {
-              setOpenDocument(documentList[id]);
+              setOpenDocument(documentList[index]);
             }}
           ></TextSnippet>
           <p className="truncate w-40">{name}</p>
@@ -44,10 +46,36 @@ function DocumentLibrary({ user_profile }) {
   const handle_upload = (event) => {
     const selectedFile = event.target.files[0];
     console.log(selectedFile);
-    var newList = Array.from(documentList);
-    newList.push(selectedFile);
-    setDocumentList(newList);
-    setUploading(false);
+    const formData = new FormData();
+    formData.append("document", selectedFile);
+    formData.append('user_id', userId )
+
+    const requestOptions = {
+      method: "POST",
+      headers: {
+        "Content-Type": "multipart/form-data", // Specify the Content-Type header
+      },
+      body: formData,
+    };
+    fetch(`${import.meta.env.VITE_DOMAIN}/api/document`, requestOptions)
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+        return response.json();
+      })
+      .then((data) => {
+        console.log("document POST request was accepted");
+        console.log("Document ID:", data.document_id); // Access the document ID from the response data
+        var newList = Array.from(documentList);
+        newList.push({file_info: selectedFile, id: data.document_id});
+        setDocumentList(newList);
+        setUploading(false);
+      })
+      .catch((error) => {
+        console.error("There was a problem with your fetch operation:", error);
+        alert("Error uploading your document");
+      });
   };
   function DocumentLibaryActionBar() {
     return (
@@ -76,7 +104,13 @@ function DocumentLibrary({ user_profile }) {
       <div className="flex flex-wrap gap-x-10 gap-y-10 my-20 mx-5">
         {documentList.length > 0 &&
           documentList.map((document, index) => (
-            <Document name={document.name} key={index} id={index} className="size-2" />
+            <Document
+              name={document.file_info.name}
+              key={index}
+              id={document.id}
+              index={index}
+              className="size-2"
+            />
           ))}
       </div>
     );
@@ -84,11 +118,7 @@ function DocumentLibrary({ user_profile }) {
   return (
     <>
       {openDocument ? (
-          <Reader
-            document={openDocument}
-            close={() => setOpenDocument(null)}
-          />
-
+        <Reader document={openDocument} close={() => setOpenDocument(null)} />
       ) : (
         <div className="h-screen">
           <DocumentLibaryActionBar />

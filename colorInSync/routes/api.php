@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 #use App\Http\Controllers\Api\v1\DocumentController;
@@ -9,6 +10,7 @@ use App\Http\Controllers\ColorProfileController;
 
 
 
+Route::post('/documents',[DocumentController::class, 'store']);
 
 
 /*
@@ -26,11 +28,14 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('colorProfile', [ColorProfileController::class, 'show']);
-Route::post('colorProfile', [ColorProfileController::class, 'store']);
+Route::get('color-profile', [ColorProfileController::class, 'show']);
+//Route::middleware('auth:sanctum')->post('color-profile', [ColorProfileController::class, 'store']);
+Route::post('color-profile', [ColorProfileController::class, 'store']);
 
-Route::get('document', [DocumentController::class, 'show']);
+Route::get('document/{id}', [DocumentController::class, 'show']);
 Route::post('document', [DocumentController::class, 'store']);
+
+Route::get('http://127.0.0.1:5000/', [DocumentController::class,'show'])->name('documents.show');
 
 /*Route::group(['prefix' => 'v1', 'namespace' => 'App\Http\Controllers\Api\v1'], function(){
     #Route::get('/colorProfile', [ColorProfileController::class, 'show']);

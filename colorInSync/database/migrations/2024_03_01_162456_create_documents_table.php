@@ -14,9 +14,10 @@ return new class extends Migration
         Schema::create('documents', function (Blueprint $table) {
             $table->id()->autoIncrement();
             $table->integer('user_id');
-            $table->string('file_name');
-            $table->integer('file_size');
-            $table->integer('pages');
+            #$table->string('file_name');
+            #$table->integer('file_size');
+            $table->string('content');
+            #$table->integer('pages');
         });
     }
 

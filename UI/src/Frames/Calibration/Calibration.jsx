@@ -53,9 +53,9 @@ const Calibration = ({ setColors }) => {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(colors),
+      body: JSON.stringify({user_id: 1, grapheme_colors: colors}),
     };
-    fetch(`${import.meta.env.VITE_DOMAIN}/api/colorProfile`, requestOptions)
+    fetch(`${import.meta.env.VITE_DOMAIN}/api/color-profile`, requestOptions)
       .then((response) => {
         if (!response.ok) {
           throw new Error("Network response was not ok");
@@ -65,11 +65,11 @@ const Calibration = ({ setColors }) => {
       })
       .catch((error) => {
         console.error("There was a problem with your fetch operation:", error);
+        setColors(colors);
       });
   }
 
   const next = () => {
-    console.log(colors);
     if (index == graphemes.length - 1) {
       uploadColors(colors);
     }
