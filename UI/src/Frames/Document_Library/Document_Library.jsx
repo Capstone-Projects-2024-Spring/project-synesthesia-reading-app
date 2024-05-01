@@ -5,6 +5,8 @@ import { useState, useEffect, Profiler } from "react";
 import React from "react";
 import Reader from "./../Reader/Reader.jsx";
 function DocumentLibrary({ user_profile }) {
+
+  const userId = 1;
   const [documentList, setDocumentList] = useState([]);
   const [uploading, setUploading] = useState(false);
   const [openDocument, setOpenDocument] = useState(null);
@@ -46,6 +48,7 @@ function DocumentLibrary({ user_profile }) {
     console.log(selectedFile);
     const formData = new FormData();
     formData.append("document", selectedFile);
+    formData.append('user_id', userId )
 
     const requestOptions = {
       method: "POST",

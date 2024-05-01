@@ -12,7 +12,6 @@ use Illuminate\Validation\ValidationException;
 
 class DocumentController extends Controller
 {
-    private $uploadedDocument;
     /**
      * Display a listing of the document.
      */
@@ -55,12 +54,15 @@ class DocumentController extends Controller
             // Extract text content from the PDF
             $textContent = $this->extractTextFromPDF(storage_path('app/' . $filePath));
 
+            $user_id = $request->user_id;
+
             // Create the document
-            $this->uploadedDocument = Document::create([
+            $document = Document::create([
                 'text' => $textContent,
+                'id' => $user_id
             ]);
 
-            return response()->json(['message' => 'Document created successfully', 'document_id' => $this->uploadedDocument->id], 201);
+            return response()->json(['message' => 'Document created successfully', 'document_id' => $document->id], 201);
         }
 
         throw ValidationException::withMessages(['file' => 'File not provided or invalid']);
