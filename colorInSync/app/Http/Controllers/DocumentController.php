@@ -70,7 +70,7 @@ class DocumentController extends Controller
 
             return response(['document_id' => $document->id],201)
                 ->withHeaders([
-                    'Content_type' => 'application/json'
+                    'Content-Type' => 'application/json'
                 ]);
         }
 
