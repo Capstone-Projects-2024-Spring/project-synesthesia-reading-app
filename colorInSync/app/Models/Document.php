@@ -11,7 +11,7 @@ class Document extends Model
 
     protected $fillable = [
         'user_id',
-        'text'
+        'content'
     ];
     public function user(){
         return $this->belongsTo(User::class);

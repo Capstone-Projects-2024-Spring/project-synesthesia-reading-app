@@ -64,11 +64,11 @@ class DocumentController extends Controller
 
             // Create the document
             $document = Document::create([
-                'text' => $textContent,
+                'content' => $textContent,
                 'user_id' => $user_id
             ]);
 
-            return response(['document_id' => $document->id],201)
+            return response()->json(['document_id' => $document->id],201)
                 ->withHeaders([
                     'Content-Type' => 'application/json'
                 ]);
