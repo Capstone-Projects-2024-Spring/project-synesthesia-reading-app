@@ -46,10 +46,10 @@ class DocumentController extends Controller
      */
     public function store(StoreDocumentRequest $request)
     {
-        $validatedData = $request->validate([
+        /*$validatedData = $request->validate([
             'document' => 'required|file|mimes:pdf|max:2048', // Adjust file size and types as needed
             'user_id' => 'required'
-        ]);
+        ]);*/
 
         if ($request->hasFile('document')) {
             $file = $request->file('document');
