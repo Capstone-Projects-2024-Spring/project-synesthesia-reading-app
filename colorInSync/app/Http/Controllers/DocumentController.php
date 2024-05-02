@@ -9,6 +9,7 @@ use Smalot\PdfParser\Parser;
 use App\Models\Document;
 use Illuminate\Validation\ValidationException;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Http;
 use App\Http\Models\ColorProfile;
 use App\Http\Controllers\ColorProfileController;
@@ -67,7 +68,8 @@ class DocumentController extends Controller
                 'user_id' => $user_id
             ]);
 
-            return response()->json(['message' => 'Document created successfully', 'document_id' => $document->id], 201);
+            return response()->json(['document_id' => $document->id])
+            ->setStatusCode(Response::HTTP_CREATED, Response::$statusTexts[Response::HTTP_CREATED]);
         }
 
         throw ValidationException::withMessages(['file' => 'File not provided or invalid']);
