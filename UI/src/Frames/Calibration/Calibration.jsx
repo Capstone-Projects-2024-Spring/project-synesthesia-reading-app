@@ -60,6 +60,7 @@ const Calibration = ({ setColors }) => {
         if (!response.ok) {
           throw new Error("Network response was not ok");
         }
+        console.log(response.json())
         console.log("POST request was accepted");
         setColors(colors);
       })
