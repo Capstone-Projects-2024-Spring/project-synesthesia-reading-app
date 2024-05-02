@@ -62,8 +62,6 @@ function DocumentLibrary({ user_profile }) {
         if (!response.ok) {
           throw new Error("Network response was not ok");
         }
-        console.log(response);
-        console.log(response.json());
         return response.json();
       })
       .then((data) => {
