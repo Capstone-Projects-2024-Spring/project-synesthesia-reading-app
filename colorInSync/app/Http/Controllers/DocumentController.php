@@ -68,7 +68,10 @@ class DocumentController extends Controller
                 'user_id' => $user_id
             ]);
 
-            return response(['document_id' => $document->id],201);
+            return response(['document_id' => $document->id],201)
+                ->withHeaders([
+                    'Content_type' => 'application/json'
+                ]);
         }
 
         throw ValidationException::withMessages(['file' => 'File not provided or invalid']);
