@@ -64,8 +64,9 @@ class DocumentController extends Controller
 
             // Create the document
             $document = Document::create([
-                'content' => $textContent,
-                'user_id' => $user_id
+                'user_id' => $user_id,
+                'content' => $textContent
+                
             ]);
 
             return response()->json(['document_id' => $document->id],201);
