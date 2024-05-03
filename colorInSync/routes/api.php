@@ -33,7 +33,8 @@ Route::get('color-profile', [ColorProfileController::class, 'show']);
 Route::post('color-profile', [ColorProfileController::class, 'store']);
 
 Route::get('document/{id}', [DocumentController::class, 'show']);
-Route::post('document', [DocumentController::class, 'store']);
+Route::post('document', [DocumentController::class, 'store'])
+    ->middleware(ForceJsonResponse::class);
 
 Route::get('http://127.0.0.1:5000/', [DocumentController::class,'show'])->name('documents.show');
 
