@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Route;
 #use App\Http\Controllers\Api\v1\ColorProfileController;
 use App\Http\Controllers\DocumentController;
 use App\Http\Controllers\ColorProfileController;
+use App\Http\Middleware\ForceJsonResponse;
 
 
 
