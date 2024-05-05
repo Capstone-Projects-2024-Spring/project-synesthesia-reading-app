@@ -27,7 +27,14 @@ sidebar_position: 1
 ## Backend Unit Testing with Laravel
 Laravel uses Factories to generate dummy data usable for testing, allowing tests to be run without need for real data.
 All tests in the Laravel backend can be run at once using the command: `php artisan test`
-### Unit Test: Documents retrieval
-- Input: `GET \api\documents\{user_credentials}`
-- Expected Output: A JSON array containing information about all user documents, including filename and id number.
+### Unit Test: Document upload
+- Input: `store(faked_document)`
+- Expected Output: Returns stored document ID
+### Unit Test: Document retrieval
+- Input: `show(document_id)`
+- Expected Output: Returns document as a colored-page object JSON
+### Unit Test: ColorProfile upload
+- Input: `store(colorProfileJson)`
+- Expected Output: Database entry created
+
 
