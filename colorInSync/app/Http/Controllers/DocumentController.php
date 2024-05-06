@@ -115,7 +115,7 @@ class DocumentController extends Controller
 
         #$text = "Nevertheless, the angelic being persevered.";
 
-        $colorProfile = '"color-profile": {
+        $colorProfile = '{
             "grapheme-color map": {
                 "A": "rgb(230,16,16)",
                 "B": "rgb(29,26,214)",
@@ -148,7 +148,7 @@ class DocumentController extends Controller
         }';
 
         $object = new \stdClass();
-        $object->{'color-profile'} = $colorProfile;
+        $object->colorProfile = $colorProfile;
         $object->text = $text;
         $requestBody = json_encode($object);
 
