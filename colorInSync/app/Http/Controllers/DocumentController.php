@@ -109,9 +109,9 @@ class DocumentController extends Controller
         if (!$document) {
             return response()->json(['error' => 'Document not found'], 404);
         }
-        Log::debug($document->toJson());
-        Log::debug($document->toJson()->content);
-        $text = $document->toJson()->content;
+
+        $text = $document->content;
+
 
         #$text = "Nevertheless, the angelic being persevered.";
 
@@ -147,12 +147,12 @@ class DocumentController extends Controller
             "exceptions-color map": {"angelic": "rgb(250,250,250)", "Monday": "rgb(0,0,0)"}
         }';
 
-        #$object = new \stdClass();
-        #$object->colorProfile = $colorProfile;
-        #$object->text = $text;
-        #$requestBody = json_encode($object);
+        $object = new \stdClass();
+        $object->{'color-profile'} = $colorProfile;
+        $object->text = $text;
+        $requestBody = json_encode($object);
 
-        $requestBody = '{' . $colorProfile . ', "text": "' . $text . '"}';
+        #$requestBody = '{' . $colorProfile . ', "text": "' . $text . '"}';
 
         
 
