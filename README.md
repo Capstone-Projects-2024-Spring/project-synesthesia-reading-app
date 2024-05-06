@@ -70,3 +70,6 @@ Discuss what you need to develop this project. This includes background informat
 </table>
 
 [//]: # ( readme: collaborators -end )
+## Acknowledgements
+The code to split compound words in order to color their components separately was based off of [Tim Kam's compound-word-splitter](https://github.com/TimKam/compound-word-splitter) by [Timotheus Kampik](https://github.com/TimKam), [fatkaratekid](https://github.com/fatkaratekid), and [Tessa Kettelberger](https://github.com/teakettel).
+It uses [this conversion of Webster's English Dictionary to JSON](https://github.com/matthewreagan/WebstersEnglishDictionary) by [Matt Reagan](https://github.com/matthewreagan), [Brian S](https://github.com/bbbrrriiiaaannn), [Bhargav Chippada](https://github.com/bhargavchippada), and [Justin Katerberg](https://github.com/jkaterberg).
