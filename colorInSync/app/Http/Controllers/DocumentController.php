@@ -153,6 +153,8 @@ class DocumentController extends Controller
         $object->text = $text;
         $requestBody = json_encode($object);
 
+        Log::debug($requestBody);
+
         #$requestBody = '{' . $colorProfile . ', "text": "' . $text . '"}';
 
         
