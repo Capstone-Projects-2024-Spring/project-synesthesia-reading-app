@@ -110,8 +110,8 @@ class DocumentController extends Controller
             return response()->json(['error' => 'Document not found'], 404);
         }
 
-        
         $text = $document->content;
+
 
         #$text = "Nevertheless, the angelic being persevered.";
 
