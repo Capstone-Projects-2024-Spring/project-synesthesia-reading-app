@@ -48,8 +48,9 @@ function DocumentLibrary({ user_profile }) {
     console.log(selectedFile);
     const formData = new FormData();
     formData.append('document', selectedFile);
-    formData.append('user_id', userId )
+    formData.append('user_id', userId );
 
+    console.log(formData);
     const requestOptions = {
       method: "POST",
       headers: {
