@@ -1,13 +1,16 @@
 ---
 sidebar_position: 1
 ---
+# Design
 
 ## User-Interface
 
-### Technology
-User-Interface created using ReactJS, Tailwind, and mUI. Front-end scripting executed using ReactJS. 
+### Technology - User-Interface
 
-### Class Diagram
+User-Interface created using ReactJS, Tailwind, and mUI. Front-end scripting executed using ReactJS.
+
+### Class Diagram - User-Interface
+
 ```mermaid
 classDiagram
   App *-- Account
@@ -60,6 +63,7 @@ classDiagram
   
   
 ```
+
 ### Design Mock-Ups
 
 Welcome, Login, & Sign Up Screens
@@ -68,26 +72,24 @@ Welcome, Login, & Sign Up Screens
 | ----------- | ----------- | --------- |
 | ![Welcome UI](/img/Figma_Mock_Ups/welcome.png) | ![Login UI](/img/Figma_Mock_Ups/Login.png) | ![Sign Up UI](/img/Figma_Mock_Ups/SignUp.png) |
 
-
 Document Library Screen
 
 ![Doc Screen](/img/Figma_Mock_Ups/docs.png)
 
-
 Document Reading Screen
-
 
 | Reading | Tap to bring up Menu |
 | ------- | -------------------- |
 | ![Reading w/o Menu](/img/Figma_Mock_Ups/read-doc.png) | ![Documenting w/ Menu](/img/Figma_Mock_Ups/read-doc2.png) |
 
-
 ## Backend API
- 
-### Technology
+
+### Technology - Backend
+
 Backend API written in PHP using the Laravel framework.
- 
-### Class Diagram
+
+### Class Diagram - Backend
+
 ```mermaid
 classDiagram
   Model <|-- User
@@ -118,12 +120,3 @@ classDiagram
   User "1" *-- "1" ColorProfile
   User "1" *-- "0..*" Document
 ```
-
-
-
-
-
-
-
-
-
