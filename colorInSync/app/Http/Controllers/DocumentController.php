@@ -153,7 +153,7 @@ class DocumentController extends Controller
    
 
         $object = new \stdClass();
-        $object->colorProfile = $colorProfile;
+        $object->{'color-profile'} = $colorProfile;
         $object->text = $text;
         $requestBody = json_encode($object);
 

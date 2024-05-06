@@ -8,7 +8,7 @@ app = Flask(__name__)
 @app.route('/', methods=["GET"])
 def create_colored_page():
    request_data = request.get_json()
-   color_profile = request_data["colorProfile"]
+   color_profile = request_data["color-profile"]
    text = request_data["text"]
    c = ColorByFirstLetter(color_profile, text)
    
