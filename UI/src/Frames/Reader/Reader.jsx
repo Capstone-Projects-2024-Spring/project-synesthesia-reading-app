@@ -93,7 +93,7 @@ function Reader({ document = { name: "Unnown title", id: -1 }, close }) {
   function Word({ word, RGB }) {
     return (
       <>
-          <span className ="black-outline text-2xl" style={{ color: RGB }}>{word}</span>
+          <span className ="black-outline text-2xl whitespace-pre-wrap" style={{ color: RGB }}>{word}</span>
       </>
     );
   }
