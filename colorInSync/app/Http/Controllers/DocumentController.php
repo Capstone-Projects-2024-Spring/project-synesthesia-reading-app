@@ -110,7 +110,10 @@ class DocumentController extends Controller
             return response()->json(['error' => 'Document not found'], 404);
         }
 
-        $text = $document->content;
+        #$text = $document->content;
+
+        $text = "Nevertheless, the angelic being persevered.";
+
         $colorProfile = '"color-profile": {
             "grapheme-color map": {
                 "A": "rgb(230,16,16)",
