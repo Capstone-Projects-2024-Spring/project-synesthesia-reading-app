@@ -101,7 +101,7 @@ class DocumentController extends Controller
      */
         
 
-    public function show($user_id, $id)
+    public function show($id)
     {
         
        $document = Document::find($id);
