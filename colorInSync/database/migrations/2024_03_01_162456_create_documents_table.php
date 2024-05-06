@@ -18,6 +18,7 @@ return new class extends Migration
             #$table->integer('file_size');
             $table->string('content');
             #$table->integer('pages');
+            $table->timestamps();
         });
     }
 
