@@ -101,7 +101,7 @@ class DocumentController extends Controller
      */
         
 
-    public function show($user_id, $id)
+    public function show(Request $request, string $id)
     {
         
        $document = Document::find($id);
@@ -110,7 +110,7 @@ class DocumentController extends Controller
             return response()->json(['error' => 'Document not found'], 404);
         }
 
-        $text = $document->text;
+        $text = $document->content;
         $colorProfile = '"color-profile": {
             "grapheme-color map": {
                 "A": "rgb(230,16,16)",
