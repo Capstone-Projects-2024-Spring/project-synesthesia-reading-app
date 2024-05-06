@@ -115,8 +115,9 @@ class DocumentController extends Controller
 
         #$text = "Nevertheless, the angelic being persevered.";
 
-        $colorProfile = 
-            '"grapheme-color map": {
+        $colorProfile = '
+            {
+                "grapheme-color map": {
                 "A": "rgb(230,16,16)",
                 "B": "rgb(29,26,214)",
                 "C": "rgb(250,247,65)",
@@ -144,7 +145,8 @@ class DocumentController extends Controller
                 "Y": "rgb(255,242,0)",
                 "Z": "rgb(197,228,232)"
             },
-            "exceptions-color map": {"angelic": "rgb(250,250,250)", "Monday": "rgb(0,0,0)"}';
+            "exceptions-color map": {"angelic": "rgb(250,250,250)", "Monday": "rgb(0,0,0)"}
+        }';
 
         $object = new \stdClass();
         $object->colorProfile = $colorProfile;
