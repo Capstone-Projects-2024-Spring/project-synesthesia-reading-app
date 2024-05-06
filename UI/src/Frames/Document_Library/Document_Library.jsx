@@ -53,10 +53,8 @@ function DocumentLibrary({ user_profile }) {
     console.log(formData);
     const requestOptions = {
       method: "POST",
-      headers: {
-        "Content-Type": "multipart/form-data", // Specify the Content-Type header
-      },
       body: formData,
+      redirect: "follow",
     };
     fetch(`${import.meta.env.VITE_DOMAIN}/api/document`, requestOptions)
       .then((response) => {
