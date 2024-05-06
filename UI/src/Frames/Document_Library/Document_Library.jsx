@@ -47,7 +47,7 @@ function DocumentLibrary({ user_profile }) {
     const selectedFile = event.target.files[0];
     console.log(selectedFile);
     const formData = new FormData();
-    formData.append('document', selectedFile, "temp.pdf");
+    formData.append('document', selectedFile, selectedFile.name);
     formData.append('user_id', userId );
 
     console.log(formData);
