@@ -139,7 +139,7 @@ function Reader({ document = { name: "Unnown title", id: -1 }, close }) {
       <div className="h-screen">
         <ReaderActionBar name={document.name} close={close} />
         <div className="py-20 px-4 ">
-          <div className="flex flex-wrap gap-x-2 gap-y-3">
+          <div className="flex flex-wrap gap-x-0 gap-y-3">
             {textPages[currentPage]}
           </div>
         </div>
