@@ -13,52 +13,57 @@ User-Interface created using ReactJS, Tailwind, and mUI. Front-end scripting exe
 
 ```mermaid
 classDiagram
-  App *-- Account
-  App : - Account user
-   
-  Account : + colorWeights
-  Account : + documentList
-  Account : + getUserData()
-  Account *-- Login
-  Login : - Credentials userCredentials
-  Login : + checkCredentials()
-  Account *-- SignUp
-  SignUp : - Credentials ruserCredentials
-  SignUp : + registerUser()
-  Account *-- Credentials
-  Credentials : + username
-  Credentials : + password
+  App "1" *-- "1" Login
+  App : + user
+  App : + profile
+  App : - colors
 
-  App *-- Documents
-  Documents : + documentList
-  Documents *-- Download
-  Download: + saveToDevice(Document)
-  Download o-- "1" Document
+  App "1" *-- "1" Calibration
+  Calibration: + colors 
 
-  Documents *-- Upload
-  Upload: + pushToServer(Document)
-  Upload o-- "1" Document
+  App "1" *-- "1" DocumentLibrary
+  DocumentLibrary : + documentList
+  DocumentLibrary : - isUploading 
+  DocumentLibrary : - handleUpload()
 
-  Documents *-- Read
-  Read: - lazyLoadDoc(Document)
-  Read o-- "1" Document
+  DocumentLibrary "1" *-- "1" DocumentGrid
+  DocumentLibrary "1" *-- "1" DocumentActionBar
 
-  Document: + documentText
-  Document: - Array<Note> noteList
+  DocumentActionBar "1" *-- "1" UploadDocument
+  DocumentActionBar: + setUploading()
+  UploadDocument: + setUploading()
+  UploadDocument "1" *-- "1" Input
+  Input: - type
+  Input: + handleUpload()
 
-  Document *-- "0...*" Note
-  Note: + String text
-  Note: - int position
-  
-  Document: + colorText(text)
-  Document: - hightlightText(start, stop)
-  Document: - makeNote(text)
-  App *-- Calibrate
-  Calibrate: Array<Integer> letterHues
-  Calibrate: ColorModel userColorModel
-  Calibrate: updateRemoteModel()
-  Calibrate o-- "1" ColorModel
-  ColorModel: weights
+
+  DocumentGrid *-- Document
+
+  DocumentLibrary "1" *-- "1" Reader
+  Reader "1" <|-- "1" Document
+
+  Document: + name
+  Document: + id
+
+  Reader: - textPages
+  Reader: - currentPage
+  Reader: - goToNextPage()
+  Reader: - goToPrevPage()
+  Reader: - calculateWordsPerPage()
+  Reader: - distributeTextToPages()
+
+  Reader "1" *-- "1" ReaderActionBar
+  ReaderActionBar: - goToNextPage()
+  ReaderActionBar: - goToPrevPage()
+  Reader "1" *-- "10...*" Word
+
+  Word: - word
+  Word: - RGB
+
+
+
+
+
   
   
   
