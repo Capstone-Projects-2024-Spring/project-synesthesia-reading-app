@@ -109,8 +109,9 @@ class DocumentController extends Controller
         if (!$document) {
             return response()->json(['error' => 'Document not found'], 404);
         }
-
-        $text = ($document->content)->toJson();
+        Log::debug($document->toJson());
+        Log::debug($document->toJson()->content);
+        $text = $document->toJson()->content;
 
         #$text = "Nevertheless, the angelic being persevered.";
 
