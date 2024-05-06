@@ -17,7 +17,4 @@ class Document extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function getText(){
-        return $this->text;
-    }
 }
