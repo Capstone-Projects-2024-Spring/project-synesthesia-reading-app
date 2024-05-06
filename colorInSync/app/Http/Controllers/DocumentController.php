@@ -115,38 +115,42 @@ class DocumentController extends Controller
 
         #$text = "Nevertheless, the angelic being persevered.";
 
-        $colorProfile = '
-            {
-                "grapheme-color map": {
-                "A": "rgb(230,16,16)",
-                "B": "rgb(29,26,214)",
-                "C": "rgb(250,247,65)",
-                "D": "rgb(5,29,153)",
-                "E": "rgb(11,176,16)",
-                "F": "rgb(227,16,16)",
-                "G": "rgb(16,163,21)",
-                "H": "rgb(255,239,15)",
-                "I": "rgb(216,242,242)",
-                "J": "rgb(255,227,46)",
-                "K": "rgb(255,248,33)",
-                "L": "rgb(245,29,29)",
-                "M": "rgb(252,10,10)",
-                "N": "rgb(71,4,148)",
-                "O": "rgb(97,186,250)",
-                "P": "rgb(250,240,50)",
-                "Q": "rgb(170,197,242)",
-                "R": "rgb(145,67,230)",
-                "S": "rgb(255,252,69)",
-                "T": "rgb(255,246,69)",
-                "U": "rgb(46,162,230)",
-                "V": "rgb(198,200,247)",
-                "W": "rgb(8,39,196)",
-                "X": "rgb(80,80,82)",
-                "Y": "rgb(255,242,0)",
-                "Z": "rgb(197,228,232)"
-            },
-            "exceptions-color map": {"angelic": "rgb(250,250,250)", "Monday": "rgb(0,0,0)"}
-        }';
+        $colorProfile = new \stdClass();
+        ${'grapheme-color map'} = new \stdClass();
+        ${'grapheme-color map'}->A = "rgb(230,16,16)";
+        ${'grapheme-color map'}->B = "rgb(29,26,214)";
+        ${'grapheme-color map'}->C = "rgb(250,247,65)";
+        ${'grapheme-color map'}->D = "rgb(250,247,65)";
+        ${'grapheme-color map'}->E = "rgb(250,247,65)";
+        ${'grapheme-color map'}->F = "rgb(250,247,65)";
+        ${'grapheme-color map'}->G = "rgb(250,247,65)";
+        ${'grapheme-color map'}->H = "rgb(250,247,65)";
+        ${'grapheme-color map'}->I = "rgb(250,247,65)";
+        ${'grapheme-color map'}->J = "rgb(250,247,65)";
+        ${'grapheme-color map'}->K = "rgb(250,247,65)";
+        ${'grapheme-color map'}->L = "rgb(250,247,65)";
+        ${'grapheme-color map'}->M = "rgb(250,247,65)";
+        ${'grapheme-color map'}->N = "rgb(250,247,65)";
+        ${'grapheme-color map'}->O = "rgb(250,247,65)";
+        ${'grapheme-color map'}->P = "rgb(250,247,65)";
+        ${'grapheme-color map'}->Q = "rgb(250,247,65)";
+        ${'grapheme-color map'}->R = "rgb(250,247,65)";
+        ${'grapheme-color map'}->S = "rgb(250,247,65)";
+        ${'grapheme-color map'}->T = "rgb(250,247,65)";
+        ${'grapheme-color map'}->U = "rgb(250,247,65)";
+        ${'grapheme-color map'}->V = "rgb(250,247,65)";
+        ${'grapheme-color map'}->W = "rgb(250,247,65)";
+        ${'grapheme-color map'}->X = "rgb(250,247,65)";
+        ${'grapheme-color map'}->Y = "rgb(250,247,65)";
+        ${'grapheme-color map'}->Z = "rgb(250,247,65)";
+        
+        ${'exceptions-color map'} = new \stdClass();
+        ${'exceptions-color map'}->angelic = "rgb(250,250,250)";
+
+        $colorProfile->{'grapheme-color map'} = ${'grapheme-color map'};
+        $colorProfile->{'exceptions-color map'} = ${'exceptions-color map'};
+        
+   
 
         $object = new \stdClass();
         $object->colorProfile = $colorProfile;
