@@ -13,6 +13,7 @@ use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Http;
 use App\Http\Models\ColorProfile;
 use App\Http\Controllers\ColorProfileController;
+use Illuminate\Support\Facades\Log;
 
 
 
@@ -46,6 +47,7 @@ class DocumentController extends Controller
      */
     public function store(StoreDocumentRequest $request)
     {
+        Log::debug($request->all());
         /*$validatedData = $request->validate([
             'document' => 'required|file|mimes:pdf|max:2048', // Adjust file size and types as needed
             'user_id' => 'required'
