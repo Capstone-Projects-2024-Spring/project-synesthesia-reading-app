@@ -121,7 +121,7 @@ class DocumentController extends Controller
         $cpResponse = Route::dispatch($cpRequest);
         $cpJson = json_decode($cpResponse->content(), true);
 
-        Log::info('newerer_logs');
+        Log::info('newererer_logs');
         Log::debug($cpResponse->content());
         #Log::debug(json_decode($cpJson[0]));
         Log::debug($cpJson[0]['grapheme']);
