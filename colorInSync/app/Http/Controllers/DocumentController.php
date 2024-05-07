@@ -129,7 +129,11 @@ class DocumentController extends Controller
         
         $colorProfile = new \stdClass();
         ${'grapheme-color map'} = new \stdClass();
-        ${'grapheme-color map'}->A = $cpJson[0]['color'];
+
+        for ($i = 0; $i < 26; $i++){
+            ${'grapheme-color map'}->$cpJson[$i]['grapheme'] = $cpJson[$i]['color'];
+        }
+        /*${'grapheme-color map'}->A = $cpJson[0]['color'];
         ${'grapheme-color map'}->B = $cpJson[1]['color'];
         ${'grapheme-color map'}->C = $cpJson[2]['color'];
         ${'grapheme-color map'}->D = $cpJson[3]['color'];
@@ -154,7 +158,7 @@ class DocumentController extends Controller
         ${'grapheme-color map'}->W = $cpJson[22]['color'];
         ${'grapheme-color map'}->X = $cpJson[23]['color'];
         ${'grapheme-color map'}->Y = $cpJson[24]['color'];
-        ${'grapheme-color map'}->Z = $cpJson[25]['color'];
+        ${'grapheme-color map'}->Z = $cpJson[25]['color'];*/
         
         ${'exceptions-color map'} = new \stdClass();
         ${'exceptions-color map'}->angelic = "rgb(250,250,250)";
