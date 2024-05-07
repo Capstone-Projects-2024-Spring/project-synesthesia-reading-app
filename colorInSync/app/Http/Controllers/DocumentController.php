@@ -13,6 +13,7 @@ use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Http;
 use App\Http\Models\ColorProfile;
 use App\Http\Controllers\ColorProfileController;
+use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Log;
 
 

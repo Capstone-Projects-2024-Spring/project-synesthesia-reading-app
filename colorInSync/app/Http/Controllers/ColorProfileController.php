@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Log;
 use App\Http\Requests\StoreColorProfileRequest;
 use App\Http\Requests\UpdateColorProfileRequest;
 use App\Http\Controllers\Controller;
@@ -52,7 +53,7 @@ class ColorProfileController extends Controller
     public function show()
     {
         $colorProfile = ColorProfile::latest()->first();
-        Log::debug($colorProfile);
+        Log::debug($colorProfile->toJson());
 
         return $colorProfile;
     }
