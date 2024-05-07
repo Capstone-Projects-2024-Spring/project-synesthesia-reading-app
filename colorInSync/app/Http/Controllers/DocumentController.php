@@ -123,9 +123,9 @@ class DocumentController extends Controller
 
         Log::info('newerer_logs');
         Log::debug($cpResponse->content());
-        Log::debug(json_decode($cpJson[0]));
-        Log::debug(json_decode($cpJson[0])->grapheme);
-        Log::debug(json_decode($cpJson[0])->color);
+        #Log::debug(json_decode($cpJson[0]));
+        Log::debug($cpJson[0]['grapheme']);
+        Log::debug($cpJson[0]['color']);
         
         $colorProfile = new \stdClass();
         ${'grapheme-color map'} = new \stdClass();
