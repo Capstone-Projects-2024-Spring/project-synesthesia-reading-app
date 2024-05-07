@@ -120,8 +120,8 @@ class DocumentController extends Controller
         $cpRequest = Request::create('/api/color-profile', 'GET');
         $cpResponse = Route::dispatch($cpRequest);
 
-        Log::debug(json_decode($cpResponse->getBody()[0]->grapheme));
-        Log::debug(json_decode($cpResponse->getBody()[0]->color));
+        Log::debug(json_decode($cpResponse->content()[0]->grapheme));
+        Log::debug(json_decode($cpResponse->content()[0]->color));
         
         $colorProfile = new \stdClass();
         ${'grapheme-color map'} = new \stdClass();
