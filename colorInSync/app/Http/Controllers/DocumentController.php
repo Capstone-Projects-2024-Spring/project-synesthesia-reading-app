@@ -119,7 +119,7 @@ class DocumentController extends Controller
         #Internal API call to colorProfile
         $cpRequest = Request::create('/api/color-profile', 'GET');
         $cpResponse = Route::dispatch($cpRequest);
-        $cpJson = json_decode($cpResponse->content());
+        $cpJson = json_decode($cpResponse->content(), true);
 
         Log::info('newerer_logs');
         Log::debug($cpResponse->content());
