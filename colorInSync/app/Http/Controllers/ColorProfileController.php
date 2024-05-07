@@ -52,7 +52,8 @@ class ColorProfileController extends Controller
     public function show()
     {
         $colorProfile = ColorProfile::latest()->first();
-        return $colorProfile;
+        
+        return $colorProfile->toJson();
     }
 
     /**
