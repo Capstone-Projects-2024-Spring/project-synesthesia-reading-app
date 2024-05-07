@@ -115,6 +115,10 @@ class DocumentController extends Controller
 
         #$text = "Nevertheless, the angelic being persevered.";
 
+        #Internal API call to colorProfile
+        $cpRequest = Request::create('/api/color-profile', 'GET');
+        $cpResponse = Route::dispatch($cpRequest);
+
         $colorProfile = new \stdClass();
         ${'grapheme-color map'} = new \stdClass();
         ${'grapheme-color map'}->A = "rgb(230,16,16)";
