@@ -56,8 +56,8 @@ class ColorProfileController extends Controller
     public function show()
     {
         $colorProfile = ColorProfile::latest()->first();
-        Log::debug($colorProfile->letter_colors);
-        Log::debug($colorProfile->toJson());
+        #Log::debug($colorProfile->letter_colors);
+        #Log::debug($colorProfile->toJson());
 
         return $colorProfile->letter_colors;
     }
