@@ -59,7 +59,7 @@ class ColorProfileController extends Controller
         Log::debug($colorProfile->letter_colors);
         Log::debug($colorProfile->toJson());
 
-        return $colorProfile;
+        return $colorProfile->letter_colors;
     }
 
     /**
