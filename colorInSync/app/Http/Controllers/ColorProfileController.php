@@ -34,6 +34,9 @@ class ColorProfileController extends Controller
         /*$this->validate($request,[
             'letter_colors' => ['required']
         ]); #validate the request*/
+        Log::debug($request->grapheme_colors);
+        Log::debug(json_encode($request->grapheme_colors));
+        
         $colorProfile = ColorProfile::create([
             'user_id' => 1,
             'letter_colors' => json_encode($request->grapheme_colors),
