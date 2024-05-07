@@ -52,7 +52,7 @@ class ColorProfileController extends Controller
     public function show()
     {
         $colorProfile = ColorProfile::latest()->first();
-        #Log::debug($colorProfile->toJson());
+        Log::debug($colorProfile);
 
         return $colorProfile;
     }
