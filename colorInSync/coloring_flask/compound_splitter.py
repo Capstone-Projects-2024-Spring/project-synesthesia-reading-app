@@ -51,7 +51,7 @@ class CompoundSplitter():
             left_component = word[0:max_index-index]
             right_component = word[max_index-index: max_index]
 
-            if (index > 0) and (len(left_component) > 1) and (len(right_component) > 1):
+            if (index > 0) and (len(left_component) > 1) and (len(right_component) > 2):
                 if self.is_word(left_component.lower()):
                     if self.is_word(right_component.lower()):
                         for word in temp_word_list:
