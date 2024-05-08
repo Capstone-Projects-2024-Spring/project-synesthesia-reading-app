@@ -1,3 +1,3 @@
 
 # Database Management
-![Database Diagram](documentation/static/img/DataBaseArch.png)
+![Database Diagram](/img/DataBaseArch.png)
