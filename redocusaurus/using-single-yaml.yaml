@@ -87,20 +87,28 @@ paths:
       responses:
         '201':
           description: Created
-  /feedback/:
-    post:
+  /http://127.0.0.1:5000/:
+    get:
       tags:
-        - feedback
-      summary: post a user feedback message
-      operationId: feedback_add
+        - coloring flask
+      summary: >-
+        A call from the Laravel backend to the coloring flask to color a
+        document
+      operationId: color_document
       requestBody:
+        required: true
+        description: contains a color profile and document text
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Feedback_Message'
+              $ref: '#/components/schemas/Colored_Document_Request'
       responses:
-        '201':
-          description: Created
+        '200':
+          description: a Colored_Document object
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Colored_Document'
 components:
   schemas:
     Document:
@@ -114,19 +122,6 @@ components:
           example: The Silmarillion
         text:
           type: string
-        notes:
-          type: array
-          items:
-            $ref: '#/components/schemas/Note'
-    Note:
-      type: object
-      properties:
-        id:
-          type: string
-        location:
-          type: string
-        text:
-          type: string
     Color_Profile:
       description: >-
         Contains a map of graphemes to their associated colors and a map of
@@ -137,7 +132,7 @@ components:
           $ref: '#/components/schemas/Grapheme_Color_Map'
         exceptions-color map:
           $ref: '#/components/schemas/Word_Color_Map'
-    Colored_Page:
+    Colored_Document:
       description: >-
         contains the information necessary to render a colored page-- the
         tokenized text of the page and a word-color map containing word-color
@@ -161,6 +156,17 @@ components:
             - .
         word-color map:
           $ref: '#/components/schemas/Word_Color_Map'
+    Colored_Document_Request:
+      description: >-
+        a Color Profile and document text, sent by the Laravel backend to the
+        coloring flask to color the text
+      type: object
+      properties:
+        color_profile:
+          $ref: '#/components/schemas/Color_Profile'
+        text:
+          type: string
+          example: Nevertheless, the angelic being persevered.
     Grapheme_Color_Map:
       type: object
       description: map of graphemes to RGB colors
@@ -197,7 +203,3 @@ components:
             - 250
             - 0
             - 0
-    Feedback_Message:
-      type: string
-      description: a feedback message from a user
-      example: X feature was really helpful for me, but not Y
