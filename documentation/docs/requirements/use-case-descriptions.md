@@ -65,6 +65,29 @@ As a new user, I want to personalize my reading experience by setting my preferr
 4. Sends grapheme-color associations to backend
 5. Directs user to the home page.
 
+```mermaid
+sequenceDiagram
+    participant User
+    participant ReactUI
+    participant Laravel Backend
+    
+    activate ReactUI
+    loop for each letter and numeral
+        User->>ReactUI: pick color with color picker
+        ReactUI-->>User: shows color picker for next grapheme
+    end
+    
+    ReactUI->>Laravel Backend: POST request with grapheme-color associations
+    activate Laravel Backend
+    Laravel Backend->>Laravel Backend: create new Color Profile
+    Laravel Backend-->>ReactUI: 'created' response
+    deactivate Laravel Backend
+    
+    ReactUI-->>User: returns user to document library
+
+    deactivate ReactUI
+```
+
 
 ## Use Case 3: User uploads a document
 
